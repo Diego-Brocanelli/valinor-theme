@@ -2,6 +2,7 @@
     "name": "valinor-theme",
     "displayName": "Valinor Theme",
     "description": "Valinor theme is a fusion of various well-established themes.",
+    "publisher": "DiegoBrocanelli",
     "version": "1.0.0",
     "repository": {
         "type": "git",
