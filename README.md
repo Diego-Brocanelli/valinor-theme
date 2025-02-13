@@ -93,42 +93,43 @@ Instale as fontes que estão em `fonts`. Exemplo `Zed Plex Mono`.
 
 #### Fëanor
 
-![aaa](assets/themes/feanor.png)
+![Exemplo do tema Fëanor](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/themes/feanor.png)
 
 #### Galadriel
 
-![aaa](assets/themes/galadriel.png)
+![Exemplo do tema Galadriel](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/themes/galadriel.png)
 
 #### Gandalf
 
-![aaa](assets/themes/gandalf.png)
+![Exemplo do tema Gandalf](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/themes/gandalf.png)
 
 #### Glorfindel
 
-![aaa](assets/themes/glorfindel.png)
+![Exemplo do tema Glorfindel](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/themes/glorfindel.png)
 
 ### Dark
 
 #### Azaghâl
 
-![aaa](assets/themes/azaghal.png)
+![Exemplo do tema Azaghâl](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/themes/azaghal.png)
 
 #### Durin
 
-![aaa](assets/themes/durin.png)
+![Exemplo do tema Durin](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/themes/durin.png)
 
 #### Gimli
 
-![aaa](assets/themes/gimli.png)
+![Exemplo do tema Gimli](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/themes/gimli.png)
 
 #### Legolas
 
-![aaa](assets/themes/legolas.png)
+![Exemplo do tema Legolas](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/themes/legolas.png)
 
 ## Créditos
 
 Meus agradecimentos.
 
+- [Better Solarized](https://marketplace.visualstudio.com/items?itemName=ginfuru.ginfuru-better-solarized-dark-theme)
 - [Night Owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl)
 - [Nord](https://marketplace.visualstudio.com/items?itemName=arcticicestudio.nord-visual-studio-code)
 - [Quiet Light for VSC](https://marketplace.visualstudio.com/items?itemName=onecrayon.theme-quietlight-vsc)
