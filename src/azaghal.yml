@@ -1,0 +1,255 @@
+$schema: vscode://schemas/color-theme
+name: "Valinor Azaghâl"
+author: Diego Brocanelli
+maintainers:
+  - Diego Brocanelli <diegod2@msn.com>
+semanticClass: theme.valinor.azaghal
+type: "dark"
+semanticHighlighting: true
+
+colors:
+  # Cores principais do editor
+  # ----------------------------------------------------------------------------
+  editor.background: "#0d1016"  # Cor de fundo do editor (cinza escuro)
+  editor.foreground: "#C5C8C6"  # Cor do texto no editor (cinza claro)
+  editorCursor.foreground: "#A3BE8C"  # Cor do cursor no editor (verde suave)
+  editor.lineHighlightBackground: "#3B4048"  # Cor de fundo da linha atual (cinza claro)
+  editor.selectionBackground: "#4C566A"  # Cor de fundo quando texto está selecionado (azul claro)
+  editor.selectionHighlightBackground: "#434C5E"  # Cor de fundo para seleção de múltiplas ocorrências (azul claro)
+  editor.wordHighlightBackground: "#3B4048"  # Cor de fundo para palavras destacadas (cinza escuro)
+  editorIndentGuide.background1: "#4C566A"  # Cor das guias de indentação no editor (azul claro)
+  editor.lineNumber.foreground: "#4C566A"  # Cor do número da linha no editor (azul suave)
+  editorRuler.foreground: "#4C566A"  # Cor das réguas no editor (azul suave)
+
+  # Cores da barra lateral
+  # ----------------------------------------------------------------------------
+  sideBar.background: "#1f2127"  # Cor de fundo da barra lateral (cinza escuro)
+  sideBar.foreground: "#C5C8C6"  # Cor do texto da barra lateral (cinza claro)
+  sideBarTitle.foreground: "#62a0ea"  # Cor do título da barra lateral (azul suave)
+  sideBarSectionHeader.background: "#3B4048"  # Cor de fundo das seções na barra lateral (cinza escuro)
+  sideBarSectionHeader.foreground: "#62a0ea"  # Cor do texto das seções na barra lateral (azul suave)
+
+  # Cores da barra de status
+  # ----------------------------------------------------------------------------
+  statusBar.background: "#2E353F"  # Cor de fundo da barra de status (cinza escuro)
+  statusBar.foreground: "#C5C8C6"  # Cor do texto da barra de status (cinza claro)
+  statusBarItem.errorBackground: "#62a0ea"  # Cor de fundo para itens de erro na barra de status (vermelho suave)
+  statusBarItem.warningBackground: "#EBCB8B"  # Cor de fundo para itens de aviso na barra de status (amarelo suave)
+  statusBarItem.successBackground: "#A3BE8C"  # Cor de fundo para itens de sucesso na barra de status (verde suave)
+
+  # Cores de editor e terminal
+  # ----------------------------------------------------------------------------
+  terminal.background: "#0d1016"  # Cor de fundo do terminal (cinza escuro)
+  terminal.foreground: "#C5C8C6"  # Cor do texto no terminal (cinza claro)
+  terminalCursor.background: "#A3BE8C"  # Cor de fundo do cursor no terminal (verde suave)
+  terminalCursor.foreground: "#A3BE8C"  # Cor do cursor no terminal (verde suave)
+  terminal.ansiBlack: "#0d1016"  # Cor do preto no terminal (cinza escuro)
+  terminal.ansiBlue: "#5E81AC"  # Cor do azul no terminal (azul suave)
+  terminal.ansiCyan: "#88C0D0"  # Cor do ciano no terminal (azul claro)
+  terminal.ansiGreen: "#A3BE8C"  # Cor do verde no terminal (verde suave)
+  terminal.ansiMagenta: "#B48EAD"  # Cor do magenta no terminal (roxo suave)
+  terminal.ansiRed: "#BF616A"  # Cor do vermelho no terminal (vermelho suave)
+  terminal.ansiWhite: "#C5C8C6"  # Cor do branco no terminal (cinza claro)
+  terminal.ansiYellow: "#EBCB8B"  # Cor do amarelo no terminal (amarelo suave)
+
+tokenColors:
+  - scope:
+      - "comment"
+    settings:
+      foreground: "#4C566A"  # Cor dos comentários no código (azul suave)
+      fontStyle: italic
+  - scope:
+      - "keyword"
+    settings:
+      foreground: "#c09dea"  # Cor das palavras-chave no código (azul claro)
+  - scope:
+      - "variable"
+    settings:
+      foreground: "#C5C8C6"  # Cor das variáveis no código (cinza claro)
+  - scope:
+      - "string"
+    settings:
+      foreground: "#A3BE8C"  # Cor das strings no código (verde suave)
+  - scope:
+      - "constant"
+    settings:
+      foreground: "#fefefe"  # Cor das constantes no código (branco acinzentado)
+  - scope:
+      - "storage"
+    settings:
+      foreground: "#c09dea"  # Cor para variáveis e tipos de dados (azul claro)
+  - scope:
+      - "function"
+    settings:
+      foreground: "#B48EAD"  # Cor das funções no código (roxo)
+  - scope:
+      - "class"
+    settings:
+      foreground: "#B48EAD"  # Cor das classes no código (roxo suave)
+  - scope:
+      - "type"
+    settings:
+      foreground: "#A3BE8C"  # Cor dos tipos no código (verde suave)
+  - name: User-defined class names
+    scope:
+      - entity.name.type.class
+      - entity.name.class
+      - support.class
+      - support.type
+      - entity.other.attribute-name
+    settings:
+      foreground: "#89b4fa"  # Cor do nome da classe
+  - name: this, super, self, etc.
+    scope:
+      - keyword.expressions-and-types.swift
+      - keyword.other.this
+      - variable.language punctuation.definition.variable.php
+      - variable.other.readwrite.instance.ruby
+      - variable.parameter.function.language.special
+    settings:
+      foreground: "#86d8e7"
+  - name: this, super, self, etc italic.
+    scope:
+      - keyword.expressions-and-types.swift
+      - keyword.other.this
+      - variable.language
+      - variable.language punctuation.definition.variable.php
+      - variable.other.readwrite.instance.ruby
+      - variable.parameter.function.language.special
+    settings:
+      fontStyle: italic
+  - name: Function names
+    scope:
+      - entity.name.function
+      - meta.function-call.object
+      - meta.function-call.php
+      - meta.function-call.static
+      - meta.method-call.java meta.method
+      - meta.method.groovy
+      - support.function.any-method.lua
+      - keyword.operator.function.infix
+    settings:
+      foreground: "#89b4fa"  # Cor do nome da função ou método (azul-claro)
+  - name: Inherited classes
+    scope:
+      - entity.other.inherited-class
+    settings:
+      fontStyle: italic
+      foreground: "#89b4fa"
+  - scope: "punctuation.definition.variable.php"  # Escopo para o símbolo `$` no PHP
+    settings:
+      foreground: "#86d8e7"  # Cor do símbolo '$' no PHP (azul claro)
+      fontStyle: italic
+  - scope: "punctuation.definition.bracket.php, punctuation.definition.parenthesis.php"  # Escopo para colchetes e parênteses no PHP
+    settings:
+      foreground: "#f4f4f4"  # Cor personalizada para os parênteses e colchetes (cor quase branca)
+  - scope: "keyword.control.php"  # Escopo para palavras-chave de controle no PHP (como 'if', 'else', etc.)
+    settings:
+      foreground: "#A3BE8C"  # Cor verde suave para palavras-chave
+      fontStyle: italic
+  - scope: "string.quoted.double.php, string.quoted.single.php"  # Escopo para strings no PHP
+    settings:
+      foreground: "#9fd99a"  # Cor das strings no PHP (verde claro)
+  - scope: "constant.numeric.php"  # Escopo para números no PHP
+    settings:
+      foreground: "#C5C8C6"  # Cor para números (cinza claro)
+  - scope: "variable.language.php"  # Escopo para palavras-chave de linguagem no PHP (como 'echo', 'return', etc.)
+    settings:
+      foreground: "#caa5f6"  # Cor para palavras-chave da linguagem PHP
+      fontStyle: italic
+
+  # Comentários
+  - name: Comments
+    scope:
+      - comment
+      - punctuation.definition.comment
+      - unused.comment
+      - wildcard.comment
+    settings:
+      foreground: "#74788e"
+      fontStyle: italic
+  - name: Function parameters
+    scope:
+      - entity.name.variable.parameter
+      - meta.at-rule.function variable
+      - meta.at-rule.mixin variable
+      - meta.function.arguments variable.other.php
+      - meta.selectionset.graphql meta.arguments.graphql variable.arguments.graphql
+      - variable.parameter
+    settings:
+      fontStyle: italic
+  - scope: "keyword.control.php"  # Escopo para palavras-chave reservadas no PHP
+    settings:
+      foreground: "#cba6f7"  # Cor para palavras-chave reservadas no PHP
+      fontStyle: italic
+
+  # HTML
+  # ----------------------------------------------------------------------------
+  - name: HTML tags
+    scope:
+      - entity.name.tag
+    settings:
+      foreground: "#FF79C6"
+  - name: CSS attribute parent selectors ('&')
+    scope:
+      - entity.other.attribute-name.parent-selector
+    settings:
+      foreground: "#FF79C6"
+  - name: HTML/CSS attribute names
+    scope:
+      - entity.other.attribute-name
+    settings:
+      foreground: "#7bb256"
+      fontStyle: italic
+
+  # Keywords
+  # ----------------------------------------------------------------------------
+  - name: Keywords
+    scope:
+      - punctuation.definition.keyword
+    settings:
+      foreground: "#e1cc9e"
+      fontStyle: italic
+  - name: Keyword "new"
+    scope:
+      - keyword.control.new
+      - keyword.operator.new
+    settings:
+      fontStyle: bold
+
+  # Punctuation
+  # ----------------------------------------------------------------------------
+  - name: Separators
+    scope:
+      - constant.other.symbol.hashkey punctuation.definition.constant.ruby
+      - entity.other.attribute-name.placeholder punctuation
+      - entity.other.attribute-name.pseudo-class punctuation
+      - entity.other.attribute-name.pseudo-element punctuation
+      - meta.group.double.toml
+      - meta.group.toml
+      - meta.object-binding-pattern-variable punctuation.destructuring
+      - punctuation.colon.graphql
+      - punctuation.definition.block.scalar.folded.yaml
+      - punctuation.definition.block.scalar.literal.yaml
+      - punctuation.definition.block.sequence.item.yaml
+      - punctuation.definition.entity.other.inherited-class
+      - punctuation.function.swift
+      - punctuation.separator.dictionary.key-value
+      - punctuation.separator.hash
+      - punctuation.separator.inheritance
+      - punctuation.separator.key-value
+      - punctuation.separator.key-value.mapping.yaml
+      - punctuation.separator.namespace
+      - punctuation.separator.pointer-access
+      - punctuation.separator.slice
+      - string.unquoted.heredoc punctuation.definition.string
+      - support.other.chomping-indicator.yaml
+      - punctuation.separator.annotation
+    settings:
+      foreground: "#fefefe"
+
+
+activityBar.background: "#2E353F"  # Cor de fundo da barra de atividades (cinza escuro)
+activityBar.foreground: "#C5C8C6"  # Cor do texto da barra de atividades (cinza claro)
+activityBarBadge.background: "#A3BE8C"  # Cor de fundo do badge na barra de atividades (verde suave)
+activityBarBadge.foreground: "#FFFFFF"  # Cor do texto do badge na barra de atividades (branco)

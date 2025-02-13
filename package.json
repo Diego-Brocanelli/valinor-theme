@@ -1,0 +1,76 @@
+{
+    "name": "valinor-theme",
+    "displayName": "Valinor Theme",
+    "description": "Valinor theme is a fusion of various well-established themes.",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "node ./src/compiler.js && node ./src/update-themes.js",
+        "package": "vsce package -o ./bin/valinor-theme.vsix",
+        "vscode:prepublish": "npm run build",
+        "vsce-publish": "vsce publish"
+    },
+    "engines": {
+        "vscode": "^1.1.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "icon": "assets/icon.png",
+    "contributes": {
+        "iconThemes": [
+            {
+                "id": "valinor-theme-icons",
+                "label": "Valinor Theme Icons",
+                "path": "./valinor-theme-icons.json"
+            }
+        ],
+        "themes": [
+            {
+                "label": "Valinor Azaghâl",
+                "uiTheme": "vs-dark",
+                "path": "./themes/azaghal.json"
+            },
+            {
+                "label": "Valinor Durin",
+                "uiTheme": "vs-dark",
+                "path": "./themes/durin.json"
+            },
+            {
+                "label": "Valinor Feanor",
+                "uiTheme": "vs",
+                "path": "./themes/feanor.json"
+            },
+            {
+                "label": "Valinor Galadriel",
+                "uiTheme": "vs",
+                "path": "./themes/galadriel.json"
+            },
+            {
+                "label": "Valinor Gandalf",
+                "uiTheme": "vs",
+                "path": "./themes/gandalf.json"
+            },
+            {
+                "label": "Valinor Gimli",
+                "uiTheme": "vs-dark",
+                "path": "./themes/gimli.json"
+            },
+            {
+                "label": "Valinor Glorfindel",
+                "uiTheme": "vs",
+                "path": "./themes/glorfindel.json"
+            },
+            {
+                "label": "Valinor Legolas",
+                "uiTheme": "vs-dark",
+                "path": "./themes/legolas.json"
+            }
+        ]
+    },
+    "dependencies": {
+        "fs-extra": "^11.3.0",
+        "path": "^0.12.7",
+        "vsce": "^2.15.0",
+        "yaml": "^2.7.0"
+    }
+}
