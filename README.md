@@ -1,4 +1,4 @@
-![Valinor banner](./assets/valinor-banner.png)
+![Valinor banner](https://raw.githubusercontent.com/Diego-Brocanelli/valinor-theme/refs/heads/main/assets/valinor-banner.png)
 
 # Valinor VSCode Theme
 

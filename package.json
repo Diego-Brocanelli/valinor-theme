@@ -3,6 +3,10 @@
     "displayName": "Valinor Theme",
     "description": "Valinor theme is a fusion of various well-established themes.",
     "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Diego-Brocanelli/valinor-theme.git"
+    },
     "scripts": {
         "build": "node ./src/compiler.js && node ./src/update-themes.js",
         "package": "vsce package -o ./bin/valinor-theme.vsix",
