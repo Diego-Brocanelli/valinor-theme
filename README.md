@@ -29,8 +29,8 @@ Para desenvolvimento, você precisará de:
 1. Clone o repositório do tema:
 
 ```bash
-git clone https://github.com/seu-usuario/khazad-dump-theme.git && \
-cd khazad-dump-theme
+git clone git@github.com:Diego-Brocanelli/valinor-theme.git && \
+cd valinor-theme
 ```
 
 2. Construa o container Docker:
@@ -140,7 +140,7 @@ Meus agradecimentos.
 
 ## Licença
 
-Este projeto está licenciado sob a licença [MIT](https://github.com/Diego-Brocanelli/khazad-dump-theme/blob/main/LICENSE). Consulte o arquivo LICENSE para mais informações.
+Este projeto está licenciado sob a licença [MIT](https://github.com/Diego-Brocanelli/valinor-theme/blob/main/LICENSE). Consulte o arquivo LICENSE para mais informações.
 
 ## Autores
 
