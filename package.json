@@ -3,7 +3,7 @@
     "displayName": "Valinor Theme",
     "description": "Valinor theme is a fusion of various well-established themes.",
     "publisher": "DiegoBrocanelli",
-    "version": "1.0.4",
+    "version": "1.0.3",
     "repository": {
         "type": "git",
         "url": "https://github.com/Diego-Brocanelli/valinor-theme.git"
@@ -24,9 +24,29 @@
     "contributes": {
         "iconThemes": [
             {
-                "id": "valinor-theme-icons",
-                "label": "Valinor Theme Icons",
-                "path": "./valinor-theme-icons.json"
+                "id": "valinor-icons-zed",
+                "label": "Valinor Icons Zed",
+                "path": "./icons/zed/theme.json"
+            },
+            {
+                "id": "valinor-icons-mocha",
+                "label": "Valinor Icons Mocha",
+                "path": "./icons/catppuccin/mocha/theme.json"
+            },
+            {
+                "id": "valinor-icons-latte",
+                "label": "Valinor Icons Latte",
+                "path": "./icons/catppuccin/latte/theme.json"
+            },
+            {
+                "id": "valinor-icons-frappe",
+                "label": "Valinor Icons Frappé",
+                "path": "./icons/catppuccin/frappe/theme.json"
+            },
+            {
+                "id": "valinor-icons-macchiato",
+                "label": "Valinor Icons Macchiato",
+                "path": "./icons/catppuccin/macchiato/theme.json"
             }
         ],
         "themes": [
@@ -77,5 +97,9 @@
         "path": "^0.12.7",
         "vsce": "^2.15.0",
         "yaml": "^2.7.0"
+    },
+    "__metadata": {
+        "installedTimestamp": 1741394568195,
+        "size": 19766535
     }
 }
