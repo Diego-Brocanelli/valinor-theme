@@ -81,7 +81,13 @@ ext install DiegoBrocanelli.valinor-theme
 
 ## Ícones
 
-Para definir os ícones, pressione `Cmd+Shift+P` (macOS) ou `Ctrl+Shift+P` (Windows/Linux), digite `File Icon Theme` e selecione a opção `Valinor Theme Icons`.
+Para definir os ícones, pressione `Cmd+Shift+P` (macOS) ou `Ctrl+Shift+P` (Windows/Linux), digite `File Icon Theme` e selecione ama das opções:
+
+- Valinor Icons Zed;
+- Valinor Icons Mocha;
+- Valinor Icons Latte;
+- Valinor Icons Frappé;
+- Valinor Icons Macchiato.
 
 ## Fonts
 
@@ -137,6 +143,7 @@ Meus agradecimentos.
 - [Solarized](https://marketplace.visualstudio.com/items?itemName=ryanolsonx.solarized)
 - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
 - [Zed Icons](https://github.com/zed-industries/zed)
+- [vscode-icons](https://github.com/catppuccin/vscode-icons)
 
 ## Licença
 
