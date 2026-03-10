@@ -1,0 +1,9 @@
+[submodule "icons/zed-src"]
+	path = icons/zed-src
+	url = https://github.com/zed-industries/zed
+[submodule "icons/symbols"]
+	path = icons/symbols
+	url = https://github.com/miguelsolorio/vscode-symbols
+[submodule "icons/fluent"]
+	path = icons/fluent
+	url = https://github.com/miguelsolorio/vscode-fluent-icons
