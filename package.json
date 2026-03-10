@@ -3,7 +3,7 @@
     "displayName": "Valinor Theme",
     "description": "Valinor theme is a fusion of various well-established themes.",
     "publisher": "DiegoBrocanelli",
-    "version": "1.1.2",
+    "version": "2.0.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/Diego-Brocanelli/valinor-theme.git"
@@ -26,7 +26,12 @@
             {
                 "id": "valinor-icons-zed",
                 "label": "Valinor Icons Zed",
-                "path": "./icons/zed/theme.json"
+                "path": "./icons/zed-src/assets/icons/file_icons/file_types.json"
+            },
+            {
+                "id": "valinor-icons-symbols",
+                "label": "Valinor Icons Symbols",
+                "path": "./icons/symbols/src/symbol-icon-theme.json"
             },
             {
                 "id": "valinor-icons-mocha",
@@ -49,16 +54,68 @@
                 "path": "./icons/catppuccin/macchiato/theme.json"
             }
         ],
+        "productIconThemes": [
+            {
+                "id": "valinor-product-icons-fluent",
+                "label": "Valinor Product Icons Fluent",
+                "path": "./icons/fluent/product-icon-theme.json"
+            }
+        ],
         "themes": [
+            {
+                "label": "Valinor Arien",
+                "uiTheme": "vs-dark",
+                "path": "./themes/arien.json"
+            },
+            {
+                "label": "Valinor Arwen",
+                "uiTheme": "vs-dark",
+                "path": "./themes/arwen.json"
+            },
             {
                 "label": "Valinor Azaghâl",
                 "uiTheme": "vs-dark",
                 "path": "./themes/azaghal.json"
             },
             {
+                "label": "Valinor Bombur",
+                "uiTheme": "vs-dark",
+                "path": "./themes/bombur.json"
+            },
+            {
+                "label": "Valinor Celeborn",
+                "uiTheme": "vs-dark",
+                "path": "./themes/celeborn.json"
+            },
+            {
+                "label": "Valinor Celebrimbor",
+                "uiTheme": "vs-dark",
+                "path": "./themes/celebrimbor.json"
+            },
+            {
+                "label": "Valinor Círdan",
+                "uiTheme": "vs-dark",
+                "path": "./themes/cirdan.json"
+            },
+            {
                 "label": "Valinor Durin",
                 "uiTheme": "vs-dark",
                 "path": "./themes/durin.json"
+            },
+            {
+                "label": "Valinor Eärendil",
+                "uiTheme": "vs-dark",
+                "path": "./themes/earendil.json"
+            },
+            {
+                "label": "Valinor Elbereth",
+                "uiTheme": "vs",
+                "path": "./themes/elbereth.json"
+            },
+            {
+                "label": "Valinor Fangorn",
+                "uiTheme": "vs-dark",
+                "path": "./themes/fangorn.json"
             },
             {
                 "label": "Valinor Feanor",
@@ -69,6 +126,11 @@
                 "label": "Valinor Galadriel",
                 "uiTheme": "vs",
                 "path": "./themes/galadriel.json"
+            },
+            {
+                "label": "Valinor Galadriel",
+                "uiTheme": "vs",
+                "path": "./themes/galadriel_omarchy.json"
             },
             {
                 "label": "Valinor Gandalf",
@@ -86,9 +148,44 @@
                 "path": "./themes/glorfindel.json"
             },
             {
+                "label": "Valinor Goldberry",
+                "uiTheme": "vs",
+                "path": "./themes/goldberry.json"
+            },
+            {
                 "label": "Valinor Legolas",
                 "uiTheme": "vs-dark",
                 "path": "./themes/legolas.json"
+            },
+            {
+                "label": "Valinor Lúthien",
+                "uiTheme": "vs-dark",
+                "path": "./themes/luthien.json"
+            },
+            {
+                "label": "Valinor Morgoth",
+                "uiTheme": "vs-dark",
+                "path": "./themes/morgoth.json"
+            },
+            {
+                "label": "Valinor Shelob",
+                "uiTheme": "vs-dark",
+                "path": "./themes/shelob.json"
+            },
+            {
+                "label": "Valinor Smaug",
+                "uiTheme": "vs-dark",
+                "path": "./themes/smaug.json"
+            },
+            {
+                "label": "Valinor Thranduil",
+                "uiTheme": "vs-dark",
+                "path": "./themes/thranduil.json"
+            },
+            {
+                "label": "Valinor Ungoliant",
+                "uiTheme": "vs-dark",
+                "path": "./themes/ungoliant.json"
             }
         ]
     },
