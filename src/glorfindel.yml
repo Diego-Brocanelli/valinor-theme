@@ -47,6 +47,7 @@ colors:
   list.inactiveSelectionForeground: '#403f53'
   list.focusBackground: '#d3e8f8'
   list.hoverBackground: '#d3e8f8'
+  list.focusHighlightForeground: '#403f53'
   list.focusForeground: '#403f53'
   list.hoverForeground: '#403f53'
   list.highlightForeground: '#403f53'

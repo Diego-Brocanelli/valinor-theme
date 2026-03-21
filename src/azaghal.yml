@@ -40,6 +40,11 @@ colors:
   terminal.ansiWhite: '#C5C8C6'
   terminal.ansiYellow: '#EBCB8B'
   editorWhitespace.foreground: '#4C566A'
+  list.activeSelectionBackground: '#62a0ea'
+  list.activeSelectionForeground: '#0d1016'
+  list.hoverBackground: '#3B4048'
+  list.highlightForeground: '#0d1016'
+  list.focusHighlightForeground: '#0d1016'
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:
