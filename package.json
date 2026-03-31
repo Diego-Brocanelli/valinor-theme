@@ -15,7 +15,7 @@
         "vsce-publish": "vsce publish"
     },
     "engines": {
-        "vscode": "^1.85"
+        "vscode": "^1.0"
     },
     "categories": [
         "Themes"
