@@ -7,6 +7,12 @@ semanticClass: theme.valinor.thranduil
 type: dark
 semanticHighlighting: true
 colors:
+  panel.background: '#252932'   # navbar terminal
+  titleBar.activeBackground: '#252932' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#252932' # altera o background da barra de tabs
+  editorWidget.background: '#252932' # Fundo principal da janela de pesquisa (Ctrl + F)
+  list.inactiveSelectionBackground: '#2e3440' # Fundo do item selecionado quando a lista não está em foco
+
   editor.background: '#2e3440'
   editor.foreground: '#d8dee9'
   editorCursor.foreground: '#d8dee9'
@@ -19,7 +25,7 @@ colors:
   editorRuler.foreground: '#434c5e'
   editorLineNumber.foreground: '#434c5e'
   editorLineNumber.activeForeground: '#d8dee9'
-  sideBar.background: '#2e3440'
+  sideBar.background: '#252932'
   sideBar.foreground: '#d8dee9'
   sideBarTitle.foreground: '#88c0d0'
   sideBarSectionHeader.background: '#3b4252'
@@ -36,15 +42,24 @@ colors:
   button.background: '#88c0d0'
   button.foreground: '#2e3440'
   editorLink.activeForeground: '#88c0d0'
+  
   list.activeSelectionBackground: '#88c0d0'
   list.activeSelectionForeground: '#2e3440'
   list.hoverBackground: '#434c5e'
-  list.focusHighlightForeground: '#2e3440'
-  list.highlightForeground: '#2e3440'
+  list.focusHighlightForeground: '#FFFFFF'
+  list.highlightForeground: '#fff' # Cor do texto quando prequisado no Ctrl + Shift + P
+  
   tab.activeBackground: '#2e3440'
   tab.activeForeground: '#d8dee9'
-  tab.inactiveBackground: '#2e3440'
+  tab.inactiveBackground: '#252932'
   tab.inactiveForeground: '#d8dee9'
+
+  quickInput.background: '#2e3440'
+  quickInput.foreground: '#c5c9c5'
+  quickInputList.focusBackground: '#252932'
+  quickInputList.focusForeground: '#181616'
+  pickerGroup.foreground: '#e46876'
+  pickerGroup.border: '#192339'
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:

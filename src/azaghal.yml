@@ -40,11 +40,22 @@ colors:
   terminal.ansiWhite: '#C5C8C6'
   terminal.ansiYellow: '#EBCB8B'
   editorWhitespace.foreground: '#4C566A'
-  list.activeSelectionBackground: '#62a0ea'
-  list.activeSelectionForeground: '#0d1016'
-  list.hoverBackground: '#3B4048'
-  list.highlightForeground: '#0d1016'
-  list.focusHighlightForeground: '#0d1016'
+  list.activeSelectionBackground: '#62a0ea'      # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#000' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#62a0ea'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
+  list.hoverBackground: '#62a0ea'
+  list.highlightForeground: '#EBCB8B'
+  list.focusHighlightForeground: '#EBCB8B'
+  quickInput.background: '#1f2127'
+  quickInput.foreground: '#C5C8C6'
+  quickInputList.focusBackground: '#62a0ea'
+  quickInputList.focusForeground: '#0d1016'
+  pickerGroup.foreground: '#62a0ea'
+  pickerGroup.border: '#3B4048'
+  panel.background: '#1f2127'   # navbar terminal
+  titleBar.activeBackground: '#1f2127' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#1f2127' # altera o background da barra de tabs
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:

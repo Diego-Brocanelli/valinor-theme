@@ -18,9 +18,9 @@ colors:
   editorIndentGuide.background1: '#504945'
   editorRuler.foreground: '#504945'
   editorLineNumber.foreground: '#504945'
-  editorLineNumber.activeForeground: '#ebdbb2'
+  editorLineNumber.activeForeground: '#fff'
   sideBar.background: '#1d2021'
-  sideBar.foreground: '#ebdbb2'
+  sideBar.foreground: '#fff'
   sideBarTitle.foreground: '#fabd2f'
   sideBarSectionHeader.background: '#3c3836'
   sideBarSectionHeader.foreground: '#fabd2f'
@@ -36,15 +36,27 @@ colors:
   button.background: '#fabd2f'
   button.foreground: '#282828'
   editorLink.activeForeground: '#fabd2f'
-  list.activeSelectionBackground: '#fabd2f'
-  list.activeSelectionForeground: '#282828'
-  list.hoverBackground: '#504945'
-  list.focusHighlightForeground: '#1a1a1a'
-  list.highlightForeground: '#1a1a1a'
+  list.activeSelectionBackground: '#fabd2f'   # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#000000'   # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#ffd573' # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000000' # texto da linha selecionada (explorer sem foco)
+  list.foreground: '#000'  # cor do texto dos itens não selecionados no Explorer
+  list.hoverBackground: '#fabd2f'
+  list.focusHighlightForeground: '#000' #3c3836
+  list.highlightForeground: '#fabd2f'
   tab.activeBackground: '#282828'
-  tab.activeForeground: '#ebdbb2'
+  tab.activeForeground: '#000' #ebdbb2
   tab.inactiveBackground: '#1d2021'
-  tab.inactiveForeground: '#ebdbb2'
+  tab.inactiveForeground: '#000' #ebdbb2
+  quickInput.background: '#1d2021'
+  quickInput.foreground: '#fff' #ebdbb2
+  quickInputList.focusBackground: '#fabd2f'
+  quickInputList.focusForeground: '#282828'
+  pickerGroup.foreground: '#fabd2f'
+  pickerGroup.border: '#3c3836'
+  panel.background: '#1d2021'   # navbar terminal
+  titleBar.activeBackground: '#1d2021' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#1d2021' # altera o background da barra de tabs
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:

@@ -19,32 +19,54 @@ colors:
   editorRuler.foreground: '#585b70'
   editorLineNumber.foreground: '#585b70'
   editorLineNumber.activeForeground: '#cdd6f4'
+
   sideBar.background: '#181825'
   sideBar.foreground: '#cdd6f4'
   sideBarTitle.foreground: '#89b4fa'
   sideBarSectionHeader.background: '#313244'
   sideBarSectionHeader.foreground: '#89b4fa'
+
   statusBar.background: '#313244'
   statusBar.foreground: '#cdd6f4'
+
   activityBar.background: '#181825'
   activityBar.foreground: '#cdd6f4'
   activityBarBadge.background: '#89b4fa'
   activityBarBadge.foreground: '#1e1e2e'
+
   terminal.background: '#1e1e2e'
   terminal.foreground: '#cdd6f4'
   terminalCursor.foreground: '#f5e0dc'
+
   button.background: '#89b4fa'
   button.foreground: '#1e1e2e'
+
   editorLink.activeForeground: '#89b4fa'
-  list.activeSelectionBackground: '#89b4fa'
-  list.activeSelectionForeground: '#1e1e2e'
-  list.hoverBackground: '#585b70'
-  list.focusHighlightForeground: '#1e1e2e'
-  list.highlightForeground: '#1e1e2e'
+
+  list.activeSelectionBackground: '#89b4fa'      # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#000' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#89b4fa'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
+  list.hoverBackground: '#89b4fa'
+  list.highlightForeground: '#f9e2af'
+  list.focusHighlightForeground: '#313244'
+
   tab.activeBackground: '#1e1e2e'
   tab.activeForeground: '#cdd6f4'
   tab.inactiveBackground: '#181825'
   tab.inactiveForeground: '#cdd6f4'
+
+  quickInput.background: '#181825'
+  quickInput.foreground: '#cdd6f4'
+  quickInputList.focusBackground: '#89b4fa'
+  quickInputList.focusForeground: '#1e1e2e'
+
+  pickerGroup.foreground: '#89b4fa'
+  pickerGroup.border: '#313244'
+
+  panel.background: '#181825'   # navbar terminal
+  titleBar.activeBackground: '#181825' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#181825' # altera o background da barra de tabs
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:

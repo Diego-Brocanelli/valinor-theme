@@ -758,77 +758,172 @@ tokenColors:
     background: '#85990035'
     foreground: '#85990035'
 colors:
+  # =========================
+  # Base / Inputs
+  # =========================
   focusBorder: '#D3AF86'
   input.background: '#eae2d0'
   input.border: '#586E754A'
   input.foreground: '#586E75'
   input.placeholderForeground: '#586E75AA'
   inputOption.activeBorder: '#D3AF86'
+
+  panel.background: '#eee8d5'   # navbar terminal
+  # =========================
+  # Buttons / Progress
+  # =========================
   badge.background: '#B58900AA'
   progressBar.background: '#B58900'
+  button.background: '#AC9D57'
+
+  # =========================
+  # Dropdown
+  # =========================
   dropdown.background: '#EEE8D5'
   dropdown.border: '#D3AF86'
-  button.background: '#AC9D57'
+
+  # =========================
+  # Selection
+  # =========================
   selection.background: '#DFCA8866'
-  list.activeSelectionBackground: '#DFCA88'
-  list.activeSelectionForeground: '#6C6C6C'
+  editor.selectionBackground: '#081E2540'
+
+  # =========================
+  # Lists
+  # =========================
+  list.activeSelectionBackground: '#fef3da'      # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#000' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#fef3da'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
+
   list.focusBackground: '#DFCA8866'
-  list.hoverBackground: '#DFCA8844'
-  list.focusHighlightForeground: '#3a2800'
-  list.inactiveSelectionBackground: '#D1CBB8'
-  list.highlightForeground: '#3a2800'
-  notebook.editorBackground: '#EAE0C0'
-  notebook.cellEditorBackground: '#FDF6E3'
+  list.inactiveFocusBackground: '#DFCA8866'
+
+  list.hoverBackground: '#fef3da'
+
+  list.focusHighlightForeground: '#a07a26' # = list.hoverBackground
+  list.highlightForeground: '#a07a26'
+
+  # =========================
+  # Editor Base
+  # =========================
   editor.background: '#FEF3DA'
-  editorWidget.background: '#EEE8D5'
+  editor.foreground: '#586E75'
   editorCursor.background: '#EEE8D5'
   editorCursor.foreground: '#657B83'
+
+  # =========================
+  # Editor Details
+  # =========================
   editorWhitespace.foreground: '#586E7580'
   editor.lineHighlightBackground: '#EEE8D5'
-  editor.selectionBackground: '#081E2540'
-  minimap.selectionHighlight: '#081E2540'
   editorIndentGuide.background1: '#04040480'
   editorIndentGuide.activeBackground1: '#081E2580'
+
+  # =========================
+  # Widgets / Hover
+  # =========================
+  editorWidget.background: '#EEE8D5'
   editorHoverWidget.background: '#CCC4B0'
+
+  # =========================
+  # Line Numbers
+  # =========================
   editorLineNumber.activeForeground: '#567983'
+
+  # =========================
+  # Minimap
+  # =========================
+  minimap.selectionHighlight: '#081E2540'
+
+  # =========================
+  # Peek View
+  # =========================
   peekViewResult.background: '#EEE8D5'
   peekViewEditor.background: '#FFFBF2'
   peekViewTitle.background: '#EEE8D5'
   peekView.border: '#B58900'
   peekViewEditor.matchHighlightBackground: '#7744AA40'
+
+  # =========================
+  # Sticky Scroll
+  # =========================
   editorStickyScroll.background: '#EEE8D5'
   editorStickyScrollHover.background: '#586E7530'
-  titleBar.activeBackground: '#EEE8D5'
+
+  # =========================
+  # Title Bar
+  # =========================
+  titleBar.activeBackground: '#eee8d5' # background do navbar principal
+
+  # =========================
+  # Ghost Text
+  # =========================
   editorGhostText.foreground: '#90999590'
+
+  # =========================
+  # Groups / Tabs
+  # =========================
   editorGroup.border: '#DDD6C1'
   editorGroup.dropBackground: '#DDD6C1AA'
-  editorGroupHeader.tabsBackground: '#D9D2C2'
+  editorGroupHeader.tabsBackground: '#eee8d5'
+
   tab.border: '#DDD6C1'
   tab.activeBackground: '#FDF6E3'
   tab.inactiveForeground: '#586E75'
-  tab.inactiveBackground: '#D3CBB7'
+  tab.inactiveBackground: '#eee8d5'
   tab.activeModifiedBorder: '#CB4B16'
+
+  # =========================
+  # Activity Bar
+  # =========================
   activityBar.background: '#DDD6C1'
   activityBar.foreground: '#584c27'
   activityBarBadge.background: '#B58900'
-  panel.border: '#DDD6C1'
-  sideBar.background: '#EEE8D5'
+
+  # =========================
+  # Sidebar / Panel
+  # =========================
+  sideBar.background: '#eee8d5'
   sideBarTitle.foreground: '#586E75'
+  panel.border: '#DDD6C1'
+
+  # =========================p
+  # Status Bar
+  # =========================
   statusBar.foreground: '#586E75'
   statusBar.background: '#EEE8D5'
   statusBar.debuggingBackground: '#EEE8D5'
   statusBar.noFolderBackground: '#EEE8D5'
   statusBarItem.remoteBackground: '#AC9D57'
-  ports.iconRunningProcessForeground: '#2AA19899'
   statusBarItem.prominentBackground: '#DDD6C1'
   statusBarItem.prominentHoverBackground: '#DDD6C199'
+
+  # =========================
+  # Debug
+  # =========================
   debugToolBar.background: '#DDD6C1'
   debugExceptionWidget.background: '#DDD6C1'
   debugExceptionWidget.border: '#AB395B'
+
+  # =========================
+  # Picker Groups
+  # =========================
   pickerGroup.border: '#2AA19899'
   pickerGroup.foreground: '#2AA19899'
+
+  # =========================
+  # Extensions
+  # =========================
   extensionButton.prominentBackground: '#B58900'
   extensionButton.prominentHoverBackground: '#584c27aa'
+
+  # =========================
+  # Terminal
+  # =========================
+  terminal.background: '#fef3da'
+  terminal.selectionBackground: '#DDD6C1'
+
   terminal.ansiBlack: '#073642'
   terminal.ansiRed: '#DC322F'
   terminal.ansiGreen: '#859900'
@@ -837,6 +932,7 @@ colors:
   terminal.ansiMagenta: '#D33682'
   terminal.ansiCyan: '#2AA198'
   terminal.ansiWhite: '#EEE8D5'
+
   terminal.ansiBrightBlack: '#586E75'
   terminal.ansiBrightRed: '#CB4B16'
   terminal.ansiBrightGreen: '#586E75'
@@ -845,6 +941,38 @@ colors:
   terminal.ansiBrightMagenta: '#6C71C4'
   terminal.ansiBrightCyan: '#93A1A1'
   terminal.ansiBrightWhite: '#EEE8D5'
-  terminal.selectionBackground: '#DDD6C1'
-  terminal.background: '#FDF6E3'
+
+  # =========================
+  # Walkthrough
+  # =========================
   walkThrough.embeddedEditorBackground: '#00000014'
+
+  # =========================
+  # Quick Input (Ctrl + P)
+  # =========================
+  quickInput.background: '#EEE8D5'
+  quickInput.foreground: '#586E75'
+
+  # =========================
+  # Quick Input Focus
+  # =========================
+  quickInputList.focusBackground: '#DFCA8866'
+  quickInputList.focusForeground: '#3a2800'
+  quickInputList.focusHighlightForeground: '#DFCA8844' # = list.hoverBackground
+
+  # =========================
+  # Quick Input Highlight
+  # =========================
+  quickInputList.highlightForeground: '#3a2800'
+
+  # =========================
+  # Quick Input Hover
+  # =========================
+  quickInputList.hoverBackground: '#DFCA8844'
+  quickInputList.hoverForeground: '#3a2800'
+
+  # =========================
+  # Quick Input Inactive
+  # =========================
+  quickInputList.inactiveFocusBackground: '#DFCA8866'
+  quickInputList.inactiveSelectionBackground: '#D1CBB8'

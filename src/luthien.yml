@@ -7,6 +7,12 @@ semanticClass: theme.valinor.luthien
 type: dark
 semanticHighlighting: true
 colors:
+  panel.background: '#161428'
+  titleBar.activeBackground: '#161428' # background do navbar principal
+  quickInput.background: '#161428' # Cor de fundo do campo de input da modal de pesquisa
+  input.background: '#1c1a2e' # cor de fundo do input text
+  editorWidget.background: '#161428' # Fundo principal da janela de pesquisa (Ctrl + F)
+
   editor.background: '#1c1a2e'
   editor.foreground: '#d5c8f0'
   editorCursor.foreground: '#c8a0e8'
@@ -27,24 +33,28 @@ colors:
   statusBar.background: '#252240'
   statusBar.foreground: '#d5c8f0'
   activityBar.background: '#161428'
-  activityBar.foreground: '#d5c8f0'
+  activityBar.foreground: '#161428'
+  editorGroupHeader.tabsBackground: '#161428'
   activityBarBadge.background: '#c8a0e8'
   activityBarBadge.foreground: '#1c1a2e'
   terminal.background: '#1c1a2e'
   terminal.foreground: '#d5c8f0'
   terminalCursor.foreground: '#c8a0e8'
+
   button.background: '#c8a0e8'
   button.foreground: '#1c1a2e'
   editorLink.activeForeground: '#c8a0e8'
-  list.activeSelectionBackground: '#c8a0e8'
-  list.activeSelectionForeground: '#1c1a2e'
+  list.activeSelectionBackground: '#c8a0e8'      # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#fff' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#c8a0e8'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#fff' # texto da linha selecionada (explorer sem foco)
   list.hoverBackground: '#3d3557'
   list.focusHighlightForeground: '#1c1a2e'
-  list.highlightForeground: '#1c1a2e'
+  list.highlightForeground: '#c8a0e8'
   tab.activeBackground: '#1c1a2e'
   tab.activeForeground: '#d5c8f0'
   tab.inactiveBackground: '#161428'
-  tab.inactiveForeground: '#d5c8f0'
+  tab.inactiveForeground: '#ffffff'
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:

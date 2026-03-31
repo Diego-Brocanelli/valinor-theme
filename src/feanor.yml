@@ -79,7 +79,7 @@ tokenColors:
   - punctuation.definition.keyword
   - keyword.control.at-rule.css punctuation
   settings:
-    foreground: '#91b3e0'
+    foreground: '#d6cfe2'
 - name: 'Keywords: new'
   scope:
   - keyword.operator.new
@@ -166,7 +166,7 @@ tokenColors:
   - string.regexp
   - storage.type.string
   settings:
-    foreground: '#448c27'
+    foreground: '#d6cfe2'
 - name: 'Strings: Escape Sequences'
   scope:
   - constant.character.escape
@@ -224,7 +224,7 @@ tokenColors:
   - entity.other.attribute-name.html
   - punctuation.separator.key-value.html
   settings:
-    foreground: '#91b3e0'
+    foreground: '#d6cfe2'
 - name: 'HTML: Tag Names'
   scope:
   - entity.name.tag
@@ -235,7 +235,7 @@ tokenColors:
   - meta.tag string.quoted
   - meta.tag punctuation.definition.string
   settings:
-    foreground: '#448c27'
+    foreground: '#d6cfe2'
 - name: 'HTML: Entities'
   scope:
   - constant.character.entity
@@ -283,7 +283,7 @@ tokenColors:
   - source.css constant.numeric punctuation
   - meta.property-value support.constant
   settings:
-    foreground: '#448c27'
+    foreground: '#d6cfe2'
 - name: 'CSS: Variable'
   scope:
   - source.css variable
@@ -438,7 +438,7 @@ tokenColors:
   - punctuation.definition.italic.markdown
   - punctuation.definition.metadata.markdown
   settings:
-    foreground: '#448c27'
+    foreground: '#d6cfe2'
 - name: 'Markdown: Link title'
   scope:
   - string.other.link.description.markdown
@@ -463,68 +463,194 @@ tokenColors:
   settings:
     background: '#e4f6d4'
 colors:
+  # =========================
+  # Editor Base
+  # =========================
   editor.background: '#f5f5f5'
   editor.foreground: '#333'
-  editorCursor.foreground: '#aaa'
+  editorCursor.foreground: '#333'
+  editorGroupHeader.tabsBackground: '#eaeaea'
+
+  # =========================
+  # Guides & Structure
+  # =========================
   editorWhitespace.foreground: '#ebebeb'
   editorRuler.foreground: '#ebebeb'
   editorIndentGuide.background: '#ebebeb'
   editorIndentGuide.activeBackground: '#dcdcdc'
-  editor.lineHighlightBackground: '#e4f6d4'
-  activityBar.background: '#e0e9f6'
+
+  # =========================
+  # Line Highlight
+  # =========================
+  editor.lineHighlightBackground: '#00000008'
+
+  # =========================
+  # Activity Bar
+  # =========================
+  activityBar.background: '#d6e4f0'
   activityBar.foreground: '#4b83cd'
-  activityBarBadge.background: '#448c27'
-  badge.background: '#448c27'
-  badge.foreground: '#fff'
-  sideBar.background: '#f2f2f2'
+  activityBarBadge.background: '#a494c0'
+
+  # =========================
+  # Badges
+  # =========================
+  badge.background: '#a494c0'
+  badge.foreground: '#a494c0'
+
+  # =========================
+  # Sidebar
+  # =========================
+  sideBar.background: '#eaeaea'
   sideBarSectionHeader.background: '#e0e9f6'
+
+  # =========================
+  # Line Numbers
+  # =========================
   editorLineNumber.activeForeground: '#333'
   editorLineNumber.foreground: '#aaa'
-  statusBar.background: '#4b83cd'
+
+  # =========================
+  # Status Bar
+  # =========================
+  statusBar.background: '#3f6fb5'
   statusBar.debuggingBackground: '#aa3731'
   statusBar.noFolderBackground: '#aa3731'
+
+  # =========================
+  # Buttons & Inputs
+  # =========================
   button.background: '#4b83cd'
   dropdown.background: '#f5f5f5'
-  errorForeground: '#600'
-  editor.selectionBackground: '#c1f5b0'
-  editor.selectionHighlightBackground: '#c1f5b044'
-  editor.selectionHighlightBorder: '#c1f5b0'
-  editor.inactiveSelectionBackground: '#dcdcdcaa'
-  editor.findMatchBackground: '#fef935'
-  editor.findMatchHighlightBackground: '#fef93533'
-  editor.findRangeHighlightBackground: '#dcdcdc55'
-  editorLink.activeForeground: '#4b83cd'
-  selection.background: '#c1f5b0'
-  editor.wordHighlightBackground: '#c1f5b044'
-  editor.wordHighlightStrongBackground: '#c1f5b044'
-  list.activeSelectionBackground: '#4b83cd'
-  list.activeSelectionForeground: '#fff'
-  list.inactiveSelectionBackground: '#91b3e0'
-  list.inactiveSelectionForeground: '#fff'
-  list.focusBackground: '#91b3e0'
-  list.inactiveFocusBackground: '#91b3e0'
-  list.hoverBackground: '#e0e0e0'
-  list.focusHighlightForeground: '#ffffff'
-  list.highlightForeground: '#ffffff'
-  editorGroup.dropBackground: '#c9d0d988'
-  focusBorder: '#a6b39b'
+  focusBorder: '#4b83cd'
   inputOption.activeBorder: '#adafb7'
+
+  # =========================
+  # Errors & Validation
+  # =========================
+  errorForeground: '#d32f2f'
   inputValidation.errorBackground: '#ffeaea'
   inputValidation.errorBorder: '#f1897f'
   inputValidation.infoBackground: '#f2fcff'
   inputValidation.infoBorder: '#4ec1e5'
   inputValidation.warningBackground: '#fffee2'
   inputValidation.warningBorder: '#ffe055'
-  panel.background: '#f5f5f5'
+
+  # =========================
+  # Selection & Highlights
+  # =========================
+  editor.selectionBackground: '#d6cfe2'
+  editor.selectionHighlightBackground: '#d6cfe2'
+  editor.selectionHighlightBorder: '#d6cfe2'
+  editor.inactiveSelectionBackground: '#d6cfe2'
+
+  selection.background: '#d6cfe2'
+
+  editor.wordHighlightBackground: '#d6cfe2'
+  editor.wordHighlightStrongBackground: '#d6cfe2'
+
+  # =========================
+  # Find
+  # =========================
+  editor.findMatchBackground: '#fef935'
+  editor.findMatchHighlightBackground: '#fef93533'
+  editor.findRangeHighlightBackground: '#dcdcdc55'
+
+  # =========================
+  # Links
+  # =========================
+  editorLink.activeForeground: '#4b83cd'
+
+  # =========================
+  # Lists
+  # =========================
+  list.activeSelectionBackground: '#4b83cd'
+  list.activeSelectionForeground: '#a494c0'
+  list.inactiveSelectionBackground: '#d6cfe2'
+  list.inactiveSelectionForeground: '#a494c0'
+
+  list.focusBackground: '#d6cfe2'
+  list.inactiveFocusBackground: '#d6cfe2'
+
+  list.hoverBackground: '#a494c0'
+
+  list.focusHighlightForeground: '#a494c0'
+  list.highlightForeground: '#a494c0'
+
+  # =========================
+  # Drag & Drop
+  # =========================
+  editorGroup.dropBackground: '#c9d0d988'
+
+  # =========================
+  # Panels
+  # =========================
+  panel.background: '#eaeaea' # navbar terminal
+  terminal.background: '#f5f5f5'
+
+  # =========================
+  # Peek View
+  # =========================
   peekView.border: '#705697'
   peekViewEditor.background: '#f2f8fc'
   peekViewEditor.matchHighlightBackground: '#c2dfe3'
   peekViewResult.background: '#f2f8fc'
   peekViewResult.matchHighlightBackground: '#93c6d6'
   peekViewTitle.background: '#f2f8fc'
+
+  # =========================
+  # Picker Groups
+  # =========================
   pickerGroup.border: '#749351'
   pickerGroup.foreground: '#a6b39b'
+
+  # =========================
+  # Progress
+  # =========================
   progressBar.background: '#705697'
+
+  # =========================
+  # Tabs
+  # =========================
   tab.modifiedBorder: '#f1897f'
-  titleBar.activeBackground: '#c4b7d7'
+  tab.activeBackground: '#f5f5f5' #eaeaea
+  tab.inactiveBackground: '#eaeaea'
+
+  # =========================
+  # Title Bar
+  # =========================
+  titleBar.activeBackground: '#eaeaea' # background do navbar principal
+
+  # =========================
+  # Walkthrough
+  # =========================
   walkThrough.embeddedEditorBackground: '#00000014'
+
+  # =========================
+  # Quick Input (Ctrl + P)
+  # =========================
+  quickInput.background: '#f5f5f5'
+  quickInput.foreground: '#333'
+
+  # =========================
+  # Quick Input Focus
+  # =========================
+  quickInputList.focusBackground: '#d6cfe2'
+  quickInputList.focusForeground: '#a494c0'
+  quickInputList.focusHighlightForeground: '#e0e0e0' # = list.hoverBackground
+
+  # =========================
+  # Quick Input Highlight
+  # =========================
+  quickInputList.highlightForeground: '#a494c0'
+
+  # =========================
+  # Quick Input Hover
+  # =========================
+  quickInputList.hoverBackground: '#e0e0e0'
+  quickInputList.hoverForeground: '#333'
+
+  # =========================
+  # Quick Input Inactive
+  # =========================
+  quickInputList.inactiveFocusBackground: '#d6cfe2'
+  quickInputList.inactiveSelectionBackground: '#d6cfe2'

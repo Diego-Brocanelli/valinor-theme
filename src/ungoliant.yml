@@ -7,6 +7,12 @@ semanticClass: theme.valinor.ungoliant
 type: dark
 semanticHighlighting: true
 colors:
+  panel.background: '#161818'   # navbar terminal
+  titleBar.activeBackground: '#161818' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#161818' # altera o background da barra de tabs
+  quickInput.background: '#161818' # Cor de fundo do campo de input da modal de pesquisa
+  input.background: '#1c1e1f' # cor de fundo do input text
+  editorWidget.background: '#1c1e1f' # Fundo principal da janela de pesquisa (Ctrl + F)
   editor.background: '#1c1e1f'
   editor.foreground: '#c2c2b0'
   editorCursor.foreground: '#c2c2b0'
@@ -36,11 +42,13 @@ colors:
   button.background: '#5cad4a'
   button.foreground: '#1c1e1f'
   editorLink.activeForeground: '#5cad4a'
-  list.activeSelectionBackground: '#5cad4a'
-  list.activeSelectionForeground: '#1c1e1f'
+  list.activeSelectionBackground: '#5cad4a'      # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#fff' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#5cad4a'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
   list.hoverBackground: '#363a3b'
   list.focusHighlightForeground: '#1c1e1f'
-  list.highlightForeground: '#1c1e1f'
+  list.highlightForeground: '#fff' # Cor do texto quando prequisado no Ctrl + Shift + P
   tab.activeBackground: '#1c1e1f'
   tab.activeForeground: '#c2c2b0'
   tab.inactiveBackground: '#161818'

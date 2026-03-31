@@ -7,7 +7,11 @@ semanticClass: theme.valinor.goldberry
 type: light
 semanticHighlighting: true
 colors:
-  editor.background: '#fffcf0'
+  panel.background: '#f2f0e5'   # navbar terminal
+  titleBar.activeBackground: '#f2f0e5' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#f2f0e5' # altera o background da barra de tabs
+  editorWidget.background: '#f2f0e5' # Fundo principal da janela de pesquisa (Ctrl + F)
+  editor.background: '#f3f3f3'
   editor.foreground: '#100f0f'
   editorCursor.foreground: '#100f0f'
   editor.lineHighlightBackground: '#f2f0e5'
@@ -30,17 +34,19 @@ colors:
   activityBar.foreground: '#100f0f'
   activityBarBadge.background: '#24837b'
   activityBarBadge.foreground: '#fffcf0'
-  terminal.background: '#fffcf0'
+  terminal.background: '#f3f3f3'
   terminal.foreground: '#100f0f'
   terminalCursor.foreground: '#100f0f'
   button.background: '#24837b'
   button.foreground: '#fffcf0'
-  editorLink.activeForeground: '#24837b'
-  list.activeSelectionBackground: '#24837b'
-  list.activeSelectionForeground: '#fffcf0'
+  editorLink.activeForeground: '#000'
+  list.activeSelectionBackground: '#f3f3f3' # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#000' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#f3f3f3'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
   list.hoverBackground: '#e6e4d9'
-  list.focusHighlightForeground: '#fffcf0'
-  list.highlightForeground: '#fffcf0'
+  list.focusHighlightForeground: '#000'
+  list.highlightForeground: '#000'
   tab.activeBackground: '#fffcf0'
   tab.activeForeground: '#100f0f'
   tab.inactiveBackground: '#f2f0e5'

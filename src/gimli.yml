@@ -87,10 +87,10 @@ colors:
   sideBar.dropBackground: '#292e42'
   list.dropBackground: '#292e42'
   list.deemphasizedForeground: '#8089b3'
-  list.activeSelectionBackground: '#2c324a'
-  list.activeSelectionForeground: '#a9b1d6'
-  list.inactiveSelectionBackground: '#292e42'
-  list.inactiveSelectionForeground: '#a9b1d6'
+  list.activeSelectionBackground: '#2c324a'      # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#fff' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#2c324a'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
   list.focusBackground: '#292e42'
   list.focusForeground: '#a9b1d6'
   list.hoverBackground: '#1b1e2e'
@@ -286,7 +286,7 @@ colors:
   debugIcon.breakpointForeground: '#db4b4b'
   debugIcon.breakpointDisabledForeground: '#545c7e'
   debugIcon.breakpointUnverifiedForeground: '#c24242'
-  terminal.background: '#1f2335'
+  terminal.background: '#24283b'
   terminal.foreground: '#8089b3'
   terminal.selectionBackground: '#6f7bb640'
   terminal.ansiBlack: '#414868'

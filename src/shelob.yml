@@ -7,6 +7,20 @@ semanticClass: theme.valinor.shelob
 type: dark
 semanticHighlighting: true
 colors:
+  panel.background: '#050505'   # navbar terminal
+  titleBar.activeBackground: '#050505' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#050505' # altera o background da barra de tabs
+  quickInput.background: '#050505' # Cor de fundo do campo de input da modal de pesquisa
+  input.background: '#050505' # cor de fundo do input text
+  quickInputList.focusBackground: '#2c1a1a'
+  quickInputList.focusForeground: '#ccc'
+  pickerGroup.foreground: '#fff'
+  pickerGroup.border: '#1a1a1a'
+  inputValidation.infoBorder: '#1a1a1a'
+  widget.border: '#1a1a1a' # altera a borda da modal de pesquisa
+  editorWidget.background: '#050505' # Fundo principal da janela de pesquisa (Ctrl + F)
+  quickInput.foreground: "#fff" # Cor do texto dentro do input
+
   editor.background: '#000000'
   editor.foreground: '#b0b0b0'
   editorCursor.foreground: '#b0b0b0'
@@ -41,6 +55,13 @@ colors:
   list.hoverBackground: '#1a1a1a'
   list.focusHighlightForeground: '#e0e0e0'
   list.highlightForeground: '#e0e0e0'
+  tab.border: "#1a1a1a" # Borda que separa as tabs entre si (linhas verticais entre abas)
+  tab.activeBorder: "#1a1a1a" # Borda inferior da aba ativa (a mais usada para destacar a aba atual)
+  tab.activeBorderTop: "#1a1a1a" # Borda superior da aba ativa (útil em alguns temas ou layouts)
+  tab.unfocusedActiveBorder: "#1a1a1a" # Borda inferior da aba ativa quando o grupo de editores não está em foco
+  tab.unfocusedActiveBorderTop: "#1a1a1a" # Borda superior da aba ativa quando o grupo não está em foco
+  editorGroupHeader.tabsBorder: "#1a1a1a" # Borda da barra de abas completa (abaixo de todas as tabs, quando ativada)
+  editorGroup.border: "#1a1a1a" # Borda geral entre grupos de editores (útil quando há múltiplas colunas de editores)
   tab.activeBackground: '#000000'
   tab.activeForeground: '#b0b0b0'
   tab.inactiveBackground: '#050505'

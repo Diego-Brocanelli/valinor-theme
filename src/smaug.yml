@@ -7,6 +7,16 @@ semanticClass: theme.valinor.smaug
 type: dark
 semanticHighlighting: true
 colors:
+  panel.background: '#221414'   # navbar terminal
+  titleBar.activeBackground: '#221414' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#221414' # altera o background da barra de tabs
+  quickInput.background: '#221414' # Cor de fundo do campo de input da modal de pesquisa
+  quickInput.foreground: "#CCCCCC" # Cor do texto dentro do input
+  widget.border: '#2c1a1a' # altera a borda da modal de pesquisa
+  input.background: '#2c1a1a' # cor de fundo do input text
+  editorWidget.background: '#221414' # Fundo principal da janela de pesquisa (Ctrl + F)
+  list.inactiveSelectionBackground: '#2c1a1a' # Fundo do item selecionado quando a lista não está em foco
+
   editor.background: '#2c1a1a'
   editor.foreground: '#e8d8c8'
   editorCursor.foreground: '#e8b090'
@@ -40,7 +50,14 @@ colors:
   list.activeSelectionForeground: '#2c1a1a'
   list.hoverBackground: '#4a2828'
   list.focusHighlightForeground: '#2c1a1a'
-  list.highlightForeground: '#2c1a1a'
+  list.highlightForeground: '#bc6149'
+  tab.border: "#2c1a1a" # Borda que separa as tabs entre si (linhas verticais entre abas)
+  tab.activeBorder: "#2c1a1a" # Borda inferior da aba ativa (a mais usada para destacar a aba atual)
+  tab.activeBorderTop: "#2c1a1a" # Borda superior da aba ativa (útil em alguns temas ou layouts)
+  tab.unfocusedActiveBorder: "#2c1a1a" # Borda inferior da aba ativa quando o grupo de editores não está em foco
+  tab.unfocusedActiveBorderTop: "#2c1a1a" # Borda superior da aba ativa quando o grupo não está em foco
+  editorGroupHeader.tabsBorder: "#2c1a1a" # Borda da barra de abas completa (abaixo de todas as tabs, quando ativada)
+  editorGroup.border: "#2c1a1a" # Borda geral entre grupos de editores (útil quando há múltiplas colunas de editores)
   tab.activeBackground: '#2c1a1a'
   tab.activeForeground: '#e8d8c8'
   tab.inactiveBackground: '#221414'

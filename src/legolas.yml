@@ -285,7 +285,7 @@ colors:
   debugIcon.breakpointForeground: '#db4b4b'
   debugIcon.breakpointDisabledForeground: '#414761'
   debugIcon.breakpointUnverifiedForeground: '#c24242'
-  terminal.background: '#16161e'
+  terminal.background: '#1a1b26'
   terminal.foreground: '#787c99'
   terminal.selectionBackground: '#515c7e4d'
   terminal.ansiBlack: '#363b54'

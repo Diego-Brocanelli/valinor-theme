@@ -7,6 +7,7 @@ semanticClass: theme.valinor.fangorn
 type: dark
 semanticHighlighting: true
 colors:
+  # === Editor (área principal de código) ===
   editor.background: '#2b3339'
   editor.foreground: '#d3c6aa'
   editorCursor.foreground: '#d3c6aa'
@@ -19,32 +20,63 @@ colors:
   editorRuler.foreground: '#475258'
   editorLineNumber.foreground: '#475258'
   editorLineNumber.activeForeground: '#d3c6aa'
+
+  titleBar.activeBackground: '#272e33' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#272e33' # altera o background da barra de tabs
+  editorWidget.background: '#272e33' # Fundo principal da janela de pesquisa (Ctrl + F)
+  input.background: '#2b3339' # cor de fundo do input text
+
+  # === Sidebar (explorer, arquivos, etc) ===
   sideBar.background: '#272e33'
   sideBar.foreground: '#d3c6aa'
   sideBarTitle.foreground: '#a7c080'
   sideBarSectionHeader.background: '#323c41'
   sideBarSectionHeader.foreground: '#a7c080'
+
+  # === Status bar (rodapé) ===
   statusBar.background: '#323c41'
   statusBar.foreground: '#d3c6aa'
+
+  # === Activity bar (barra lateral de ícones) ===
   activityBar.background: '#272e33'
   activityBar.foreground: '#d3c6aa'
   activityBarBadge.background: '#a7c080'
   activityBarBadge.foreground: '#2b3339'
-  terminal.background: '#2b3339'
+
+  # === Terminal integrado ===
+  terminal.background: '#272e33'
   terminal.foreground: '#d3c6aa'
   terminalCursor.foreground: '#d3c6aa'
+
+  # === Botões e links ===
   button.background: '#a7c080'
   button.foreground: '#2b3339'
   editorLink.activeForeground: '#a7c080'
-  list.activeSelectionBackground: '#a7c080'
-  list.activeSelectionForeground: '#2b3339'
+
+  # === Listas (Ctrl+P, Explorer, Quick Pick) ===
+  list.activeSelectionBackground: '#a7c080'      # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#000' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#a7c080'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
   list.hoverBackground: '#475258'
-  list.focusHighlightForeground: '#2b3339'
-  list.highlightForeground: '#2b3339'
+  list.focusHighlightForeground: '#475258'
+  list.highlightForeground: '#e69875'
+
+  # === Abas (tabs de arquivos) ===
   tab.activeBackground: '#2b3339'
   tab.activeForeground: '#d3c6aa'
   tab.inactiveBackground: '#272e33'
   tab.inactiveForeground: '#d3c6aa'
+
+  # === Quick Input (Ctrl+P / Command Palette) ===
+  quickInput.background: '#272e33'
+  quickInput.foreground: '#d3c6aa'
+  quickInputList.focusBackground: '#a7c080'
+  quickInputList.focusForeground: '#2b3339'
+
+  # === Grupos dentro do Quick Pick ===
+  pickerGroup.foreground: '#a7c080'
+  pickerGroup.border: '#475258'
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:

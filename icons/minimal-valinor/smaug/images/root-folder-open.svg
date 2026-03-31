@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Corpo da pasta aberta -->
+  <path fill="#fe8019" d="M15.6 8.4l-1.1-4-.3-.4H8.8l-.6-1-.2-.3H1.5l-.5.5v9.5l.5.4h13.1l.4-.4 1-4.3-.4-.5zM2 4h5.6l.6 1 .2.3H14l.8 3H2V4zm12.1 6H2v-1.7h12.8l-.7 1.7z" />
+  <!-- Indicador de raiz -->
+  <path fill="#fabd2f" d="M3 12.2h10v.8H3z" />
+</svg>

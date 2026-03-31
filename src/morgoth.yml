@@ -7,6 +7,15 @@ semanticClass: theme.valinor.morgoth
 type: dark
 semanticHighlighting: true
 colors:
+  panel.background: '#0a0a0a'   # navbar terminal
+  titleBar.activeBackground: '#0a0a0a' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#0a0a0a' # altera o background da barra de tabs
+  quickInput.background: '#0a0a0a' # Cor de fundo do campo de input da modal de pesquisa
+  quickInput.foreground: "#CCCCCC" # Cor do texto dentro do input
+  widget.border: '#333333' # altera a borda da modal de pesquisa
+  input.background: '#333333' # cor de fundo do input text
+  editorWidget.background: '#0a0a0a' # Fundo principal da janela de pesquisa (Ctrl + F)
+
   editor.background: '#0a0a0a'
   editor.foreground: '#c8c8c8'
   editorCursor.foreground: '#c8c8c8'

@@ -7,6 +7,12 @@ semanticClass: theme.valinor.arwen
 type: dark
 semanticHighlighting: true
 colors:
+  panel.background: '#1f1d2e' # navbar terminal
+  titleBar.activeBackground: '#1f1d2e' # background do navbar principal
+  editorGroupHeader.tabsBackground: '#1f1d2e' # altera o background da barra de tabs
+  editorWidget.background: '#1f1d2e' # Fundo principal da janela de pesquisa (Ctrl + F)
+  widget.border: '#191724' # altera a borda da modal de pesquisa
+
   editor.background: '#191724'
   editor.foreground: '#e0def4'
   editorCursor.foreground: '#e0def4'
@@ -36,15 +42,26 @@ colors:
   button.background: '#c4a7e7'
   button.foreground: '#191724'
   editorLink.activeForeground: '#c4a7e7'
-  list.activeSelectionBackground: '#c4a7e7'
-  list.activeSelectionForeground: '#191724'
-  list.hoverBackground: '#403d52'
+  list.activeSelectionBackground: '#c4a7e7'      # fundo da linha selecionada (explorer em foco)
+  list.activeSelectionForeground: '#000' # texto da linha selecionada (explorer em foco)
+  list.inactiveSelectionBackground: '#c4a7e7'     # fundo da linha selecionada (explorer sem foco)
+  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
+  list.hoverBackground: '#c4a7e7'
   list.focusHighlightForeground: '#191724'
-  list.highlightForeground: '#191724'
+  list.highlightForeground: '#8b4fd3'
   tab.activeBackground: '#191724'
   tab.activeForeground: '#e0def4'
   tab.inactiveBackground: '#1f1d2e'
   tab.inactiveForeground: '#e0def4'
+
+  input.background: '#191724' # cor de fundo do input text
+  quickInput.background: '#1f1d2e' # Cor de fundo do campo de input da modal de pesquisa
+  quickInput.foreground: '#e0def4'
+  quickInputList.focusBackground: '#c4a7e7'
+  quickInputList.focusForeground: '#191724'
+  pickerGroup.foreground: '#c4a7e7'
+  pickerGroup.border: '#403d52'
+
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:
