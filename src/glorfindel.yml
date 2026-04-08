@@ -8,18 +8,18 @@ type: light
 semanticHighlighting: true
 # colorSideBar: "#F0F0F0"
 # colorBackground: "#FBFBFB"
-# colorTheme: "#403f53"
-# colorContrast "#403f5352"
+# colorTheme: "#f5d76e"
+# colorContrast "#f5d76e52"
 colors:
   # GENERAL
-  focusBorder: "#403f5352" # Cor da borda de foco em elementos interativos
-  progressBar.background: "#403f5352" # Cor de fundo da barra de progresso
-  selection.background: "#403f5352" # Cor de seleção global (listas, inputs, etc)
+  focusBorder: "#f5d76e52" # Cor da borda de foco em elementos interativos
+  progressBar.background: "#f5d76e52" # Cor de fundo da barra de progresso
+  selection.background: "#f5d76e52" # Cor de seleção global (listas, inputs, etc)
 
   # ACTIVITY BAR (barra lateral de ícones)
   activityBar.background: '#F0F0F0' # Fundo da barra de atividades (ícones laterais)
   activityBar.foreground: '#000' # Cor dos ícones na barra de atividades
-  activityBarBadge.background: "#403f53" # Fundo do badge (notificações)
+  activityBarBadge.background: "#f5d76e" # Fundo do badge (notificações)
   activityBarBadge.foreground: '#fff' # Cor do texto do badge
 
   # SIDE BAR (explorer, search, etc)
@@ -28,52 +28,52 @@ colors:
   sideBarTitle.foreground: '#000' # Título da sidebar
   sideBarSectionHeader.background: '#1f1f28' # Fundo dos headers de seção
   sideBarSectionHeader.foreground: '#000' # Texto dos headers de seção
-  list.inactiveSelectionBackground: "#403f5352" # Fundo de item selecionado sem foco
+  list.inactiveSelectionBackground: "#f5d76e52" # Fundo de item selecionado sem foco
   list.inactiveSelectionForeground: '#000' # Texto de item selecionado sem foco
-  list.activeSelectionBackground: '#403f5352' # Fundo de item selecionado com foco
+  list.activeSelectionBackground: '#f5d76e52' # Fundo de item selecionado com foco
   list.activeSelectionForeground: '#000' # Texto de item selecionado com foco
-  list.hoverBackground: '#403f5352' # Fundo ao passar o mouse
-  list.focusBackground: "#403f5352" # Fundo quando focado via teclado
-  list.highlightForeground: "#403f53" # Destaque de match (busca)
+  list.hoverBackground: '#f5d76e52' # Fundo ao passar o mouse
+  list.focusBackground: "#f5d76e52" # Fundo quando focado via teclado
+  list.highlightForeground: "#f5d76e" # Destaque de match (busca)
   list.focusHighlightForeground: '#FBFBFB' # Cor do highlight quando focado
 
   # STATUS BAR
-  statusBar.background: "#403f53" # Fundo da status bar
+  statusBar.background: "#f5d76e" # Fundo da status bar
   statusBar.foreground: '#fff' # Texto da status bar
-  statusBar.noFolderBack: "#403f5352" # Fundo quando nenhum projeto está aberto
-  statusBar.remoteBackground: "#403f53" # Fundo quando conectado remotamente
+  statusBar.noFolderBack: "#f5d76e52" # Fundo quando nenhum projeto está aberto
+  statusBar.remoteBackground: "#f5d76e" # Fundo quando conectado remotamente
 
   # TITLE BAR / MENUS
   titleBar.activeBackground: "#F0F0F0" # Fundo da barra de título ativa
   menu.background: "#F0F0F0" # Fundo dos menus dropdown
-  menu.selectionBackground: "#403f5352" # Fundo de item selecionado no menu
+  menu.selectionBackground: "#f5d76e52" # Fundo de item selecionado no menu
 
   # BUTTONS / LINKS
-  button.background: "#403f53" # Fundo de botões
+  button.background: "#f5d76e" # Fundo de botões
   button.foreground: '#fff' # Texto de botões
-  button.hoverBackground: "#403f5352" # Fundo ao passar o mouse no botão
+  button.hoverBackground: "#f5d76e52" # Fundo ao passar o mouse no botão
   textLink.foreground: "#403ffff53" # Cor de links clicáveis
   editorLink.activeForeground: '#fff' # Cor de links ativos dentro do editor
 
   # INPUTS / FORMS
   input.background: '#FBFBFB' # Fundo de campos de input
-  inputOption.activeBackground: "#403f53" # Fundo de opções selecionadas (checkbox/radio)
+  inputOption.activeBackground: "#f5d76e" # Fundo de opções selecionadas (checkbox/radio)
   inputOption.activeForeground: "#fff" # Texto de opções selecionadas
   quickInput.background: '#F0F0F0' # Fundo da palette (Ctrl+P, Ctrl+Shift+P)
   quickInput.foreground: '#000' # Texto da palette
-  quickInputList.focusBackground: '#403f53' # Fundo do item focado na palette
+  quickInputList.focusBackground: '#f5d76e' # Fundo do item focado na palette
   quickInputList.focusForeground: '#fff' # Texto do item focado na palette
 
   # PANEL (terminal, output, problems)
   panel.background: '#F0F0F0' # Fundo do painel inferior (terminal, output)
-  badge.background: "#403f53" # Fundo de badges
+  badge.background: "#f5d76e" # Fundo de badges
   badge.foreground: '#fff' # Texto de badges
 
   # TERMINAL
   terminal.background: '#FBFBFB' # Fundo do terminal
   terminal.foreground: '#000' # Texto do terminal
   terminalCursor.foreground: '#000' # Cor do cursor do terminal
-  terminal.Cursor.background: "#403f53" # Cor de fundo do cursor (bloco)
+  terminal.Cursor.background: "#f5d76e" # Cor de fundo do cursor (bloco)
 
   # TABS
   editorGroupHeader.tabsBackground: "#F0F0F0" # Fundo da área de tabs
@@ -100,8 +100,8 @@ colors:
   editor.foreground: '#c5c9c5' # Texto padrão do editor
   editorCursor.foreground: '#c8c093' # Cor do cursor
   editor.lineHighlightBackground: '#F0F0F0' # Linha atual destacada
-  editor.selectionBackground: '#403f5352' # Fundo da seleção
-  editor.selectionHighlightBackground: '#403f5352' # Fundo de seleção secundária
+  editor.selectionBackground: '#f5d76e52' # Fundo da seleção
+  editor.selectionHighlightBackground: '#f5d76e52' # Fundo de seleção secundária
   editor.wordHighlightBackground: '#2d4f6766' # Destaque de palavras iguais
   editorWhitespace.foreground: '#363646' # Caracteres invisíveis
   editorIndentGuide.background1: '#2d4f67' # Guias de indentação
@@ -159,7 +159,7 @@ tokenColors:
 - name: Global settings
   settings:
     background: '#011627'
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: Comment
   scope:
   - comment
@@ -363,7 +363,7 @@ tokenColors:
 - name: Meta Brace
   scope: meta.brace
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: Meta Delimiter Period
   scope: meta.delimiter.period
   settings:
@@ -564,7 +564,7 @@ tokenColors:
   - punctuation.section.array
   - meta.array
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: More Punctuation Tweaks
   scope:
   - punctuation.definition.list.begin
@@ -580,7 +580,7 @@ tokenColors:
 - name: Backtics(``) in Template Strings
   scope: string.template punctuation.definition.string
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: Italics
   scope: italic
   settings:
@@ -607,7 +607,7 @@ tokenColors:
 - name: CoffeScript Parameter Function
   scope: variable.parameter.function.coffee
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: CoffeeScript Assignments
   scope: variable.assignment.coffee
   settings:
@@ -615,7 +615,7 @@ tokenColors:
 - name: C# Readwrite Variables
   scope: variable.other.readwrite.cs
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: C# Classes & Storage types
   scope:
   - entity.name.type.class.cs
@@ -734,7 +734,7 @@ tokenColors:
   scope:
   - meta.preprocessor.macro.cpp
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: C++ Variable Parameter
   scope:
   - variable.parameter
@@ -774,11 +774,11 @@ tokenColors:
 - name: JavaScript Terminator
   scope: terminator.js
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: JavaScript Meta Punctuation Definition
   scope: meta.js punctuation.definition.js
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: Entity Names in Code Documentations
   scope:
   - entity.name.type.instance.jsdoc
@@ -798,7 +798,7 @@ tokenColors:
   - variable.other.meta.export.js
   - meta.export.js variable.other
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: JavaScript Variable Parameter Function
   scope: variable.parameter.function.js
   settings:
@@ -810,13 +810,13 @@ tokenColors:
   - variable.object.property.js
   - variable.object.property.jsx
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: JavaScript Variables
   scope:
   - variable.js
   - variable.other.js
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: JavaScript Entity Name Type
   scope:
   - entity.name.type.js
@@ -827,7 +827,7 @@ tokenColors:
 - name: JavaScript Support Classes
   scope: support.class.js
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: JSON Property Names
   scope: support.type.property-name.json
   settings:
@@ -857,7 +857,7 @@ tokenColors:
   scope:
   - variable.other.ruby
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: Ruby Class
   scope:
   - entity.name.type.class.ruby
@@ -920,7 +920,7 @@ tokenColors:
   - string.other.link.title.markdown
   - string.other.link.description.markdown
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: Markdown Punctuation
   scope:
   - punctuation.definition.string.markdown
@@ -956,7 +956,7 @@ tokenColors:
 - name: Punctuations in PHP function calls
   scope: meta.function-call.php punctuation
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: PHP Global Variables
   scope: variable.other.global.php
   settings:
@@ -984,7 +984,7 @@ tokenColors:
 - name: Punctuations in Python
   scope: punctuation.python
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: Decorator Functions in Python
   scope: entity.name.function.decorator.python
   settings:
@@ -1051,7 +1051,7 @@ tokenColors:
   - variable.tsx
   - variable.ts
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: TypeScript[React] Entity Name Types
   scope:
   - entity.name.type.ts
@@ -1077,7 +1077,7 @@ tokenColors:
   - meta.export.ts punctuation.definition.block
   - meta.export.tsx punctuation.definition.block
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: TypeScript[React] Punctuation Decorators
   scope:
   - meta.decorator punctuation.decorator.ts
@@ -1097,7 +1097,7 @@ tokenColors:
   - variable.other.readwrite.js
   - variable.parameter
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: Support Class Component
   scope:
   - support.class.component.js
@@ -1111,7 +1111,7 @@ tokenColors:
   - meta.jsx.children.js
   - meta.jsx.children.tsx
   settings:
-    foreground: '#403f53'
+    foreground: '#f5d76e'
 - name: TypeScript Classes
   scope: meta.class entity.name.type.class.tsx
   settings:

@@ -8,18 +8,18 @@ type: dark
 semanticHighlighting: true
 # colorSideBar: "#eaeaea"
 # colorBackground: "#f5f5f5"
-# colorTheme: "#d6cfe2"
-# colorContrast "#d6cfe252"
+# colorTheme: "#e8e0ff"
+# colorContrast "#e8e0ff52"
 colors:
   # GENERAL
-  focusBorder: "#d6cfe252" # Cor da borda de foco em elementos interativos
-  progressBar.background: "#d6cfe252" # Cor de fundo da barra de progresso
-  selection.background: "#d6cfe252" # Cor de seleção global (listas, inputs, etc)
+  focusBorder: "#e8e0ff52" # Cor da borda de foco em elementos interativos
+  progressBar.background: "#e8e0ff52" # Cor de fundo da barra de progresso
+  selection.background: "#e8e0ff52" # Cor de seleção global (listas, inputs, etc)
 
   # ACTIVITY BAR (barra lateral de ícones)
   activityBar.background: '#eaeaea' # Fundo da barra de atividades (ícones laterais)
   activityBar.foreground: '#000' # Cor dos ícones na barra de atividades
-  activityBarBadge.background: "#d6cfe2" # Fundo do badge (notificações)
+  activityBarBadge.background: "#e8e0ff" # Fundo do badge (notificações)
   activityBarBadge.foreground: '#000' # Cor do texto do badge
 
   # SIDE BAR (explorer, search, etc)
@@ -28,52 +28,52 @@ colors:
   sideBarTitle.foreground: '#000' # Título da sidebar
   sideBarSectionHeader.background: '#1f1f28' # Fundo dos headers de seção
   sideBarSectionHeader.foreground: '#000' # Texto dos headers de seção
-  list.inactiveSelectionBackground: "#d6cfe252" # Fundo de item selecionado sem foco
+  list.inactiveSelectionBackground: "#e8e0ff52" # Fundo de item selecionado sem foco
   list.inactiveSelectionForeground: '#000' # Texto de item selecionado sem foco
-  list.activeSelectionBackground: '#d6cfe252' # Fundo de item selecionado com foco
+  list.activeSelectionBackground: '#e8e0ff52' # Fundo de item selecionado com foco
   list.activeSelectionForeground: '#000' # Texto de item selecionado com foco
-  list.hoverBackground: '#d6cfe252' # Fundo ao passar o mouse
-  list.focusBackground: "#d6cfe252" # Fundo quando focado via teclado
-  list.highlightForeground: "#d6cfe2" # Destaque de match (busca)
+  list.hoverBackground: '#e8e0ff52' # Fundo ao passar o mouse
+  list.focusBackground: "#e8e0ff52" # Fundo quando focado via teclado
+  list.highlightForeground: "#e8e0ff" # Destaque de match (busca)
   list.focusHighlightForeground: '#f5f5f5' # Cor do highlight quando focado
 
   # STATUS BAR
-  statusBar.background: "#d6cfe2" # Fundo da status bar
+  statusBar.background: "#e8e0ff" # Fundo da status bar
   statusBar.foreground: '#000' # Texto da status bar
-  statusBar.noFolderBack: "#d6cfe252" # Fundo quando nenhum projeto está aberto
-  statusBar.remoteBackground: "#d6cfe2" # Fundo quando conectado remotamente
+  statusBar.noFolderBack: "#e8e0ff52" # Fundo quando nenhum projeto está aberto
+  statusBar.remoteBackground: "#e8e0ff" # Fundo quando conectado remotamente
 
   # TITLE BAR / MENUS
   titleBar.activeBackground: "#eaeaea" # Fundo da barra de título ativa
   menu.background: "#eaeaea" # Fundo dos menus dropdown
-  menu.selectionBackground: "#d6cfe252" # Fundo de item selecionado no menu
+  menu.selectionBackground: "#e8e0ff52" # Fundo de item selecionado no menu
 
   # BUTTONS / LINKS
-  button.background: "#d6cfe2" # Fundo de botões
+  button.background: "#e8e0ff" # Fundo de botões
   button.foreground: '#000' # Texto de botões
-  button.hoverBackground: "#d6cfe252" # Fundo ao passar o mouse no botão
+  button.hoverBackground: "#e8e0ff52" # Fundo ao passar o mouse no botão
   textLink.foreground: "#000" # Cor de links clicáveis
-  editorLink.activeForeground: '#d6cfe2' # Cor de links ativos dentro do editor
+  editorLink.activeForeground: '#e8e0ff' # Cor de links ativos dentro do editor
 
   # INPUTS / FORMS
   input.background: '#f5f5f5' # Fundo de campos de input
-  inputOption.activeBackground: "#d6cfe2" # Fundo de opções selecionadas (checkbox/radio)
+  inputOption.activeBackground: "#e8e0ff" # Fundo de opções selecionadas (checkbox/radio)
   inputOption.activeForeground: "#000" # Texto de opções selecionadas
   quickInput.background: '#eaeaea' # Fundo da palette (Ctrl+P, Ctrl+Shift+P)
   quickInput.foreground: '#000' # Texto da palette
-  quickInputList.focusBackground: '#d6cfe2' # Fundo do item focado na palette
+  quickInputList.focusBackground: '#e8e0ff' # Fundo do item focado na palette
   quickInputList.focusForeground: '#000' # Texto do item focado na palette
 
   # PANEL (terminal, output, problems)
   panel.background: '#eaeaea' # Fundo do painel inferior (terminal, output)
-  badge.background: "#d6cfe2" # Fundo de badges
+  badge.background: "#e8e0ff" # Fundo de badges
   badge.foreground: '#000' # Texto de badges
 
   # TERMINAL
   terminal.background: '#f5f5f5' # Fundo do terminal
   terminal.foreground: '#ooo' # Texto do terminal
   terminalCursor.foreground: '#ooo' # Cor do cursor do terminal
-  terminal.Cursor.background: "#d6cfe2" # Cor de fundo do cursor (bloco)
+  terminal.Cursor.background: "#e8e0ff" # Cor de fundo do cursor (bloco)
 
   # TABS
   editorGroupHeader.tabsBackground: "#eaeaea" # Fundo da área de tabs
@@ -88,7 +88,7 @@ colors:
   # WIDGETS (modais, popups, find)
   editorWidget.background: '#eaeaea' # Fundo de widgets (ex: Ctrl+F)
   widget.border: '#f5f5f5' # Borda de widgets/modais
-  pickerGroup.foreground: "#d6cfe2" # Título de grupos na palette
+  pickerGroup.foreground: "#e8e0ff" # Título de grupos na palette
   pickerGroup.border: '#403d52' # Borda separadora de grupos
   debugToolBar.background: "#eaeaea" # Fundo da toolbar de debug
 
@@ -100,8 +100,8 @@ colors:
   editor.foreground: '#c5c9c5' # Texto padrão do editor
   editorCursor.foreground: '#c8c093' # Cor do cursor
   editor.lineHighlightBackground: '#eaeaea' # Linha atual destacada
-  editor.selectionBackground: '#d6cfe252' # Fundo da seleção
-  editor.selectionHighlightBackground: '#d6cfe252' # Fundo de seleção secundária
+  editor.selectionBackground: '#e8e0ff52' # Fundo da seleção
+  editor.selectionHighlightBackground: '#e8e0ff52' # Fundo de seleção secundária
   editor.wordHighlightBackground: '#2d4f6766' # Destaque de palavras iguais
   editorWhitespace.foreground: '#363646' # Caracteres invisíveis
   editorIndentGuide.background1: '#2d4f67' # Guias de indentação
@@ -158,7 +158,7 @@ tokenColors:
 - scope:
   - variable
   settings:
-    foreground: '#d6cfe2'
+    foreground: '#e8e0ff'
 - scope:
   - variable.language
   settings:
@@ -169,7 +169,7 @@ tokenColors:
   - string.quoted
   - punctuation.definition.string
   settings:
-    foreground: '#d6cfe2'
+    foreground: '#e8e0ff'
 - scope:
   - constant
   - constant.numeric
