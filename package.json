@@ -10,6 +10,7 @@
     },
     "scripts": {
         "build": "node ./src/compiler.js && node ./src/generate-minimal-valinor.js && node ./src/update-themes.js && node ./src/update-icon-themes.js",
+        "watch": "nodemon --watch src --ext yml --exec \"npm run build\"",
         "package": "vsce package -o ./bin/valinor-theme.vsix",
         "vscode:prepublish": "npm run build",
         "vsce-publish": "vsce publish"
@@ -239,7 +240,7 @@
             },
             {
                 "label": "Valinor Feanor",
-                "uiTheme": "vs",
+                "uiTheme": "vs-dark",
                 "path": "./themes/feanor.json"
             },
             {
@@ -313,5 +314,8 @@
     "__metadata": {
         "installedTimestamp": 1741394568195,
         "size": 19766535
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
     }
 }

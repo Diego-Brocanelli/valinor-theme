@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
   <!-- Corpo da pasta -->
-  <path fill="#40a02b" d="M14.5 3H7.7l-.6-1.1-.2-.2H1.5l-.5.5v11l.5.5h13l.5-.5v-10l-.5-.5zM14 13H2V3.5h4.1l.6 1.1.2.2H14V13z" />
+  <path fill="#100f0f52" d="M14.5 3H7.7l-.6-1.1-.2-.2H1.5l-.5.5v11l.5.5h13l.5-.5v-10l-.5-.5zM14 13H2V3.5h4.1l.6 1.1.2.2H14V13z" />
   <!-- Indicador de raiz (barra inferior) -->
-  <path fill="#8839ef" d="M3 12h10v.8H3z" />
+  <path fill="#100f0f52" d="M3 12h10v.8H3z" />
 </svg>

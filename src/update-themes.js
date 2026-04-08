@@ -14,11 +14,11 @@ packageJson.contributes.themes = [];
 // Ler todos os arquivos JSON dentro de themes
 fs.readdirSync(themesDir).forEach((file) => {
   if (file.endsWith(".json")) {
-    let themePath = `./themes/${file}`;
+    let themePath = `./themes/${file}`;                          // mantém para o package.json
 
     let themeName = ucwords(file.replace(".json", ""));
 
-    let themeContent = readThemeFile(themePath);
+    let themeContent = readThemeFile(path.join(themesDir, file)); // ← path absoluto para leitura
 
     packageJson.contributes.themes.push({
       label: themeContent.name, // Nome do tema
@@ -37,10 +37,7 @@ function ucwords(str) {
     return str.replace(/\b\w/g, char => char.toUpperCase());
 }
 
-function readThemeFile(themeFile)
-{
-    const data = fs.readFileSync(themeFile, "utf8");
-    const json = JSON.parse(data);
-
-    return json;
+function readThemeFile(themePath) {
+  const data = fs.readFileSync(themePath, "utf8");  // ← usa direto, sem join
+  return JSON.parse(data);
 }

@@ -23,362 +23,108 @@ semanticTokenColors:
     foreground: '#bb9af7'
   variable:
     foreground: '#c0caf5'
+# colorSideBar: "#1f2335"
+# colorBackground: "#24283b"
+# colorTheme: "#8089b3"
+# colorContrast "#8089b352"
 colors:
-  foreground: '#8089b3'
-  descriptionForeground: '#545c7e'
-  disabledForeground: '#545c7e'
-  focusBorder: '#545c7e33'
-  errorForeground: '#5a607d'
-  widget.shadow: '#ffffff00'
-  scrollbar.shadow: '#00000033'
-  badge.background: '#7e83b233'
-  badge.foreground: '#a9b1d6'
-  icon.foreground: '#8089b3'
-  settings.headerForeground: '#6183bb'
-  window.activeBorder: '#0d0f17'
-  window.inactiveBorder: '#0d0f17'
-  sash.hoverBorder: '#29355a'
-  toolbar.activeBackground: '#2c324a'
-  toolbar.hoverBackground: '#2c324a'
-  extensionButton.prominentBackground: '#3d59a1DD'
-  extensionButton.prominentHoverBackground: '#3d59a1AA'
-  extensionButton.prominentForeground: '#ffffff'
-  extensionBadge.remoteBackground: '#3d59a1'
-  extensionBadge.remoteForeground: '#ffffff'
-  button.background: '#3d59a1dd'
-  button.hoverBackground: '#3d59a1AA'
-  button.secondaryBackground: '#41496b'
-  button.foreground: '#ffffff'
-  progressBar.background: '#3d59a1'
-  input.background: '#1b1e2e'
-  input.foreground: '#a9b1d6'
-  input.border: '#282e44'
-  input.placeholderForeground: '#4a5272'
-  inputOption.activeForeground: '#c0caf5'
-  inputOption.activeBackground: '#3d59a144'
-  inputValidation.infoForeground: '#bbc2e0'
-  inputValidation.infoBackground: '#3d59a15c'
-  inputValidation.infoBorder: '#3d59a1'
-  inputValidation.warningForeground: '#000000'
-  inputValidation.warningBackground: '#c2985b'
-  inputValidation.warningBorder: '#e0af68'
-  inputValidation.errorForeground: '#bbc2e0'
-  inputValidation.errorBackground: '#85353e'
-  inputValidation.errorBorder: '#963c47'
-  dropdown.foreground: '#8089b3'
-  dropdown.background: '#1b1e2e'
-  dropdown.listBackground: '#1b1e2e'
-  activityBar.background: '#1f2335'
-  activityBar.foreground: '#8089b3'
-  activityBar.inactiveForeground: '#41496b'
-  activityBar.border: '#1f2335'
-  activityBarBadge.background: '#3d59a1'
-  activityBarBadge.foreground: '#fff'
-  activityBarTop.foreground: '#8089b3'
-  activityBarTop.inactiveForeground: '#41496b'
-  tree.indentGuidesStroke: '#2e344f'
-  sideBar.foreground: '#8089b3'
-  sideBar.background: '#1f2335'
-  sideBar.border: '#1b1e2e'
-  sideBarTitle.foreground: '#8089b3'
-  sideBarSectionHeader.background: '#1f2335'
-  sideBarSectionHeader.foreground: '#a9b1d6'
-  sideBarSectionHeader.border: '#1b1e2e'
-  sideBar.dropBackground: '#292e42'
-  list.dropBackground: '#292e42'
-  list.deemphasizedForeground: '#8089b3'
-  list.activeSelectionBackground: '#2c324a'      # fundo da linha selecionada (explorer em foco)
-  list.activeSelectionForeground: '#fff' # texto da linha selecionada (explorer em foco)
-  list.inactiveSelectionBackground: '#2c324a'     # fundo da linha selecionada (explorer sem foco)
-  list.inactiveSelectionForeground: '#000' # texto da linha selecionada (explorer sem foco)
-  list.focusBackground: '#292e42'
-  list.focusForeground: '#a9b1d6'
-  list.hoverBackground: '#1b1e2e'
-  list.focusHighlightForeground: '#c0d4f8'
-  list.hoverForeground: '#a9b1d6'
-  list.highlightForeground: '#c0d4f8'
-  list.invalidItemForeground: '#c97018'
-  list.errorForeground: '#bb616b'
-  list.warningForeground: '#c49a5a'
-  listFilterWidget.background: '#1b1e2e'
-  listFilterWidget.outline: '#3d59a1'
-  listFilterWidget.noMatchesOutline: '#a6333f'
-  pickerGroup.foreground: '#a9b1d6'
-  pickerGroup.border: '#1b1e2e'
-  scrollbarSlider.background: '#9cacff15'
-  scrollbarSlider.hoverBackground: '#9cacff10'
-  scrollbarSlider.activeBackground: '#9cacff22'
-  editorBracketHighlight.foreground1: '#698cd6'
-  editorBracketHighlight.foreground2: '#68b3de'
-  editorBracketHighlight.foreground3: '#9a7ecc'
-  editorBracketHighlight.foreground4: '#25aac2'
-  editorBracketHighlight.foreground5: '#80a856'
-  editorBracketHighlight.foreground6: '#cfa25f'
-  editorBracketHighlight.unexpectedBracket.foreground: '#db4b4b'
-  editorBracketPairGuide.activeBackground1: '#698cd6'
-  editorBracketPairGuide.activeBackground2: '#68b3de'
-  editorBracketPairGuide.activeBackground3: '#9a7ecc'
-  editorBracketPairGuide.activeBackground4: '#25aac2'
-  editorBracketPairGuide.activeBackground5: '#80a856'
-  editorBracketPairGuide.activeBackground6: '#cfa25f'
-  selection.background: '#6f7bb635'
-  editor.background: '#24283b'
-  editor.foreground: '#a9b1d6'
-  editor.foldBackground: '#181b294a'
-  editorLink.activeForeground: '#a9b1d6'
-  editor.selectionBackground: '#6f7bb640'
-  editor.inactiveSelectionBackground: '#6f7bb615'
-  editor.findMatchBackground: '#3d59a166'
-  editor.findMatchBorder: '#ffdb69aa'
-  editor.findMatchHighlightBackground: '#3d59a166'
-  editor.findRangeHighlightBackground: '#6f7bb625'
-  editor.rangeHighlightBackground: '#6f7bb620'
-  editor.wordHighlightBackground: '#6f7bb633'
-  editor.wordHighlightStrongBackground: '#6f7bb644'
-  editor.selectionHighlightBackground: '#6f7bb633'
-  editorCursor.foreground: '#c0caf5'
-  editorIndentGuide.background1: '#2d324a'
-  editorIndentGuide.activeBackground1: '#3b4261'
-  editorLineNumber.foreground: '#3b4261'
-  editorLineNumber.activeForeground: '#8089b3'
-  editor.lineHighlightBackground: '#292e42'
-  editorWhitespace.foreground: '#3b4261'
-  editorMarkerNavigation.background: '#1f2335'
-  editorHoverWidget.background: '#1f2335'
-  editorHoverWidget.border: '#1b1e2e'
-  editorBracketMatch.background: '#1f2335'
-  editorBracketMatch.border: '#545c7e'
-  editorOverviewRuler.border: '#1b1e2e'
-  editorOverviewRuler.errorForeground: '#db4b4b'
-  editorOverviewRuler.warningForeground: '#e0af68'
-  editorOverviewRuler.infoForeground: '#1abc9c'
-  editorOverviewRuler.bracketMatchForeground: '#1b1e2e'
-  editorOverviewRuler.findMatchForeground: '#a9b1d644'
-  editorOverviewRuler.rangeHighlightForeground: '#a9b1d644'
-  editorOverviewRuler.selectionHighlightForeground: '#a9b1d622'
-  editorOverviewRuler.wordHighlightForeground: '#bb9af755'
-  editorOverviewRuler.wordHighlightStrongForeground: '#bb9af766'
-  editorOverviewRuler.modifiedForeground: '#3d547a'
-  editorOverviewRuler.addedForeground: '#164846'
-  editorOverviewRuler.deletedForeground: '#703438'
-  editorRuler.foreground: '#1b1e2e'
-  editorError.foreground: '#db4b4b'
-  editorWarning.foreground: '#e0af68'
-  editorInfo.foreground: '#0da0ba'
-  editorHint.foreground: '#0da0ba'
-  editorGutter.modifiedBackground: '#3d547a'
-  editorGutter.addedBackground: '#164846'
-  editorGutter.deletedBackground: '#823c41'
-  editorGhostText.foreground: '#7582ba'
-  minimapGutter.modifiedBackground: '#3d547a'
-  minimapGutter.addedBackground: '#1C5957'
-  minimapGutter.deletedBackground: '#944449'
-  editorGroup.border: '#1b1e2e'
-  editorGroup.emptyBackground: '#24283b'
-  editorGroup.dropBackground: '#292e42'
-  editorGroupHeader.tabsBorder: '#1b1e2e'
-  editorGroupHeader.tabsBackground: '#1f2335'
-  editorGroupHeader.noTabsBackground: '#1f2335'
-  editorGroupHeader.border: '#1b1e2e'
-  editorPane.background: '#24283b'
-  editorWidget.foreground: '#8089b3'
-  editorWidget.background: '#1f2335'
-  editorWidget.border: '#1b1e2e'
-  editorWidget.resizeBorder: '#545c7e33'
-  editorSuggestWidget.background: '#1f2335'
-  editorSuggestWidget.border: '#1b1e2e'
-  editorSuggestWidget.selectedBackground: '#282e44'
-  editorSuggestWidget.highlightForeground: '#668ac4'
-  editorCodeLens.foreground: '#5f6996'
-  editorLightBulb.foreground: '#e0af68'
-  editorLightBulbAutoFix.foreground: '#e0af68'
-  editorInlayHint.foreground: '#7582ba'
-  peekView.border: '#1b1e2e'
-  peekViewEditor.background: '#1f2335'
-  peekViewEditor.matchHighlightBackground: '#3d59a166'
-  peekViewTitle.background: '#1b1e2e'
-  peekViewTitleLabel.foreground: '#a9b1d6'
-  peekViewTitleDescription.foreground: '#8089b3'
-  peekViewResult.background: '#1b1e2e'
-  peekViewResult.selectionForeground: '#a9b1d6'
-  peekViewResult.selectionBackground: '#3d59a133'
-  peekViewResult.lineForeground: '#a9b1d6'
-  peekViewResult.fileForeground: '#8089b3'
-  peekViewResult.matchHighlightBackground: '#3d59a166'
-  diffEditor.insertedTextBackground: '#41a6b520'
-  diffEditor.removedTextBackground: '#db4b4b22'
-  diffEditor.insertedLineBackground: '#41a6b520'
-  diffEditor.removedLineBackground: '#db4b4b22'
-  diffEditorGutter.insertedLineBackground: '#41a6b525'
-  diffEditorGutter.removedLineBackground: '#db4b4b22'
-  diffEditorOverview.insertedForeground: '#41a6b525'
-  diffEditorOverview.removedForeground: '#db4b4b22'
-  diffEditor.diagonalFill: '#2c324a'
-  diffEditor.unchangedCodeBackground: '#2f344d66'
-  multiDiffEditor.headerBackground: '#24283b'
-  multiDiffEditor.border: '#24283b'
-  breadcrumb.background: '#1E2233'
-  breadcrumbPicker.background: '#1f2335'
-  breadcrumb.foreground: '#545c7e'
-  breadcrumb.focusForeground: '#a9b1d6'
-  breadcrumb.activeSelectionForeground: '#a9b1d6'
-  tab.activeBackground: '#1f2335'
-  tab.inactiveBackground: '#1f2335'
-  tab.activeForeground: '#a9b1d6'
-  tab.hoverForeground: '#a9b1d6'
-  tab.activeBorder: '#3d59a1'
-  tab.inactiveForeground: '#8089b3'
-  tab.border: '#1b1e2e'
-  tab.unfocusedActiveForeground: '#a9b1d6'
-  tab.unfocusedInactiveForeground: '#8089b3'
-  tab.unfocusedHoverForeground: '#a9b1d6'
-  tab.activeModifiedBorder: '#282d42'
-  tab.inactiveModifiedBorder: '#282d42'
-  tab.unfocusedActiveBorder: '#3b4261'
-  tab.lastPinnedBorder: '#2c3147'
-  panel.background: '#1f2335'
-  panel.border: '#1b1e2e'
-  panelTitle.activeForeground: '#a9b1d6'
-  panelTitle.inactiveForeground: '#8089b3'
-  panelTitle.activeBorder: '#3d59a1'
-  panelInput.border: '#1f2335'
-  statusBar.foreground: '#8089b3'
-  statusBar.background: '#1f2335'
-  statusBar.border: '#1b1e2e'
-  statusBar.noFolderBackground: '#1f2335'
-  statusBar.debuggingBackground: '#1f2335'
-  statusBar.debuggingForeground: '#8089b3'
-  statusBarItem.activeBackground: '#1b1e2e'
-  statusBarItem.hoverBackground: '#282e44'
-  statusBarItem.prominentBackground: '#1b1e2e'
-  statusBarItem.prominentHoverBackground: '#282e44'
-  titleBar.activeForeground: '#8089b3'
-  titleBar.inactiveForeground: '#8089b3'
-  titleBar.activeBackground: '#1f2335'
-  titleBar.inactiveBackground: '#1f2335'
-  titleBar.border: '#1b1e2e'
-  walkThrough.embeddedEditorBackground: '#1f2335'
-  textLink.foreground: '#668ac4'
-  textLink.activeForeground: '#7dcfff'
-  textPreformat.foreground: '#73daca'
-  textBlockQuote.background: '#1f2335'
-  textCodeBlock.background: '#1f2335'
-  textSeparator.foreground: '#545c7e'
-  debugExceptionWidget.border: '#963c47'
-  debugExceptionWidget.background: '#1b1e2e'
-  debugToolBar.background: '#1b1e2e'
-  debugConsole.infoForeground: '#8089b3'
-  debugConsole.errorForeground: '#bb616b'
-  debugConsole.sourceForeground: '#8089b3'
-  debugConsole.warningForeground: '#c49a5a'
-  debugConsoleInputIcon.foreground: '#73daca'
-  editor.stackFrameHighlightBackground: '#e2bd3a20'
-  editor.focusedStackFrameHighlightBackground: '#73daca20'
-  debugView.stateLabelForeground: '#8089b3'
-  debugView.stateLabelBackground: '#1b1e2e'
-  debugView.valueChangedHighlight: '#3d59a1cc'
-  debugTokenExpression.name: '#7dcfff'
-  debugTokenExpression.value: '#9aa5ce'
-  debugTokenExpression.string: '#9ece6a'
-  debugTokenExpression.boolean: '#ff9e64'
-  debugTokenExpression.number: '#ff9e64'
-  debugTokenExpression.error: '#bb616b'
-  debugIcon.breakpointForeground: '#db4b4b'
-  debugIcon.breakpointDisabledForeground: '#545c7e'
-  debugIcon.breakpointUnverifiedForeground: '#c24242'
-  terminal.background: '#24283b'
-  terminal.foreground: '#8089b3'
-  terminal.selectionBackground: '#6f7bb640'
-  terminal.ansiBlack: '#414868'
-  terminal.ansiRed: '#f7768e'
-  terminal.ansiGreen: '#73daca'
-  terminal.ansiYellow: '#e0af68'
-  terminal.ansiBlue: '#7aa2f7'
-  terminal.ansiMagenta: '#bb9af7'
-  terminal.ansiCyan: '#7dcfff'
-  terminal.ansiWhite: '#8089b3'
-  terminal.ansiBrightBlack: '#414868'
-  terminal.ansiBrightRed: '#f7768e'
-  terminal.ansiBrightGreen: '#73daca'
-  terminal.ansiBrightYellow: '#e0af68'
-  terminal.ansiBrightBlue: '#7aa2f7'
-  terminal.ansiBrightMagenta: '#bb9af7'
-  terminal.ansiBrightCyan: '#7dcfff'
-  terminal.ansiBrightWhite: '#a9b1d6'
-  gitDecoration.modifiedResourceForeground: '#6183bb'
-  gitDecoration.ignoredResourceForeground: '#545c7e'
-  gitDecoration.deletedResourceForeground: '#914c54'
-  gitDecoration.renamedResourceForeground: '#449dab'
-  gitDecoration.addedResourceForeground: '#449dab'
-  gitDecoration.untrackedResourceForeground: '#449dab'
-  gitDecoration.conflictingResourceForeground: '#e0af68cc'
-  gitDecoration.stageDeletedResourceForeground: '#914c54'
-  gitDecoration.stageModifiedResourceForeground: '#6183bb'
-  notebook.editorBackground: '#24283b'
-  notebook.cellEditorBackground: '#1f2335'
-  notebook.cellBorderColor: '#1b1e2e'
-  notebook.focusedCellBorder: '#29355a'
-  notebook.cellStatusBarItemHoverBackground: '#2c324a'
-  charts.red: '#f7768e'
-  charts.blue: '#7aa2f7'
-  charts.yellow: '#e0af68'
-  charts.orange: '#ff9e64'
-  charts.green: '#73daca'
-  charts.purple: '#9d7cd8'
-  charts.foreground: '#9AA5CE'
-  charts.lines: '#1f2335'
-  scmGraph.historyItemHoverLabelForeground: '#1b1e2e'
-  scmGraph.foreground1: '#ff9e64'
-  scmGraph.foreground2: '#e0af68'
-  scmGraph.foreground3: '#41a6b5'
-  scmGraph.foreground4: '#7aa2f7'
-  scmGraph.foreground5: '#bb9af7'
-  scmGraph.historyItemHoverAdditionsForeground: '#41a6b5'
-  scmGraph.historyItemHoverDeletionsForeground: '#f7768e'
-  scmGraph.historyItemRefColor: '#506FCA'
-  scmGraph.historyItemRemoteRefColor: '#41a6b5'
-  scmGraph.historyItemBaseRefColor: '#9d7cd8'
-  scmGraph.historyItemHoverDefaultLabelForeground: '#a9b1d6'
-  merge.currentHeaderBackground: '#41a6b525'
-  merge.currentContentBackground: '#007a7544'
-  merge.incomingHeaderBackground: '#3d59a1aa'
-  merge.incomingContentBackground: '#3d59a144'
-  mergeEditor.change.background: '#41a6b525'
-  mergeEditor.change.word.background: '#41a6b540'
-  mergeEditor.conflict.unhandledUnfocused.border: '#e0af6888'
-  mergeEditor.conflict.unhandledFocused.border: '#e0af68d9'
-  mergeEditor.conflict.handledUnfocused.border: '#41a6b525'
-  mergeEditor.conflict.handledFocused.border: '#41a6b565'
-  mergeEditor.conflict.handled.minimapOverViewRuler: '#449dab'
-  mergeEditor.conflict.unhandled.minimapOverViewRuler: '#e0af68'
-  gitlens.trailingLineForegroundColor: '#7582ba'
-  gitlens.gutterUncommittedForegroundColor: '#7aa2f7'
-  gitlens.gutterForegroundColor: '#8089b3'
-  gitlens.gutterBackgroundColor: '#1f2335'
-  notificationCenterHeader.background: '#1b1e2e'
-  notifications.background: '#1b1e2e'
-  notificationLink.foreground: '#6183bb'
-  notificationsErrorIcon.foreground: '#bb616b'
-  notificationsWarningIcon.foreground: '#bba461'
-  notificationsInfoIcon.foreground: '#0da0ba'
-  menubar.selectionForeground: '#c0caf5'
-  menubar.selectionBackground: '#2f3549'
-  menubar.selectionBorder: '#1b1e2e'
-  menu.foreground: '#8089b3'
-  menu.background: '#1f2335'
-  menu.selectionForeground: '#c0caf5'
-  menu.selectionBackground: '#2f3549'
-  menu.separatorBackground: '#1b1e2e'
-  menu.border: '#1b1e2e'
-  chat.requestBorder: '#282e44'
-  chat.slashCommandBackground: '#1b1e2e'
-  chat.slashCommandForeground: '#7aa2f7'
-  chat.avatarBackground: '#3d59a1'
-  chat.avatarForeground: '#a9b1d6'
-  inlineChat.background: '#1b1e2e'
-  inlineChat.foreground: '#a9b1d6'
-  inlineChatDiff.inserted: '#41a6b540'
-  inlineChatDiff.removed: '#db4b4b42'
+  # GENERAL
+  focusBorder: "#8089b352" # Cor da borda de foco em elementos interativos
+  progressBar.background: "#8089b352" # Cor de fundo da barra de progresso
+  selection.background: "#8089b352" # Cor de seleção global (listas, inputs, etc)
+
+  # ACTIVITY BAR (barra lateral de ícones)
+  activityBar.background: '#1f2335' # Fundo da barra de atividades (ícones laterais)
+  activityBar.foreground: '#e0def4' # Cor dos ícones na barra de atividades
+  activityBarBadge.background: "#8089b3" # Fundo do badge (notificações)
+  activityBarBadge.foreground: '#24283b' # Cor do texto do badge
+
+  # SIDE BAR (explorer, search, etc)
+  sideBar.background: "#1f2335" # Fundo da sidebar
+  sideBar.foreground: '#c5c9c5' # Texto padrão da sidebar
+  sideBarTitle.foreground: '#8089b3' # Título da sidebar
+  sideBarSectionHeader.background: '#1f1f28' # Fundo dos headers de seção
+  sideBarSectionHeader.foreground: '#8089b3' # Texto dos headers de seção
+  list.inactiveSelectionBackground: "#8089b352" # Fundo de item selecionado sem foco
+  list.inactiveSelectionForeground: '#000' # Texto de item selecionado sem foco
+  list.activeSelectionBackground: '#8089b352' # Fundo de item selecionado com foco
+  list.activeSelectionForeground: '#000' # Texto de item selecionado com foco
+  list.hoverBackground: '#8089b352' # Fundo ao passar o mouse
+  list.focusBackground: "#8089b352" # Fundo quando focado via teclado
+  list.highlightForeground: "#8089b3" # Destaque de match (busca)
+  list.focusHighlightForeground: '#24283b' # Cor do highlight quando focado
+
+  # STATUS BAR
+  statusBar.background: "#8089b3" # Fundo da status bar
+  statusBar.foreground: '#24283b' # Texto da status bar
+  statusBar.noFolderBack: "#8089b352" # Fundo quando nenhum projeto está aberto
+  statusBar.remoteBackground: "#8089b3" # Fundo quando conectado remotamente
+
+  # TITLE BAR / MENUS
+  titleBar.activeBackground: "#1f2335" # Fundo da barra de título ativa
+  menu.background: "#1f2335" # Fundo dos menus dropdown
+  menu.selectionBackground: "#8089b352" # Fundo de item selecionado no menu
+
+  # BUTTONS / LINKS
+  button.background: "#8089b3" # Fundo de botões
+  button.foreground: '#24283b' # Texto de botões
+  button.hoverBackground: "#8089b352" # Fundo ao passar o mouse no botão
+  textLink.foreground: "#8089b3" # Cor de links clicáveis
+  editorLink.activeForeground: '#8089b3' # Cor de links ativos dentro do editor
+
+  # INPUTS / FORMS
+  input.background: '#24283b' # Fundo de campos de input
+  inputOption.activeBackground: "#8089b3" # Fundo de opções selecionadas (checkbox/radio)
+  inputOption.activeForeground: "#24283b" # Texto de opções selecionadas
+  quickInput.background: '#1f2335' # Fundo da palette (Ctrl+P, Ctrl+Shift+P)
+  quickInput.foreground: '#e0def4' # Texto da palette
+  quickInputList.focusBackground: '#8089b3' # Fundo do item focado na palette
+  quickInputList.focusForeground: '#24283b' # Texto do item focado na palette
+
+  # PANEL (terminal, output, problems)
+  panel.background: '#1f2335' # Fundo do painel inferior (terminal, output)
+  badge.background: "#8089b3" # Fundo de badges
+  badge.foreground: '#24283b' # Texto de badges
+
+  # TERMINAL
+  terminal.background: '#24283b' # Fundo do terminal
+  terminal.foreground: '#e0def4' # Texto do terminal
+  terminalCursor.foreground: '#e0def4' # Cor do cursor do terminal
+  terminal.Cursor.background: "#8089b3" # Cor de fundo do cursor (bloco)
+
+  # TABS
+  editorGroupHeader.tabsBackground: "#1f2335" # Fundo da área de tabs
+  tab.activeBackground: "#24283b" # Fundo da tab ativa
+  tab.activeForeground: '#e0def4' # Texto da tab ativa
+  tab.inactiveBackground: '#1f2335' # Fundo da tab inativa
+  tab.inactiveForeground: '#e0def4' # Texto da tab inativa
+
+  # BREADCRUMBS
+  breadcrumb.background: "#24283b" # Fundo do breadcrumb (caminho do arquivo)
+
+  # WIDGETS (modais, popups, find)
+  editorWidget.background: '#1f2335' # Fundo de widgets (ex: Ctrl+F)
+  widget.border: '#24283b' # Borda de widgets/modais
+  pickerGroup.foreground: "#8089b3" # Título de grupos na palette
+  pickerGroup.border: '#403d52' # Borda separadora de grupos
+  debugToolBar.background: "#1f2335" # Fundo da toolbar de debug
+
+  # NOTIFICATIONS
+  notification.background: "#24283b" # Fundo das notificações
+
+  # EDITOR
+  editor.background: "#24283b" # Fundo do editor
+  editor.foreground: '#c5c9c5' # Texto padrão do editor
+  editorCursor.foreground: '#c8c093' # Cor do cursor
+  editor.lineHighlightBackground: '#1f2335' # Linha atual destacada
+  editor.selectionBackground: '#8089b352' # Fundo da seleção
+  editor.selectionHighlightBackground: '#8089b352' # Fundo de seleção secundária
+  editor.wordHighlightBackground: '#2d4f6766' # Destaque de palavras iguais
+  editorWhitespace.foreground: '#363646' # Caracteres invisíveis
+  editorIndentGuide.background1: '#2d4f67' # Guias de indentação
+  editorRuler.foreground: '#2d4f67' # Régua vertical
+  editorLineNumber.foreground: '#2d4f67' # Números de linha
+  editorLineNumber.activeForeground: '#c5c9c5' # Número da linha atual
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:

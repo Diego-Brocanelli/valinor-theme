@@ -6,55 +6,108 @@ maintainers:
 semanticClass: theme.valinor.luthien
 type: dark
 semanticHighlighting: true
+# colorSideBar: "#161428"
+# colorBackground: "#1c1a2e"
+# colorTheme: "#c8a0e8"
+# colorContrast "#c8a0e852"
 colors:
-  panel.background: '#161428'
-  titleBar.activeBackground: '#161428' # background do navbar principal
-  quickInput.background: '#161428' # Cor de fundo do campo de input da modal de pesquisa
-  input.background: '#1c1a2e' # cor de fundo do input text
-  editorWidget.background: '#161428' # Fundo principal da janela de pesquisa (Ctrl + F)
+  # GENERAL
+  focusBorder: "#c8a0e852" # Cor da borda de foco em elementos interativos
+  progressBar.background: "#c8a0e852" # Cor de fundo da barra de progresso
+  selection.background: "#c8a0e852" # Cor de seleção global (listas, inputs, etc)
 
-  editor.background: '#1c1a2e'
-  editor.foreground: '#d5c8f0'
-  editorCursor.foreground: '#c8a0e8'
-  editor.lineHighlightBackground: '#252240'
-  editor.selectionBackground: '#3d3557'
-  editor.selectionHighlightBackground: '#3d355788'
-  editor.wordHighlightBackground: '#3d355766'
-  editorWhitespace.foreground: '#3d3557'
-  editorIndentGuide.background1: '#3d3557'
-  editorRuler.foreground: '#3d3557'
-  editorLineNumber.foreground: '#3d3557'
-  editorLineNumber.activeForeground: '#d5c8f0'
-  sideBar.background: '#161428'
-  sideBar.foreground: '#d5c8f0'
-  sideBarTitle.foreground: '#c8a0e8'
-  sideBarSectionHeader.background: '#252240'
-  sideBarSectionHeader.foreground: '#c8a0e8'
-  statusBar.background: '#252240'
-  statusBar.foreground: '#d5c8f0'
-  activityBar.background: '#161428'
-  activityBar.foreground: '#161428'
-  editorGroupHeader.tabsBackground: '#161428'
-  activityBarBadge.background: '#c8a0e8'
-  activityBarBadge.foreground: '#1c1a2e'
-  terminal.background: '#1c1a2e'
-  terminal.foreground: '#d5c8f0'
-  terminalCursor.foreground: '#c8a0e8'
+  # ACTIVITY BAR (barra lateral de ícones)
+  activityBar.background: '#161428' # Fundo da barra de atividades (ícones laterais)
+  activityBar.foreground: '#e0def4' # Cor dos ícones na barra de atividades
+  activityBarBadge.background: "#c8a0e8" # Fundo do badge (notificações)
+  activityBarBadge.foreground: '#1c1a2e' # Cor do texto do badge
 
-  button.background: '#c8a0e8'
-  button.foreground: '#1c1a2e'
-  editorLink.activeForeground: '#c8a0e8'
-  list.activeSelectionBackground: '#c8a0e8'      # fundo da linha selecionada (explorer em foco)
-  list.activeSelectionForeground: '#fff' # texto da linha selecionada (explorer em foco)
-  list.inactiveSelectionBackground: '#c8a0e8'     # fundo da linha selecionada (explorer sem foco)
-  list.inactiveSelectionForeground: '#fff' # texto da linha selecionada (explorer sem foco)
-  list.hoverBackground: '#3d3557'
-  list.focusHighlightForeground: '#1c1a2e'
-  list.highlightForeground: '#c8a0e8'
-  tab.activeBackground: '#1c1a2e'
-  tab.activeForeground: '#d5c8f0'
-  tab.inactiveBackground: '#161428'
-  tab.inactiveForeground: '#ffffff'
+  # SIDE BAR (explorer, search, etc)
+  sideBar.background: "#161428" # Fundo da sidebar
+  sideBar.foreground: '#c5c9c5' # Texto padrão da sidebar
+  sideBarTitle.foreground: '#c8a0e8' # Título da sidebar
+  sideBarSectionHeader.background: '#1f1f28' # Fundo dos headers de seção
+  sideBarSectionHeader.foreground: '#c8a0e8' # Texto dos headers de seção
+  list.inactiveSelectionBackground: "#c8a0e852" # Fundo de item selecionado sem foco
+  list.inactiveSelectionForeground: '#000' # Texto de item selecionado sem foco
+  list.activeSelectionBackground: '#c8a0e852' # Fundo de item selecionado com foco
+  list.activeSelectionForeground: '#000' # Texto de item selecionado com foco
+  list.hoverBackground: '#c8a0e852' # Fundo ao passar o mouse
+  list.focusBackground: "#c8a0e852" # Fundo quando focado via teclado
+  list.highlightForeground: "#c8a0e8" # Destaque de match (busca)
+  list.focusHighlightForeground: '#1c1a2e' # Cor do highlight quando focado
+
+  # STATUS BAR
+  statusBar.background: "#c8a0e8" # Fundo da status bar
+  statusBar.foreground: '#1c1a2e' # Texto da status bar
+  statusBar.noFolderBack: "#c8a0e852" # Fundo quando nenhum projeto está aberto
+  statusBar.remoteBackground: "#c8a0e8" # Fundo quando conectado remotamente
+
+  # TITLE BAR / MENUS
+  titleBar.activeBackground: "#161428" # Fundo da barra de título ativa
+  menu.background: "#161428" # Fundo dos menus dropdown
+  menu.selectionBackground: "#c8a0e852" # Fundo de item selecionado no menu
+
+  # BUTTONS / LINKS
+  button.background: "#c8a0e8" # Fundo de botões
+  button.foreground: '#1c1a2e' # Texto de botões
+  button.hoverBackground: "#c8a0e852" # Fundo ao passar o mouse no botão
+  textLink.foreground: "#c8a0e8" # Cor de links clicáveis
+  editorLink.activeForeground: '#c8a0e8' # Cor de links ativos dentro do editor
+
+  # INPUTS / FORMS
+  input.background: '#1c1a2e' # Fundo de campos de input
+  inputOption.activeBackground: "#c8a0e8" # Fundo de opções selecionadas (checkbox/radio)
+  inputOption.activeForeground: "#1c1a2e" # Texto de opções selecionadas
+  quickInput.background: '#161428' # Fundo da palette (Ctrl+P, Ctrl+Shift+P)
+  quickInput.foreground: '#e0def4' # Texto da palette
+  quickInputList.focusBackground: '#c8a0e8' # Fundo do item focado na palette
+  quickInputList.focusForeground: '#1c1a2e' # Texto do item focado na palette
+
+  # PANEL (terminal, output, problems)
+  panel.background: '#161428' # Fundo do painel inferior (terminal, output)
+  badge.background: "#c8a0e8" # Fundo de badges
+  badge.foreground: '#1c1a2e' # Texto de badges
+
+  # TERMINAL
+  terminal.background: '#1c1a2e' # Fundo do terminal
+  terminal.foreground: '#e0def4' # Texto do terminal
+  terminalCursor.foreground: '#e0def4' # Cor do cursor do terminal
+  terminal.Cursor.background: "#c8a0e8" # Cor de fundo do cursor (bloco)
+
+  # TABS
+  editorGroupHeader.tabsBackground: "#161428" # Fundo da área de tabs
+  tab.activeBackground: "#1c1a2e" # Fundo da tab ativa
+  tab.activeForeground: '#e0def4' # Texto da tab ativa
+  tab.inactiveBackground: '#161428' # Fundo da tab inativa
+  tab.inactiveForeground: '#e0def4' # Texto da tab inativa
+
+  # BREADCRUMBS
+  breadcrumb.background: "#1c1a2e" # Fundo do breadcrumb (caminho do arquivo)
+
+  # WIDGETS (modais, popups, find)
+  editorWidget.background: '#161428' # Fundo de widgets (ex: Ctrl+F)
+  widget.border: '#1c1a2e' # Borda de widgets/modais
+  pickerGroup.foreground: "#c8a0e8" # Título de grupos na palette
+  pickerGroup.border: '#403d52' # Borda separadora de grupos
+  debugToolBar.background: "#161428" # Fundo da toolbar de debug
+
+  # NOTIFICATIONS
+  notification.background: "#1c1a2e" # Fundo das notificações
+
+  # EDITOR
+  editor.background: "#1c1a2e" # Fundo do editor
+  editor.foreground: '#c5c9c5' # Texto padrão do editor
+  editorCursor.foreground: '#c8c093' # Cor do cursor
+  editor.lineHighlightBackground: '#161428' # Linha atual destacada
+  editor.selectionBackground: '#c8a0e852' # Fundo da seleção
+  editor.selectionHighlightBackground: '#c8a0e852' # Fundo de seleção secundária
+  editor.wordHighlightBackground: '#2d4f6766' # Destaque de palavras iguais
+  editorWhitespace.foreground: '#363646' # Caracteres invisíveis
+  editorIndentGuide.background1: '#2d4f67' # Guias de indentação
+  editorRuler.foreground: '#2d4f67' # Régua vertical
+  editorLineNumber.foreground: '#2d4f67' # Números de linha
+  editorLineNumber.activeForeground: '#c5c9c5' # Número da linha atual
 tokenColors:
 - name: Keywords & Storage – italic (valinor-patch)
   scope:
