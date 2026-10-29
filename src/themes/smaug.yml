@@ -1,0 +1,35 @@
+# Valinor Smaug — inspirado em Ristretto
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Smaug
+type: dark
+upstream: Ristretto
+author: Diego Brocanelli
+palette:
+  bg: "#2c1a1a"
+  bgAlt: "#221414"
+  fg: "#e6d9db"
+  accent: "#e8d8c8"
+  onAccent: "#2c1a1a"
+  statusBar: muted
+  red: "#fd6883"
+  orange: "#f38d70"
+  yellow: "#f9cc6c"
+  green: "#adda78"
+  cyan: "#85dacc"
+  blue: "#a8a9eb"
+  magenta: "#a8a9eb"
+syntax:
+  comment: "#8a6565"
+  keyword: "#fd6883"
+  storage: "#a8a9eb"
+  variable: "#e8d8c8"
+  this: "#f38d70"
+  string: "#adda78"
+  number: "#f9cc6c"
+  function: "#85dacc"
+  type: "#a8a9eb"
+  tag: "#fd6883"
+  attribute: "#85dacc"
+  heading: "#85dacc"

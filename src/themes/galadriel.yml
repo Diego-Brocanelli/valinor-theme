@@ -1,0 +1,36 @@
+# Valinor Galadriel — inspirado em Solarized Light
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Galadriel
+type: light
+upstream: Solarized Light
+author: Diego Brocanelli
+palette:
+  bg: "#fef3da"
+  bgAlt: "#eee8d5"
+  fg: "#475b62"
+  accent: "#e8dcb6"
+  accentText: "#8a6a00"
+  cursor: "#657b83"
+  red: "#dc322f"
+  orange: "#cb4b16"
+  yellow: "#b58900"
+  green: "#859900"
+  cyan: "#2aa198"
+  blue: "#268bd2"
+  magenta: "#d33682"
+syntax:
+  comment: "#7b8d8f"
+  keyword: "#7e9312"
+  storage: "#7e9312"
+  variable: "#268bd2"
+  this: "#cb4b16"
+  string: "#319993"
+  number: "#d33682"
+  function: "#268bd2"
+  type: "#a78512"
+  tag: "#268bd2"
+  attribute: "#7b8d8f"
+  heading: "#cb4b16"
+  builtin: "#a78512"

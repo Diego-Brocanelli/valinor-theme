@@ -1,0 +1,37 @@
+# Valinor Arwen — inspirado em Rosé Pine
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Arwen
+type: dark
+upstream: Rosé Pine
+author: Diego Brocanelli
+palette:
+  bg: "#191724"
+  bgAlt: "#1f1d2e"
+  fg: "#e0def4"
+  fgMuted: "#908caa"
+  accent: "#c4a7e7"
+  onAccent: "#191724"
+  cursor: "#e0def4"
+  red: "#eb6f92"
+  orange: "#f6c177"
+  yellow: "#f6c177"
+  green: "#31748f"
+  cyan: "#9ccfd8"
+  blue: "#9ccfd8"
+  magenta: "#c4a7e7"
+syntax:
+  comment: "#6e6a86"
+  keyword: "#c4a7e7"
+  storage: "#31748f"
+  variable: "#e0def4"
+  this: "#ebbcba"
+  string: "#9ccfd8"
+  number: "#f6c177"
+  function: "#9ccfd8"
+  type: "#c4a7e7"
+  tag: "#eb6f92"
+  attribute: "#31748f"
+  heading: "#9ccfd8"
+  builtin: "#31748f"

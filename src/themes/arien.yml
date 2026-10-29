@@ -1,0 +1,35 @@
+# Valinor Arien — inspirado em Kanagawa
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Arien
+type: dark
+upstream: Kanagawa
+author: Diego Brocanelli
+palette:
+  bg: "#181616"
+  bgAlt: "#252526"
+  fg: "#c5c9c5"
+  accent: "#f4a620"
+  onAccent: "#181616"
+  cursor: "#c8c093"
+  red: "#e46876"
+  orange: "#ffa066"
+  yellow: "#e6c384"
+  green: "#98bb6c"
+  cyan: "#7fb4ca"
+  blue: "#7e9cd8"
+  magenta: "#957fb8"
+syntax:
+  comment: "#727169"
+  keyword: "#f4a620"
+  storage: "#957fb8"
+  variable: "#c5c9c5"
+  this: "#ff9e3b"
+  string: "#98bb6c"
+  number: "#ffa066"
+  function: "#7e9cd8"
+  type: "#7fb4ca"
+  tag: "#f4a620"
+  attribute: "#7aa89f"
+  heading: "#7e9cd8"

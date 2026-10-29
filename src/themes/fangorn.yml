@@ -1,0 +1,35 @@
+# Valinor Fangorn — inspirado em Everforest
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Fangorn
+type: dark
+upstream: Everforest
+author: Diego Brocanelli
+palette:
+  bg: "#2b3339"
+  bgAlt: "#272e33"
+  fg: "#d3c6aa"
+  accent: "#a7c080"
+  onAccent: "#2b3339"
+  red: "#e67e80"
+  orange: "#e69875"
+  yellow: "#dbbc7f"
+  green: "#a7c080"
+  cyan: "#83c092"
+  blue: "#7fbbb3"
+  magenta: "#d699b6"
+syntax:
+  comment: "#859289"
+  keyword: "#e67e80"
+  storage: "#d699b6"
+  variable: "#d3c6aa"
+  this: "#e69875"
+  string: "#a7c080"
+  number: "#dbbc7f"
+  function: "#7fbbb3"
+  type: "#d699b6"
+  tag: "#e67e80"
+  attribute: "#83c092"
+  heading: "#7fbbb3"
+  builtin: "#7fbbb3"

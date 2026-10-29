@@ -1,0 +1,204 @@
+# Valinor Azaghâl — inspirado em Nord (variante)
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Azaghâl
+type: dark
+upstream: Nord (variante)
+author: Diego Brocanelli
+palette:
+  bg: "#0d1016"
+  bgAlt: "#1f2127"
+  fg: "#d8dee9"
+  accent: "#62a0ea"
+  red: "#bf616a"
+  orange: "#d08770"
+  yellow: "#ebcb8b"
+  green: "#a3be8c"
+  cyan: "#88c0d0"
+  blue: "#81a1c1"
+  magenta: "#b48ead"
+tokenColors:
+  - scope:
+      - comment
+    settings:
+      foreground: "#5a6477"
+      fontStyle: italic
+  - scope:
+      - keyword
+    settings:
+      foreground: "#c09dea"
+  - scope:
+      - variable
+    settings:
+      foreground: "#C5C8C6"
+  - scope:
+      - string
+    settings:
+      foreground: "#A3BE8C"
+  - scope:
+      - constant
+    settings:
+      foreground: "#fefefe"
+  - scope:
+      - storage
+    settings:
+      foreground: "#c09dea"
+  - scope:
+      - function
+    settings:
+      foreground: "#B48EAD"
+  - scope:
+      - class
+    settings:
+      foreground: "#B48EAD"
+  - scope:
+      - type
+    settings:
+      foreground: "#A3BE8C"
+  - name: User-defined class names
+    scope:
+      - entity.name.type.class
+      - entity.name.class
+      - support.class
+      - support.type
+      - entity.other.attribute-name
+    settings:
+      foreground: "#89b4fa"
+  - name: this, super, self, etc.
+    scope:
+      - keyword.expressions-and-types.swift
+      - keyword.other.this
+      - variable.language punctuation.definition.variable.php
+      - variable.other.readwrite.instance.ruby
+      - variable.parameter.function.language.special
+    settings:
+      foreground: "#86d8e7"
+  - name: this, super, self, etc italic.
+    scope:
+      - keyword.expressions-and-types.swift
+      - keyword.other.this
+      - variable.language
+      - variable.language punctuation.definition.variable.php
+      - variable.other.readwrite.instance.ruby
+      - variable.parameter.function.language.special
+    settings:
+      fontStyle: italic
+  - name: Function names
+    scope:
+      - entity.name.function
+      - meta.function-call.object
+      - meta.function-call.php
+      - meta.function-call.static
+      - meta.method-call.java meta.method
+      - meta.method.groovy
+      - support.function.any-method.lua
+      - keyword.operator.function.infix
+    settings:
+      foreground: "#89b4fa"
+  - name: Inherited classes
+    scope:
+      - entity.other.inherited-class
+    settings:
+      fontStyle: italic
+      foreground: "#89b4fa"
+  - scope: punctuation.definition.variable.php
+    settings:
+      foreground: "#86d8e7"
+      fontStyle: italic
+  - scope: punctuation.definition.bracket.php, punctuation.definition.parenthesis.php
+    settings:
+      foreground: "#f4f4f4"
+  - scope: keyword.control.php
+    settings:
+      foreground: "#A3BE8C"
+      fontStyle: italic
+  - scope: string.quoted.double.php, string.quoted.single.php
+    settings:
+      foreground: "#9fd99a"
+  - scope: constant.numeric.php
+    settings:
+      foreground: "#C5C8C6"
+  - scope: variable.language.php
+    settings:
+      foreground: "#caa5f6"
+      fontStyle: italic
+  - name: Comments
+    scope:
+      - comment
+      - punctuation.definition.comment
+      - unused.comment
+      - wildcard.comment
+    settings:
+      foreground: "#74788e"
+      fontStyle: italic
+  - name: Function parameters
+    scope:
+      - entity.name.variable.parameter
+      - meta.at-rule.function variable
+      - meta.at-rule.mixin variable
+      - meta.function.arguments variable.other.php
+      - meta.selectionset.graphql meta.arguments.graphql variable.arguments.graphql
+      - variable.parameter
+    settings:
+      fontStyle: italic
+  - scope: keyword.control.php
+    settings:
+      foreground: "#cba6f7"
+      fontStyle: italic
+  - name: HTML tags
+    scope:
+      - entity.name.tag
+    settings:
+      foreground: "#FF79C6"
+  - name: CSS attribute parent selectors ('&')
+    scope:
+      - entity.other.attribute-name.parent-selector
+    settings:
+      foreground: "#FF79C6"
+  - name: HTML/CSS attribute names
+    scope:
+      - entity.other.attribute-name
+    settings:
+      foreground: "#7bb256"
+      fontStyle: italic
+  - name: Keywords
+    scope:
+      - punctuation.definition.keyword
+    settings:
+      foreground: "#e1cc9e"
+      fontStyle: italic
+  - name: Keyword "new"
+    scope:
+      - keyword.control.new
+      - keyword.operator.new
+    settings:
+      fontStyle: bold italic
+  - name: Separators
+    scope:
+      - constant.other.symbol.hashkey punctuation.definition.constant.ruby
+      - entity.other.attribute-name.placeholder punctuation
+      - entity.other.attribute-name.pseudo-class punctuation
+      - entity.other.attribute-name.pseudo-element punctuation
+      - meta.group.double.toml
+      - meta.group.toml
+      - meta.object-binding-pattern-variable punctuation.destructuring
+      - punctuation.colon.graphql
+      - punctuation.definition.block.scalar.folded.yaml
+      - punctuation.definition.block.scalar.literal.yaml
+      - punctuation.definition.block.sequence.item.yaml
+      - punctuation.definition.entity.other.inherited-class
+      - punctuation.function.swift
+      - punctuation.separator.dictionary.key-value
+      - punctuation.separator.hash
+      - punctuation.separator.inheritance
+      - punctuation.separator.key-value
+      - punctuation.separator.key-value.mapping.yaml
+      - punctuation.separator.namespace
+      - punctuation.separator.pointer-access
+      - punctuation.separator.slice
+      - string.unquoted.heredoc punctuation.definition.string
+      - support.other.chomping-indicator.yaml
+      - punctuation.separator.annotation
+    settings:
+      foreground: "#fefefe"

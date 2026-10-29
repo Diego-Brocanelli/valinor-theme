@@ -1,0 +1,37 @@
+# Valinor Goldberry — inspirado em Flexoki Light
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Goldberry
+type: light
+upstream: Flexoki Light
+author: Diego Brocanelli
+palette:
+  bg: "#f3f3f3"
+  bgAlt: "#f2f0e5"
+  fg: "#100f0f"
+  fgMuted: "#6f6e69"
+  accent: "#7ecbca"
+  accentText: "#24837b"
+  onAccent: "#100f0f"
+  red: "#af3029"
+  orange: "#bc5215"
+  yellow: "#ad8301"
+  green: "#66800b"
+  cyan: "#24837b"
+  blue: "#205ea6"
+  magenta: "#5e409d"
+syntax:
+  comment: "#85837d"
+  keyword: "#8b7ec8"
+  storage: "#205ea6"
+  variable: "#100f0f"
+  this: "#af3029"
+  string: "#66800b"
+  number: "#ad8301"
+  function: "#205ea6"
+  type: "#24837b"
+  tag: "#af3029"
+  attribute: "#24837b"
+  heading: "#205ea6"
+  builtin: "#205ea6"

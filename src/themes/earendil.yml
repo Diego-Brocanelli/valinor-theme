@@ -1,0 +1,35 @@
+# Valinor Eärendil — inspirado em Tokyo Night
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Eärendil
+type: dark
+upstream: Tokyo Night
+author: Diego Brocanelli
+palette:
+  bg: "#1a1b26"
+  bgAlt: "#16161e"
+  fg: "#c0caf5"
+  fgMuted: "#a9b1d6"
+  accent: "#7aa2f7"
+  onAccent: "#1a1b26"
+  red: "#f7768e"
+  orange: "#ff9e64"
+  yellow: "#e0af68"
+  green: "#9ece6a"
+  cyan: "#7dcfff"
+  blue: "#7aa2f7"
+  magenta: "#bb9af7"
+syntax:
+  comment: "#616a94"
+  keyword: "#bb9af7"
+  storage: "#9d7cd8"
+  variable: "#c0caf5"
+  this: "#e0af68"
+  string: "#9ece6a"
+  number: "#ff9e64"
+  function: "#7aa2f7"
+  type: "#2ac3de"
+  tag: "#f7768e"
+  attribute: "#73daca"
+  heading: "#7aa2f7"

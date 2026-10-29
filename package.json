@@ -1,19 +1,21 @@
 {
     "name": "valinor-theme",
     "displayName": "Valinor Theme",
-    "description": "Valinor theme is a fusion of various well-established themes.",
+    "description": "24 Tolkien-inspired color themes (dark and light) based on Kanagawa, Rosé Pine, Nord, Gruvbox, Catppuccin, Tokyo Night, Solarized and more, plus matching file icon themes.",
     "publisher": "DiegoBrocanelli",
-    "version": "2.25.27",
+    "version": "2.26.0",
+    "license": "MIT",
+    "author": {
+        "name": "Diego Brocanelli",
+        "email": "diegod2@msn.com"
+    },
+    "homepage": "https://github.com/Diego-Brocanelli/valinor-theme#readme",
+    "bugs": {
+        "url": "https://github.com/Diego-Brocanelli/valinor-theme/issues"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/Diego-Brocanelli/valinor-theme.git"
-    },
-    "scripts": {
-        "build": "node ./src/compiler.js && node ./src/generate-minimal-valinor.js && node ./src/update-themes.js && node ./src/update-icon-themes.js",
-        "watch": "nodemon --watch src --ext yml --exec \"npm run build\"",
-        "package": "vsce package -o ./bin/valinor-theme.vsix",
-        "vscode:prepublish": "npm run build",
-        "vsce-publish": "vsce publish"
     },
     "engines": {
         "vscode": "^1.74.0"
@@ -21,13 +23,43 @@
     "categories": [
         "Themes"
     ],
+    "keywords": [
+        "theme",
+        "color theme",
+        "dark theme",
+        "light theme",
+        "icon theme",
+        "tolkien",
+        "kanagawa",
+        "rose pine",
+        "nord",
+        "gruvbox",
+        "catppuccin",
+        "tokyo night",
+        "solarized",
+        "everforest",
+        "flexoki"
+    ],
     "icon": "assets/icon.png",
+    "galleryBanner": {
+        "color": "#181616",
+        "theme": "dark"
+    },
+    "scripts": {
+        "build": "node ./src/build.js",
+        "validate": "node ./src/validate.js",
+        "watch": "nodemon --watch src --ext yml,js --exec \"npm run build\"",
+        "package": "vsce package -o ./bin/valinor-theme.vsix",
+        "vscode:prepublish": "npm run build",
+        "vsce-publish": "vsce publish",
+        "screenshots": "node ./src/screenshots.js"
+    },
     "contributes": {
         "iconThemes": [
             {
                 "id": "valinor-icons-zed",
                 "label": "Valinor Icons Zed",
-                "path": "./icons/zed-src/assets/icons/file_icons/file_types.json"
+                "path": "./icons/zed/theme.json"
             },
             {
                 "id": "valinor-icons-symbols",
@@ -100,14 +132,44 @@
                 "path": "./icons/minimal-valinor/earendil/theme.json"
             },
             {
+                "id": "valinor-icons-minimal-elbereth",
+                "label": "Valinor Icons Minimal – Elbereth",
+                "path": "./icons/minimal-valinor/elbereth/theme.json"
+            },
+            {
                 "id": "valinor-icons-minimal-fangorn",
                 "label": "Valinor Icons Minimal – Fangorn",
                 "path": "./icons/minimal-valinor/fangorn/theme.json"
             },
             {
+                "id": "valinor-icons-minimal-feanor",
+                "label": "Valinor Icons Minimal – Fëanor",
+                "path": "./icons/minimal-valinor/feanor/theme.json"
+            },
+            {
+                "id": "valinor-icons-minimal-galadriel",
+                "label": "Valinor Icons Minimal – Galadriel",
+                "path": "./icons/minimal-valinor/galadriel/theme.json"
+            },
+            {
+                "id": "valinor-icons-minimal-gandalf",
+                "label": "Valinor Icons Minimal – Gandalf",
+                "path": "./icons/minimal-valinor/gandalf/theme.json"
+            },
+            {
                 "id": "valinor-icons-minimal-gimli",
                 "label": "Valinor Icons Minimal – Gimli",
                 "path": "./icons/minimal-valinor/gimli/theme.json"
+            },
+            {
+                "id": "valinor-icons-minimal-glorfindel",
+                "label": "Valinor Icons Minimal – Glorfindel",
+                "path": "./icons/minimal-valinor/glorfindel/theme.json"
+            },
+            {
+                "id": "valinor-icons-minimal-goldberry",
+                "label": "Valinor Icons Minimal – Goldberry",
+                "path": "./icons/minimal-valinor/goldberry/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-legolas",
@@ -143,43 +205,13 @@
                 "id": "valinor-icons-minimal-ungoliant",
                 "label": "Valinor Icons Minimal – Ungoliant",
                 "path": "./icons/minimal-valinor/ungoliant/theme.json"
-            },
-            {
-                "id": "valinor-icons-minimal-elbereth",
-                "label": "Valinor Icons Minimal – Elbereth",
-                "path": "./icons/minimal-valinor/elbereth/theme.json"
-            },
-            {
-                "id": "valinor-icons-minimal-feanor",
-                "label": "Valinor Icons Minimal – Fëanor",
-                "path": "./icons/minimal-valinor/feanor/theme.json"
-            },
-            {
-                "id": "valinor-icons-minimal-galadriel",
-                "label": "Valinor Icons Minimal – Galadriel",
-                "path": "./icons/minimal-valinor/galadriel/theme.json"
-            },
-            {
-                "id": "valinor-icons-minimal-gandalf",
-                "label": "Valinor Icons Minimal – Gandalf",
-                "path": "./icons/minimal-valinor/gandalf/theme.json"
-            },
-            {
-                "id": "valinor-icons-minimal-glorfindel",
-                "label": "Valinor Icons Minimal – Glorfindel",
-                "path": "./icons/minimal-valinor/glorfindel/theme.json"
-            },
-            {
-                "id": "valinor-icons-minimal-goldberry",
-                "label": "Valinor Icons Minimal – Goldberry",
-                "path": "./icons/minimal-valinor/goldberry/theme.json"
             }
         ],
         "productIconThemes": [
             {
                 "id": "valinor-product-icons-fluent",
                 "label": "Valinor Product Icons Fluent",
-                "path": "./icons/fluent/product-icon-theme.json"
+                "path": "./icons/fluent/theme/fluent-icons.json"
             }
         ],
         "themes": [
@@ -239,8 +271,9 @@
                 "path": "./themes/fangorn.json"
             },
             {
-                "label": "Valinor Feanor",
-                "uiTheme": "vs-dark",
+                "id": "Valinor Feanor",
+                "label": "Valinor Fëanor",
+                "uiTheme": "vs",
                 "path": "./themes/feanor.json"
             },
             {
@@ -305,17 +338,10 @@
             }
         ]
     },
-    "dependencies": {
-        "fs-extra": "^11.3.0",
-        "path": "^0.12.7",
-        "vsce": "^2.15.0",
-        "yaml": "^2.7.0"
-    },
-    "__metadata": {
-        "installedTimestamp": 1741394568195,
-        "size": 19766535
-    },
     "devDependencies": {
-        "nodemon": "^3.1.14"
+        "@vscode/vsce": "^3.2.1",
+        "fs-extra": "^11.4.1",
+        "nodemon": "^3.1.14",
+        "yaml": "^2.9.1"
     }
 }

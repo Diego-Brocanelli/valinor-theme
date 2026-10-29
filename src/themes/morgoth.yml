@@ -1,0 +1,34 @@
+# Valinor Morgoth — inspirado em Matte Black
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Morgoth
+type: dark
+upstream: Matte Black
+author: Diego Brocanelli
+palette:
+  bg: "#0a0a0a"
+  bgAlt: "#080808"
+  fg: "#c8c8c8"
+  accent: "#a0a0a0"
+  statusBar: muted
+  red: "#b46a6a"
+  orange: "#b08060"
+  yellow: "#b0a070"
+  green: "#7a9a7a"
+  cyan: "#6a9a8a"
+  blue: "#7a7aaa"
+  magenta: "#a07aa0"
+syntax:
+  comment: "#626262"
+  keyword: "#8888aa"
+  storage: "#7070a0"
+  variable: "#c8c8c8"
+  this: "#aaaacc"
+  string: "#7a9a7a"
+  number: "#9a8a6a"
+  function: "#7a7aaa"
+  type: "#7a9090"
+  tag: "#8a6a6a"
+  attribute: "#6a9a8a"
+  heading: "#7a7aaa"

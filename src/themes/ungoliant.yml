@@ -1,0 +1,34 @@
+# Valinor Ungoliant — inspirado em Miasma
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Ungoliant
+type: dark
+upstream: Miasma
+author: Diego Brocanelli
+palette:
+  bg: "#1c1e1f"
+  bgAlt: "#161818"
+  fg: "#c2c2b0"
+  accent: "#5cad4a"
+  red: "#cf8164"
+  orange: "#bb7744"
+  yellow: "#d7af00"
+  green: "#5cad4a"
+  cyan: "#6fb3c9"
+  blue: "#85d3f2"
+  magenta: "#c49a7a"
+syntax:
+  comment: "#6b706e"
+  keyword: "#cf8164"
+  storage: "#a9a9a9"
+  variable: "#c2c2b0"
+  this: "#cf8164"
+  string: "#5cad4a"
+  number: "#d7af00"
+  function: "#85d3f2"
+  type: "#d7af00"
+  tag: "#cf8164"
+  attribute: "#5cad4a"
+  heading: "#85d3f2"
+  builtin: "#85d3f2"

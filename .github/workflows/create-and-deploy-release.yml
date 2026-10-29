@@ -18,12 +18,28 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version-file: .nvmrc
           cache: npm
 
-      - run: npm ci && mkdir -p ./bin
+      - name: Check tag matches package.json version
+        run: |
+          PKG_VERSION="v$(node -p "require('./package.json').version")"
+          if [ "$PKG_VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME não corresponde à versão do package.json ($PKG_VERSION)"
+            exit 1
+          fi
 
-      - run: npm run package
+      - run: npm ci
+
+      # vscode:prepublish roda o build (que valida os temas) antes de empacotar.
+      - run: mkdir -p ./bin && npm run package
+        env:
+          CI: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: ./bin/valinor-theme.vsix
 
       - name: Create GitHub Release and upload .vsix
         uses: softprops/action-gh-release@v2
@@ -39,15 +55,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
       - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version-file: .nvmrc
           cache: npm
 
       - run: npm ci
 
+      - uses: actions/download-artifact@v4
+        with:
+          name: vsix
+          path: ./bin
+
+      # Publica exatamente o .vsix anexado à release, sem rebuild.
       - name: Publish to VS Code Marketplace
-        run: npm run vsce-publish -- -p ${{ secrets.VSCE_PUBLISHER_TOKEN }}
+        run: npx vsce publish --packagePath ./bin/valinor-theme.vsix -p ${{ secrets.VSCE_PUBLISHER_TOKEN }}

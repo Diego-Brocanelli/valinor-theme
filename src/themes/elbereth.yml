@@ -1,0 +1,37 @@
+# Valinor Elbereth — inspirado em Catppuccin Latte
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Elbereth
+type: light
+upstream: Catppuccin Latte
+author: Diego Brocanelli
+palette:
+  bg: "#eff1f5"
+  bgAlt: "#e6e9ef"
+  fg: "#4c4f69"
+  fgMuted: "#5c5f77"
+  accent: "#4c4f69"
+  onAccent: "#eff1f5"
+  cursor: "#dc8a78"
+  red: "#d20f39"
+  orange: "#fe640b"
+  yellow: "#df8e1d"
+  green: "#40a02b"
+  cyan: "#179299"
+  blue: "#1e66f5"
+  magenta: "#8839ef"
+syntax:
+  comment: "#828599"
+  keyword: "#8839ef"
+  storage: "#1690c6"
+  variable: "#4c4f69"
+  this: "#e36119"
+  string: "#419831"
+  number: "#e36119"
+  function: "#1e66f5"
+  type: "#b37b34"
+  tag: "#d20f39"
+  attribute: "#179299"
+  heading: "#1e66f5"
+  builtin: "#1690c6"

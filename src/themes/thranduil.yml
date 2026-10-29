@@ -1,0 +1,34 @@
+# Valinor Thranduil — inspirado em Nord
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Thranduil
+type: dark
+upstream: Nord
+author: Diego Brocanelli
+palette:
+  bg: "#2e3440"
+  bgAlt: "#252932"
+  fg: "#d8dee9"
+  accent: "#d8dee9"
+  statusBar: muted
+  red: "#bf616a"
+  orange: "#d08770"
+  yellow: "#ebcb8b"
+  green: "#a3be8c"
+  cyan: "#88c0d0"
+  blue: "#81a1c1"
+  magenta: "#b48ead"
+syntax:
+  comment: "#79849b"
+  keyword: "#81a1c1"
+  storage: "#b48ead"
+  variable: "#d8dee9"
+  this: "#ebcb8b"
+  string: "#a3be8c"
+  number: "#b48ead"
+  function: "#88c0d0"
+  type: "#8fbcbb"
+  tag: "#c06770"
+  attribute: "#a3be8c"
+  heading: "#88c0d0"

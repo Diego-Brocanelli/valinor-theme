@@ -1,0 +1,37 @@
+# Valinor Celeborn — inspirado em Catppuccin Mocha
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Celeborn
+type: dark
+upstream: Catppuccin Mocha
+author: Diego Brocanelli
+palette:
+  bg: "#1e1e2e"
+  bgAlt: "#181825"
+  fg: "#cdd6f4"
+  fgMuted: "#a6adc8"
+  accent: "#89b4fa"
+  onAccent: "#1e1e2e"
+  cursor: "#f5e0dc"
+  red: "#f38ba8"
+  orange: "#fab387"
+  yellow: "#f9e2af"
+  green: "#a6e3a1"
+  cyan: "#94e2d5"
+  blue: "#89b4fa"
+  magenta: "#cba6f7"
+syntax:
+  comment: "#6c7086"
+  keyword: "#cba6f7"
+  storage: "#89dceb"
+  variable: "#cdd6f4"
+  this: "#f38ba8"
+  string: "#a6e3a1"
+  number: "#fab387"
+  function: "#89b4fa"
+  type: "#f9e2af"
+  tag: "#f38ba8"
+  attribute: "#74c7ec"
+  heading: "#89b4fa"
+  builtin: "#89dceb"

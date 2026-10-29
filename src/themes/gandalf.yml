@@ -1,0 +1,37 @@
+# Valinor Gandalf — inspirado em Tokyo Night Light
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Gandalf
+type: light
+upstream: Tokyo Night Light
+author: Diego Brocanelli
+palette:
+  bg: "#e6e7ed"
+  bgAlt: "#d6d8df"
+  fg: "#343b58"
+  accent: "#34548a"
+  cursor: "#34548a"
+  statusBar: muted
+  red: "#8c4351"
+  orange: "#965027"
+  yellow: "#8f5e15"
+  green: "#485e30"
+  cyan: "#0f4b6e"
+  blue: "#34548a"
+  magenta: "#5a4a78"
+syntax:
+  comment: "#7e8290"
+  keyword: "#5a4a78"
+  storage: "#5a4a78"
+  variable: "#343b58"
+  this: "#8c4351"
+  string: "#485e30"
+  number: "#965027"
+  function: "#34548a"
+  type: "#0f4b6e"
+  tag: "#8c4351"
+  attribute: "#8f5e15"
+  heading: "#34548a"
+  builtin: "#0f4b6e"
+  property: "#33635c"

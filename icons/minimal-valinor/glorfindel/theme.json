@@ -21,12 +21,5 @@
   "folderExpanded": "_folder_open",
   "rootFolder": "_root_folder",
   "rootFolderExpanded": "_root_folder_open",
-  "light": {
-    "file": "_file",
-    "folder": "_folder",
-    "folderExpanded": "_folder_open",
-    "rootFolder": "_root_folder",
-    "rootFolderExpanded": "_root_folder_open"
-  },
   "hidesExplorerArrows": false
 }

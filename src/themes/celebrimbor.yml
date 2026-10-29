@@ -1,0 +1,34 @@
+# Valinor Celebrimbor — inspirado em Hackerman
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Celebrimbor
+type: dark
+upstream: Hackerman
+author: Diego Brocanelli
+palette:
+  bg: "#0d0d0d"
+  bgAlt: "#080808"
+  fg: "#c8f7d0"
+  accent: "#00ff41"
+  onAccent: "#0d0d0d"
+  red: "#ff5f6d"
+  orange: "#aaff00"
+  yellow: "#d4ff3a"
+  green: "#00ff41"
+  cyan: "#00ffcc"
+  blue: "#33ccff"
+  magenta: "#66ff99"
+syntax:
+  comment: "#3f8f4f"
+  keyword: "#00ff41"
+  storage: "#00cc33"
+  variable: "#00ff41"
+  this: "#00ffcc"
+  string: "#33ff66"
+  number: "#aaff00"
+  function: "#00ffcc"
+  type: "#00ffcc"
+  tag: "#00ff41"
+  attribute: "#66ff99"
+  heading: "#00ffcc"

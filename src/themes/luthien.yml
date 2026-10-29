@@ -1,0 +1,35 @@
+# Valinor Lúthien — inspirado em Ethereal
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Lúthien
+type: dark
+upstream: Ethereal
+author: Diego Brocanelli
+palette:
+  bg: "#1c1a2e"
+  bgAlt: "#161428"
+  fg: "#d5c8f0"
+  accent: "#c8a0e8"
+  onAccent: "#1c1a2e"
+  red: "#f5a0c0"
+  orange: "#f5b8a0"
+  yellow: "#f5d0a0"
+  green: "#a8e8c0"
+  cyan: "#a0e8d8"
+  blue: "#a0b8f0"
+  magenta: "#c8a0e8"
+syntax:
+  comment: "#6e6a8a"
+  keyword: "#c8a0e8"
+  storage: "#a0b8f0"
+  variable: "#d5c8f0"
+  this: "#f5c0d0"
+  string: "#a8e8c0"
+  number: "#f5d0a0"
+  function: "#90d0f5"
+  type: "#f5b8d8"
+  tag: "#f5a0c0"
+  attribute: "#a0e8d8"
+  heading: "#90d0f5"
+  builtin: "#a0b8f0"

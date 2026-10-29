@@ -1,4 +1,11 @@
 node_modules
 *.vsix
+bin/
+
+# Gerados por npm run build
 themes/*
-.vscode
+icons/minimal-valinor/*
+!icons/minimal-valinor/_templates/
+icons/zed/dark/
+icons/zed/light/
+icons/zed/theme.json

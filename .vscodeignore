@@ -1,4 +1,25 @@
-.vscode/**
-.vscode-test/**
-.gitignore
-vsc-extension-quickstart.md
+# Lista de inclusão: tudo fica fora do .vsix, exceto o que a extensão usa.
+**
+
+!package.json
+!README.md
+!CHANGELOG.md
+!LICENSE
+!assets/icon.png
+
+# Temas de cores (gerados por npm run build)
+!themes/*.json
+
+# Ícones de arquivo
+!icons/zed/theme.json
+!icons/zed/dark/*.svg
+!icons/zed/light/*.svg
+!icons/minimal-valinor/*/theme.json
+!icons/minimal-valinor/*/images/*.svg
+!icons/catppuccin/*/theme.json
+!icons/catppuccin/*/icons/**
+!icons/symbols/src/symbol-icon-theme.json
+!icons/symbols/src/icons/**
+
+# Ícones de produto
+!icons/fluent/theme/**

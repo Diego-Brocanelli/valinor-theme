@@ -1,0 +1,35 @@
+# Valinor Círdan — inspirado em Osaka Jade
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Círdan
+type: dark
+upstream: Osaka Jade
+author: Diego Brocanelli
+palette:
+  bg: "#1a2b2b"
+  bgAlt: "#162424"
+  fg: "#c8d8c8"
+  accent: "#68b090"
+  onAccent: "#1a2b2b"
+  red: "#d07a7a"
+  orange: "#d0a878"
+  yellow: "#e0c878"
+  green: "#98c898"
+  cyan: "#68c8a8"
+  blue: "#60b8d0"
+  magenta: "#a898d0"
+syntax:
+  comment: "#5c7a6a"
+  keyword: "#88d8a8"
+  storage: "#60b8d0"
+  variable: "#c8d8c8"
+  this: "#d0a878"
+  string: "#98c898"
+  number: "#d0a878"
+  function: "#68b0d0"
+  type: "#88d8b8"
+  tag: "#a8e8a0"
+  attribute: "#68c8a8"
+  heading: "#68b0d0"
+  builtin: "#60b8d0"
