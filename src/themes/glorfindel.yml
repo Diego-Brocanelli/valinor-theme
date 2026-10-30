@@ -1,10 +1,12 @@
 # Valinor Glorfindel — inspirado em Night Owl Light
+# Tokens adaptados de Night Owl Light (MIT © 2018 Sarah Drasner). Ver THIRD_PARTY_NOTICES.md
 # Cores de interface geradas por src/lib/template.js a partir de "palette".
 # Use "colors" apenas para sobrescrever uma chave específica.
 $schema: vscode://schemas/color-theme
 name: Valinor Glorfindel
 type: light
 upstream: Night Owl Light
+pair: legolas
 author: Diego Brocanelli
 palette:
   bg: "#fbfbfb"
@@ -34,7 +36,7 @@ tokenColors:
   - name: Deleted
     scope: markup.deleted.diff
     settings:
-      foreground: "#EF535090"
+      foreground: "#ef5350"
       fontStyle: italic
   - name: Inserted
     scope: markup.inserted.diff

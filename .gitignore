@@ -4,8 +4,11 @@ bin/
 
 # Gerados por npm run build
 themes/*
-icons/minimal-valinor/*
-!icons/minimal-valinor/_templates/
-icons/zed/dark/
-icons/zed/light/
-icons/zed/theme.json
+icons/themed/*
+!icons/themed/_templates/
+icons/lucide/dark/
+icons/lucide/light/
+icons/lucide/theme.json
+
+# Galeria do GitHub Pages (npm run site)
+site/

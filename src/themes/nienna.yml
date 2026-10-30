@@ -1,0 +1,38 @@
+# Valinor Nienna — inspirado em Rosé Pine Dawn (par claro de Valinor Arwen)
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Nienna
+type: light
+upstream: Rosé Pine Dawn
+pair: arwen
+author: Diego Brocanelli
+palette:
+  bg: "#faf4ed"
+  bgAlt: "#f2e9e1"
+  fg: "#4a4667"
+  fgMuted: "#797593"
+  accent: "#907aa9"
+  cursor: "#4a4667"
+  red: "#b4637a"
+  orange: "#d7827e"
+  yellow: "#ea9d34"
+  green: "#286983"
+  cyan: "#56949f"
+  blue: "#56949f"
+  magenta: "#907aa9"
+  accentText: "#736287"
+syntax:
+  comment: "#8b869c"
+  keyword: "#907aa9"
+  storage: "#286983"
+  variable: "#4a4667"
+  this: "#bd787d"
+  string: "#56949f"
+  number: "#af7f50"
+  function: "#56949f"
+  type: "#907aa9"
+  builtin: "#286983"
+  tag: "#b4637a"
+  attribute: "#286983"
+  heading: "#56949f"

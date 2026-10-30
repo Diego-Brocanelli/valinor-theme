@@ -4,8 +4,8 @@
  * Build completo da extensão:
  *   1. valida os temas (erros interrompem o build)
  *   2. gera themes/*.json (a pasta é recriada do zero)
- *   3. gera os ícones Minimal de cada tema a partir da paleta
- *   4. gera as versões dark/light dos ícones Zed
+ *   3. gera os ícones de cada tema (Lucide coloridos pela paleta)
+ *   4. gera as versões dark/light dos ícones Lucide
  *   5. atualiza contributes.themes e contributes.iconThemes no package.json
  *
  * Uso: npm run build
@@ -19,13 +19,14 @@ const { ensureContrast } = require("./lib/color");
 
 const ROOT = path.join(__dirname, "..");
 const THEMES_OUT = path.join(ROOT, "themes");
-const MINIMAL_DIR = path.join(ROOT, "icons", "minimal-valinor");
-const ZED_DIR = path.join(ROOT, "icons", "zed");
+const THEMED_DIR = path.join(ROOT, "icons", "themed");
+const LUCIDE_DIR = path.join(ROOT, "icons", "lucide");
 const PACKAGE = path.join(ROOT, "package.json");
 
 // Temas de ícones mantidos à mão (sem geração).
 const STATIC_ICON_THEMES = [
-  { id: "valinor-icons-zed", label: "Valinor Icons Zed", path: "./icons/zed/theme.json" },
+  // O id "zed" é mantido para quem escolheu o tema quando ele usava os ícones do Zed.
+  { id: "valinor-icons-zed", label: "Valinor Icons Lucide", path: "./icons/lucide/theme.json" },
   { id: "valinor-icons-symbols", label: "Valinor Icons Symbols", path: "./icons/symbols/src/symbol-icon-theme.json" },
   { id: "valinor-icons-mocha", label: "Valinor Icons Mocha", path: "./icons/catppuccin/mocha/theme.json" },
   { id: "valinor-icons-latte", label: "Valinor Icons Latte", path: "./icons/catppuccin/latte/theme.json" },
@@ -38,8 +39,8 @@ const STATIC_ICON_THEMES = [
 // mesmo quando o label muda (ex.: "Feanor" → "Fëanor").
 const LEGACY_THEME_IDS = { feanor: "Valinor Feanor" };
 
-// Tons dos ícones Zed (os SVGs originais são pretos e o Zed os colore em tempo de execução).
-const ZED_TINT = { dark: "#c5c8ce", light: "#4f535b" };
+// Tons dos ícones Lucide (os SVGs usam currentColor, que o VS Code não resolve).
+const LUCIDE_TINT = { dark: "#c5c8ce", light: "#4f535b" };
 
 const shortName = (theme) => theme.name.replace(/^Valinor\s+/, "");
 
@@ -71,67 +72,77 @@ function writeThemes(themes) {
   }
 }
 
-function writeMinimalIcons(themes) {
-  const templates = path.join(MINIMAL_DIR, "_templates");
+function writeThemedIcons(themes) {
+  const map = fs.readJsonSync(path.join(LUCIDE_DIR, "map.json"));
+  const templates = path.join(THEMED_DIR, "_templates");
 
-  for (const entry of fs.readdirSync(MINIMAL_DIR)) {
-    if (entry !== "_templates") fs.removeSync(path.join(MINIMAL_DIR, entry));
+  for (const entry of fs.readdirSync(THEMED_DIR)) {
+    if (entry !== "_templates") fs.removeSync(path.join(THEMED_DIR, entry));
   }
 
   for (const { id, palette } of themes) {
-    // Pastas na cor de destaque, arquivos em tom neutro: dá para distinguir
-    // a estrutura do projeto de relance.
-    const colors = {
-      "{{FOLDER_COLOR}}": palette.accentText,
-      "{{FOLDER_OPEN_COLOR}}": palette.accentText,
-      "{{ROOT_FOLDER_COLOR}}": ensureContrast(palette.accent, palette.bgAlt, 3, palette.fg),
-      "{{FILE_COLOR}}": palette.fgMuted,
+    // Cada ícone usa um papel de cor do mapa: pastas no accent, arquivos
+    // genéricos em tom neutro e linguagens/formatos nos tons da paleta,
+    // sempre com 3:1 sobre a sidebar.
+    const legible = (color) => ensureContrast(color, palette.bgAlt, 3, palette.fg);
+    const roleColor = (role) => {
+      if (role === "accent") return palette.accentText;
+      if (role === "muted") return palette.fgMuted;
+      return legible(palette[role]);
     };
 
-    const images = path.join(MINIMAL_DIR, id, "images");
+    const images = path.join(THEMED_DIR, id, "images");
     fs.ensureDirSync(images);
 
-    for (const svg of fs.readdirSync(templates).filter((f) => f.endsWith(".svg"))) {
-      let content = fs.readFileSync(path.join(templates, svg), "utf8");
-      for (const [placeholder, color] of Object.entries(colors)) content = content.replaceAll(placeholder, color);
-      fs.writeFileSync(path.join(images, svg), content);
+    const iconDefinitions = {};
+    for (const [iconId, file] of Object.entries(map.icons)) {
+      const name = `${iconId}.svg`;
+      const svg = fs
+        .readFileSync(path.join(LUCIDE_DIR, "src", `${file}.svg`), "utf8")
+        .replaceAll('"currentColor"', `"${roleColor(map.roles[iconId])}"`);
+      fs.writeFileSync(path.join(images, name), svg);
+      iconDefinitions[iconId] = { iconPath: `./images/${name}` };
     }
 
-    const icon = (file) => ({ iconPath: `./images/${file}` });
+    // Pastas raiz: arte própria (estrela de oito pontas) na cor do accent.
+    const rootColor = legible(palette.accent);
+    for (const svg of ["root-folder.svg", "root-folder-open.svg"]) {
+      const content = fs.readFileSync(path.join(templates, svg), "utf8").replaceAll("{{ROOT_FOLDER_COLOR}}", rootColor);
+      fs.writeFileSync(path.join(images, svg), content);
+    }
+    iconDefinitions._root_folder = { iconPath: "./images/root-folder.svg" };
+    iconDefinitions._root_folder_open = { iconPath: "./images/root-folder-open.svg" };
+
     fs.writeJsonSync(
-      path.join(MINIMAL_DIR, id, "theme.json"),
+      path.join(THEMED_DIR, id, "theme.json"),
       {
-        iconDefinitions: {
-          _file: icon("file.svg"),
-          _folder: icon("folder.svg"),
-          _folder_open: icon("folder-open.svg"),
-          _root_folder: icon("root-folder.svg"),
-          _root_folder_open: icon("root-folder-open.svg"),
-        },
-        file: "_file",
-        folder: "_folder",
-        folderExpanded: "_folder_open",
+        iconDefinitions,
+        file: map.file,
+        folder: map.folder,
+        folderExpanded: map.folderExpanded,
         rootFolder: "_root_folder",
         rootFolderExpanded: "_root_folder_open",
-        hidesExplorerArrows: false,
+        fileExtensions: map.fileExtensions,
+        fileNames: map.fileNames,
+        hidesExplorerArrows: map.hidesExplorerArrows,
       },
       { spaces: 2 }
     );
   }
 }
 
-function writeZedIcons() {
-  const map = fs.readJsonSync(path.join(ZED_DIR, "map.json"));
+function writeLucideIcons() {
+  const map = fs.readJsonSync(path.join(LUCIDE_DIR, "map.json"));
   const iconDefinitions = {};
 
   for (const variant of ["dark", "light"]) {
-    const out = path.join(ZED_DIR, variant);
+    const out = path.join(LUCIDE_DIR, variant);
     fs.emptyDirSync(out);
 
     for (const [id, file] of Object.entries(map.icons)) {
       const svg = fs
-        .readFileSync(path.join(ZED_DIR, "src", `${file}.svg`), "utf8")
-        .replace(/"(black|#17191E)"/gi, `"${ZED_TINT[variant]}"`);
+        .readFileSync(path.join(LUCIDE_DIR, "src", `${file}.svg`), "utf8")
+        .replaceAll('"currentColor"', `"${LUCIDE_TINT[variant]}"`);
       fs.writeFileSync(path.join(out, `${file}.svg`), svg);
       iconDefinitions[variant === "dark" ? id : `${id}_light`] = { iconPath: `./${variant}/${file}.svg` };
     }
@@ -141,7 +152,7 @@ function writeZedIcons() {
   const mapValues = (obj, fn) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fn(v)]));
 
   fs.writeJsonSync(
-    path.join(ZED_DIR, "theme.json"),
+    path.join(LUCIDE_DIR, "theme.json"),
     {
       iconDefinitions,
       file: map.file,
@@ -180,9 +191,10 @@ function updatePackage(themes) {
     ...STATIC_ICON_THEMES,
     ...themes
       .map(({ id, theme }) => ({
+        // Ids "minimal" mantidos: o conjunto por tema antes se chamava Minimal.
         id: `valinor-icons-minimal-${id}`,
-        label: `Valinor Icons Minimal – ${shortName(theme)}`,
-        path: `./icons/minimal-valinor/${id}/theme.json`,
+        label: `Valinor Icons – ${shortName(theme)}`,
+        path: `./icons/themed/${id}/theme.json`,
       }))
       .sort(byLabel),
   ];
@@ -212,7 +224,7 @@ function checkContributedPaths(pkg) {
 const themes = step("temas carregados", loadThemes);
 step("validação", () => validateAll(themes));
 step(`${themes.length} temas gerados em themes/`, () => writeThemes(themes));
-step(`${themes.length} variantes de ícones Minimal`, () => writeMinimalIcons(themes));
-step("ícones Zed (dark/light)", writeZedIcons);
+step(`${themes.length} conjuntos de ícones por tema`, () => writeThemedIcons(themes));
+step("ícones Lucide (dark/light)", writeLucideIcons);
 const pkg = step("package.json atualizado", () => updatePackage(themes));
 checkContributedPaths(pkg);

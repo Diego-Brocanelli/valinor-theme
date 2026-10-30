@@ -1,4 +1,5 @@
 # Valinor Gimli — inspirado em Tokyo Night Storm
+# Tokens adaptados de Tokyo Night (MIT © 2018-present Enkia). Ver THIRD_PARTY_NOTICES.md
 # Cores de interface geradas por src/lib/template.js a partir de "palette".
 # Use "colors" apenas para sobrescrever uma chave específica.
 $schema: vscode://schemas/color-theme

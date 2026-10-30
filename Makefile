@@ -28,5 +28,5 @@ package:
 update-icons:
 	git submodule update --remote icons/symbols
 	git submodule update --remote icons/fluent
-	@echo "Zed: os SVGs ficam em icons/zed/src (copiados de zed-industries/zed, assets/icons/file_icons)."
+	npm run vendor:lucide
 	@echo "Catppuccin: atualizar manualmente copiando os theme.json gerados pela extensão."

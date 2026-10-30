@@ -4,7 +4,9 @@
 
 > 🇺🇸 [Read in English](https://github.com/Diego-Brocanelli/valinor-theme/blob/main/README.en.md)
 
-Valinor reúne **24 temas de cores** (19 escuros e 5 claros), cada um inspirado em um tema consolidado e batizado com um nome do universo de Tolkien, além de temas de ícones que combinam com eles.
+Valinor reúne **28 temas de cores** (18 escuros e 10 claros), cada um inspirado em um tema consolidado e batizado com um nome do universo de Tolkien, além de temas de ícones que combinam com eles.
+
+🖼️ **[Galeria interativa](https://diego-brocanelli.github.io/valinor-theme/)**: filtros, busca, pares claro/escuro e snippets de configuração.
 
 ![Todos os temas Valinor](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/overview.png)
 
@@ -47,12 +49,12 @@ Depois, `Ctrl+K Ctrl+T` (ou `Cmd+K Cmd+T`) abre a lista de temas de cores.
 | Eärendil | escuro | Tokyo Night |
 | Fangorn | escuro | Everforest |
 | Gimli | escuro | Tokyo Night Storm |
-| Legolas | escuro | Tokyo Night |
+| Legolas | escuro | Night Owl |
 | Lúthien | escuro | Ethereal |
 | Morgoth | escuro | Matte Black |
 | Shelob | escuro | Vantablack |
 | Smaug | escuro | Ristretto |
-| Thranduil | escuro | Nord |
+| Thranduil | escuro | Nord (Polar Night profundo) |
 | Ungoliant | escuro | Miasma |
 | Elbereth | claro | Catppuccin Latte |
 | Fëanor | claro | Quiet Light |
@@ -60,6 +62,30 @@ Depois, `Ctrl+K Ctrl+T` (ou `Cmd+K Cmd+T`) abre a lista de temas de cores.
 | Gandalf | claro | Tokyo Night Light |
 | Glorfindel | claro | Night Owl Light |
 | Goldberry | claro | Flexoki Light |
+| Bilbo | claro | Gruvbox Light |
+| Lothlórien | claro | Everforest Light |
+| Nienna | claro | Rosé Pine Dawn |
+| Yavanna | claro | Kanagawa Lotus |
+
+### Pares claro/escuro
+
+Sete temas escuros têm um par claro da mesma família. Com a configuração abaixo, o VS Code troca de tema sozinho quando o sistema alterna entre modo claro e escuro:
+
+```jsonc
+"window.autoDetectColorScheme": true,
+"workbench.preferredDarkColorTheme": "Valinor Arwen",
+"workbench.preferredLightColorTheme": "Valinor Nienna"
+```
+
+| Escuro | Claro | Família |
+|---|---|---|
+| Arien | Yavanna | Kanagawa |
+| Arwen | Nienna | Rosé Pine |
+| Bombur | Bilbo | Gruvbox |
+| Celeborn | Elbereth | Catppuccin |
+| Eärendil | Gandalf | Tokyo Night |
+| Fangorn | Lothlórien | Everforest |
+| Legolas | Glorfindel | Night Owl |
 
 Todos os temas passam por uma validação automática de contraste (WCAG): texto do editor ≥ 4,5:1, comentários e números de linha ≥ 3:1, botões, badges e status bar ≥ 4,5:1, item selecionado ≥ 4,5:1.
 
@@ -87,6 +113,8 @@ Todos os temas passam por uma validação automática de contraste (WCAG): texto
 | ![Elbereth](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/elbereth.png) | ![Fëanor](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/feanor.png) |
 | ![Galadriel](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/galadriel.png) | ![Gandalf](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/gandalf.png) |
 | ![Glorfindel](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/glorfindel.png) | ![Goldberry](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/goldberry.png) |
+| ![Bilbo](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/bilbo.png) | ![Lothlórien](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/lothlorien.png) |
+| ![Nienna](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/nienna.png) | ![Yavanna](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/yavanna.png) |
 
 </details>
 
@@ -98,8 +126,8 @@ Todos os temas passam por uma validação automática de contraste (WCAG): texto
 
 `Ctrl+Shift+P` / `Cmd+Shift+P` → **Preferences: File Icon Theme**:
 
-- **Valinor Icons Minimal – \<tema\>**: um conjunto por tema de cores (24 no total), com pastas na cor de destaque do tema e arquivos em tom neutro. Escolha o que tem o mesmo nome do seu tema.
-- **Valinor Icons Zed**: ícones monocromáticos do editor Zed, com versões para tema claro e escuro.
+- **Valinor Icons – \<tema\>**: um conjunto por tema de cores (28 no total). São os ícones Lucide coloridos com a paleta do tema: pastas na cor de destaque, linguagens e formatos nos tons do tema (JavaScript em amarelo, TypeScript em azul, Rust em laranja…) e arquivos genéricos em tom neutro. Escolha o que tem o mesmo nome do seu tema.
+- **Valinor Icons Lucide**: ícones de linha do [Lucide](https://lucide.dev), um por tipo de arquivo, com versões para tema claro e escuro.
 - **Valinor Icons Symbols**: ícones geométricos e limpos (Miguel Solorio).
 - **Valinor Icons Mocha / Latte / Frappé / Macchiato**: Catppuccin Icons.
 
@@ -168,9 +196,11 @@ O `src/lib/template.js` deriva as mais de 300 cores da interface a partir da pal
 
 | Comando | O que faz |
 |---|---|
-| `npm run build` | Valida e gera `themes/`, os ícones Minimal e Zed e atualiza o `package.json` |
+| `npm run build` | Valida e gera `themes/`, os ícones por tema e Lucide e atualiza o `package.json` |
+| `npm run vendor:lucide` | Copia de `lucide-static` os SVGs listados em `icons/lucide/map.json` |
 | `npm run validate` | Mostra erros e avisos de contraste, cores inválidas e chaves desconhecidas |
 | `npm run watch` | Refaz o build a cada alteração em `src/` |
+| `npm run site` | Gera a galeria em `site/` (publicada no GitHub Pages pelo workflow `pages.yml`) |
 | `npm run screenshots` | Captura prints reais do VS Code de cada tema em `assets/previews/` (Hyprland) |
 | `npm run package` | Gera `bin/valinor-theme.vsix` |
 
@@ -180,7 +210,7 @@ O `src/lib/template.js` deriva as mais de 300 cores da interface a partir da pal
 make update-icons
 ```
 
-> Os SVGs do Zed ficam em `icons/zed/src`. O Catppuccin é atualizado manualmente, copiando os `theme.json` gerados pela extensão.
+> Os SVGs do Lucide ficam em `icons/lucide/src` (para trocar um ícone, edite `icons/lucide/map.json` e rode `npm run vendor:lucide`). O Catppuccin é atualizado manualmente, copiando os `theme.json` gerados pela extensão.
 
 ### Publicação
 
@@ -199,20 +229,24 @@ Crie uma tag com a mesma versão do `package.json` (por exemplo, `v2.26.0`). O w
 - [Gruvbox](https://github.com/morhetz/gruvbox)
 - [Kanagawa](https://github.com/rebelot/kanagawa.nvim)
 - [Miasma](https://github.com/xero/miasma.nvim)
-- [Night Owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl)
-- [Nord](https://marketplace.visualstudio.com/items?itemName=arcticicestudio.nord-visual-studio-code)
+- [Night Owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl) (MIT): tokens adaptados no Glorfindel e no Legolas
+- [Nord](https://marketplace.visualstudio.com/items?itemName=arcticicestudio.nord-visual-studio-code) (MIT): tokens adaptados no Durin
 - [Omarchy](https://github.com/basecamp/omarchy): Ethereal, Hackerman, Matte Black, Osaka Jade, Ristretto, Vantablack
 - [Quiet Light for VSC](https://marketplace.visualstudio.com/items?itemName=onecrayon.theme-quietlight-vsc)
 - [Rosé Pine](https://marketplace.visualstudio.com/items?itemName=mvllow.rose-pine)
 - [Solarized](https://marketplace.visualstudio.com/items?itemName=ryanolsonx.solarized)
-- [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
+- [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night) (MIT): tokens adaptados no Gimli
 
 ### Ícones
 
-- [Zed Icons](https://github.com/zed-industries/zed): Zed Industries
-- [Symbols](https://github.com/miguelsolorio/vscode-symbols): Miguel Solorio
-- [Fluent Icons](https://github.com/miguelsolorio/vscode-fluent-icons): Miguel Solorio
-- [Catppuccin Icons](https://github.com/catppuccin/vscode-icons): Catppuccin
+- [Lucide](https://github.com/lucide-icons/lucide) (ISC): Lucide Contributors
+- [Symbols](https://github.com/miguelsolorio/vscode-symbols) (MIT): Miguel Solorio
+- [Fluent Icons](https://github.com/miguelsolorio/vscode-fluent-icons) (MIT): Miguel Solorio, com os [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) da Microsoft
+- [Catppuccin Icons](https://github.com/catppuccin/vscode-icons) (MIT): Catppuccin
+
+Os ícones de pasta raiz (estrela de oito pontas) são arte própria do projeto.
+
+O texto completo das licenças de terceiros está em [THIRD_PARTY_NOTICES.md](https://github.com/Diego-Brocanelli/valinor-theme/blob/main/THIRD_PARTY_NOTICES.md).
 
 ---
 

@@ -5,6 +5,7 @@ $schema: vscode://schemas/color-theme
 name: Valinor Gandalf
 type: light
 upstream: Tokyo Night Light
+pair: earendil
 author: Diego Brocanelli
 palette:
   bg: "#e6e7ed"

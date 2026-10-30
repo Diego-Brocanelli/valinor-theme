@@ -5,11 +5,12 @@ $schema: vscode://schemas/color-theme
 name: Valinor Elbereth
 type: light
 upstream: Catppuccin Latte
+pair: celeborn
 author: Diego Brocanelli
 palette:
   bg: "#eff1f5"
   bgAlt: "#e6e9ef"
-  fg: "#4c4f69"
+  fg: "#484b64"
   fgMuted: "#5c5f77"
   accent: "#4c4f69"
   onAccent: "#eff1f5"
@@ -25,7 +26,7 @@ syntax:
   comment: "#828599"
   keyword: "#8839ef"
   storage: "#1690c6"
-  variable: "#4c4f69"
+  variable: "#484b64"
   this: "#e36119"
   string: "#419831"
   number: "#e36119"

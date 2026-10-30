@@ -1,4 +1,5 @@
 # Valinor Durin — inspirado em Nord
+# Tokens adaptados de Nord (MIT © 2016-present Sven Greb). Ver THIRD_PARTY_NOTICES.md
 # Cores de interface geradas por src/lib/template.js a partir de "palette".
 # Use "colors" apenas para sobrescrever uma chave específica.
 $schema: vscode://schemas/color-theme

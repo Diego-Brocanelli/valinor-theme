@@ -11,6 +11,7 @@
  * Requer: Hyprland (hyprctl), grim, ImageMagick (magick) e o comando `code`.
  * Uso: npm run screenshots
  *      npm run screenshots -- durin galadriel   (só alguns temas)
+ *      ICON_THEME=valinor-icons-zed npm run screenshots -- arien
  */
 
 const fs = require("fs-extra");
@@ -96,7 +97,8 @@ export abstract class Light {
 function settings(compiled, label) {
   return {
     "workbench.colorTheme": label,
-    "workbench.iconTheme": `valinor-icons-minimal-${compiled.id}`,
+    // ICON_THEME=<id> troca o tema de ícones (ex.: valinor-icons-zed para conferir os Lucide).
+    "workbench.iconTheme": process.env.ICON_THEME || `valinor-icons-minimal-${compiled.id}`,
     "editor.fontFamily": "Zed Plex Mono",
     "editor.fontSize": 15,
     "editor.lineHeight": 1.6,
@@ -216,7 +218,7 @@ function main() {
     }
     if (!window) throw new Error("a janela do VS Code não apareceu no monitor virtual");
 
-    sleep(20000); // tempo para ativar as extensões e o TypeScript aplicar os tokens semânticos
+    sleep(35000); // tempo para ativar as extensões e o TypeScript terminar de inicializar
     window = findWindow(workspaceId, userDataDir);
 
     fs.ensureDirSync(OUT);

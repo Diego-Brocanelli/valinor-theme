@@ -23,9 +23,9 @@ function contrastChecks(c) {
     ["números de linha", c["editorLineNumber.foreground"], c["editor.background"], 3, 3],
     ["texto da sidebar", c["sideBar.foreground"], c["sideBar.background"], 4.5, 7],
     ["texto secundário", c.descriptionForeground, c["sideBar.background"], 4.5, 4.5],
-    ["título da sidebar", c["sideBarTitle.foreground"], c["sideBar.background"], 3, 4.5],
+    ["título da sidebar", c["sideBarTitle.foreground"], c["sideBar.background"], 4.5, 4.5],
     ["item selecionado", c["list.activeSelectionForeground"], sel, 4.5, 5.5],
-    ["destaque de busca na lista", c["list.highlightForeground"], c["sideBar.background"], 3, 4.5],
+    ["destaque de busca na lista", c["list.highlightForeground"], c["sideBar.background"], 4.5, 4.5],
     ["status bar", c["statusBar.foreground"], c["statusBar.background"], 4.5, 4.5],
     ["botão", c["button.foreground"], c["button.background"], 4.5, 4.5],
     ["botão (hover)", c["button.foreground"], c["button.hoverBackground"], 4.5, 4.5],
@@ -34,7 +34,7 @@ function contrastChecks(c) {
     ["tab inativa", c["tab.inactiveForeground"], c["tab.inactiveBackground"], 4.5, 4.5],
     ["terminal", c["terminal.foreground"], c["terminal.background"], 4.5, 7],
     ["palette", c["quickInput.foreground"], c["quickInput.background"], 4.5, 7],
-    ["link", c["textLink.foreground"], c["editor.background"], 3, 4.5],
+    ["link", c["textLink.foreground"], c["editor.background"], 4.5, 4.5],
   ];
 }
 

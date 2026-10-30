@@ -5,21 +5,26 @@
 !README.md
 !CHANGELOG.md
 !LICENSE
+!THIRD_PARTY_NOTICES.md
 !assets/icon.png
 
 # Temas de cores (gerados por npm run build)
 !themes/*.json
 
 # Ícones de arquivo
-!icons/zed/theme.json
-!icons/zed/dark/*.svg
-!icons/zed/light/*.svg
-!icons/minimal-valinor/*/theme.json
-!icons/minimal-valinor/*/images/*.svg
+!icons/lucide/theme.json
+!icons/lucide/LICENSE
+!icons/lucide/dark/*.svg
+!icons/lucide/light/*.svg
+!icons/themed/*/theme.json
+!icons/themed/*/images/*.svg
 !icons/catppuccin/*/theme.json
 !icons/catppuccin/*/icons/**
+!icons/catppuccin/LICENSE
 !icons/symbols/src/symbol-icon-theme.json
 !icons/symbols/src/icons/**
+!icons/symbols/LICENSE
 
 # Ícones de produto
 !icons/fluent/theme/**
+!icons/fluent/LICENSE

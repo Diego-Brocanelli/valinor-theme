@@ -1,7 +1,7 @@
 {
     "name": "valinor-theme",
     "displayName": "Valinor Theme",
-    "description": "24 Tolkien-inspired color themes (dark and light) based on Kanagawa, Rosé Pine, Nord, Gruvbox, Catppuccin, Tokyo Night, Solarized and more, plus matching file icon themes.",
+    "description": "28 Tolkien-inspired color themes (18 dark, 10 light, with light/dark pairs) based on Kanagawa, Rosé Pine, Nord, Gruvbox, Catppuccin, Tokyo Night, Solarized and more, plus matching file icon themes.",
     "publisher": "DiegoBrocanelli",
     "version": "2.26.0",
     "license": "MIT",
@@ -52,14 +52,16 @@
         "package": "vsce package -o ./bin/valinor-theme.vsix",
         "vscode:prepublish": "npm run build",
         "vsce-publish": "vsce publish",
-        "screenshots": "node ./src/screenshots.js"
+        "screenshots": "node ./src/screenshots.js",
+        "vendor:lucide": "node ./src/vendor-lucide.js",
+        "site": "node ./src/site.js"
     },
     "contributes": {
         "iconThemes": [
             {
                 "id": "valinor-icons-zed",
-                "label": "Valinor Icons Zed",
-                "path": "./icons/zed/theme.json"
+                "label": "Valinor Icons Lucide",
+                "path": "./icons/lucide/theme.json"
             },
             {
                 "id": "valinor-icons-symbols",
@@ -88,123 +90,143 @@
             },
             {
                 "id": "valinor-icons-minimal-arien",
-                "label": "Valinor Icons Minimal – Arien",
-                "path": "./icons/minimal-valinor/arien/theme.json"
+                "label": "Valinor Icons – Arien",
+                "path": "./icons/themed/arien/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-arwen",
-                "label": "Valinor Icons Minimal – Arwen",
-                "path": "./icons/minimal-valinor/arwen/theme.json"
+                "label": "Valinor Icons – Arwen",
+                "path": "./icons/themed/arwen/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-azaghal",
-                "label": "Valinor Icons Minimal – Azaghâl",
-                "path": "./icons/minimal-valinor/azaghal/theme.json"
+                "label": "Valinor Icons – Azaghâl",
+                "path": "./icons/themed/azaghal/theme.json"
+            },
+            {
+                "id": "valinor-icons-minimal-bilbo",
+                "label": "Valinor Icons – Bilbo",
+                "path": "./icons/themed/bilbo/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-bombur",
-                "label": "Valinor Icons Minimal – Bombur",
-                "path": "./icons/minimal-valinor/bombur/theme.json"
+                "label": "Valinor Icons – Bombur",
+                "path": "./icons/themed/bombur/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-celeborn",
-                "label": "Valinor Icons Minimal – Celeborn",
-                "path": "./icons/minimal-valinor/celeborn/theme.json"
+                "label": "Valinor Icons – Celeborn",
+                "path": "./icons/themed/celeborn/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-celebrimbor",
-                "label": "Valinor Icons Minimal – Celebrimbor",
-                "path": "./icons/minimal-valinor/celebrimbor/theme.json"
+                "label": "Valinor Icons – Celebrimbor",
+                "path": "./icons/themed/celebrimbor/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-cirdan",
-                "label": "Valinor Icons Minimal – Círdan",
-                "path": "./icons/minimal-valinor/cirdan/theme.json"
+                "label": "Valinor Icons – Círdan",
+                "path": "./icons/themed/cirdan/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-durin",
-                "label": "Valinor Icons Minimal – Durin",
-                "path": "./icons/minimal-valinor/durin/theme.json"
+                "label": "Valinor Icons – Durin",
+                "path": "./icons/themed/durin/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-earendil",
-                "label": "Valinor Icons Minimal – Eärendil",
-                "path": "./icons/minimal-valinor/earendil/theme.json"
+                "label": "Valinor Icons – Eärendil",
+                "path": "./icons/themed/earendil/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-elbereth",
-                "label": "Valinor Icons Minimal – Elbereth",
-                "path": "./icons/minimal-valinor/elbereth/theme.json"
+                "label": "Valinor Icons – Elbereth",
+                "path": "./icons/themed/elbereth/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-fangorn",
-                "label": "Valinor Icons Minimal – Fangorn",
-                "path": "./icons/minimal-valinor/fangorn/theme.json"
+                "label": "Valinor Icons – Fangorn",
+                "path": "./icons/themed/fangorn/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-feanor",
-                "label": "Valinor Icons Minimal – Fëanor",
-                "path": "./icons/minimal-valinor/feanor/theme.json"
+                "label": "Valinor Icons – Fëanor",
+                "path": "./icons/themed/feanor/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-galadriel",
-                "label": "Valinor Icons Minimal – Galadriel",
-                "path": "./icons/minimal-valinor/galadriel/theme.json"
+                "label": "Valinor Icons – Galadriel",
+                "path": "./icons/themed/galadriel/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-gandalf",
-                "label": "Valinor Icons Minimal – Gandalf",
-                "path": "./icons/minimal-valinor/gandalf/theme.json"
+                "label": "Valinor Icons – Gandalf",
+                "path": "./icons/themed/gandalf/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-gimli",
-                "label": "Valinor Icons Minimal – Gimli",
-                "path": "./icons/minimal-valinor/gimli/theme.json"
+                "label": "Valinor Icons – Gimli",
+                "path": "./icons/themed/gimli/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-glorfindel",
-                "label": "Valinor Icons Minimal – Glorfindel",
-                "path": "./icons/minimal-valinor/glorfindel/theme.json"
+                "label": "Valinor Icons – Glorfindel",
+                "path": "./icons/themed/glorfindel/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-goldberry",
-                "label": "Valinor Icons Minimal – Goldberry",
-                "path": "./icons/minimal-valinor/goldberry/theme.json"
+                "label": "Valinor Icons – Goldberry",
+                "path": "./icons/themed/goldberry/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-legolas",
-                "label": "Valinor Icons Minimal – Legolas",
-                "path": "./icons/minimal-valinor/legolas/theme.json"
+                "label": "Valinor Icons – Legolas",
+                "path": "./icons/themed/legolas/theme.json"
+            },
+            {
+                "id": "valinor-icons-minimal-lothlorien",
+                "label": "Valinor Icons – Lothlórien",
+                "path": "./icons/themed/lothlorien/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-luthien",
-                "label": "Valinor Icons Minimal – Lúthien",
-                "path": "./icons/minimal-valinor/luthien/theme.json"
+                "label": "Valinor Icons – Lúthien",
+                "path": "./icons/themed/luthien/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-morgoth",
-                "label": "Valinor Icons Minimal – Morgoth",
-                "path": "./icons/minimal-valinor/morgoth/theme.json"
+                "label": "Valinor Icons – Morgoth",
+                "path": "./icons/themed/morgoth/theme.json"
+            },
+            {
+                "id": "valinor-icons-minimal-nienna",
+                "label": "Valinor Icons – Nienna",
+                "path": "./icons/themed/nienna/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-shelob",
-                "label": "Valinor Icons Minimal – Shelob",
-                "path": "./icons/minimal-valinor/shelob/theme.json"
+                "label": "Valinor Icons – Shelob",
+                "path": "./icons/themed/shelob/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-smaug",
-                "label": "Valinor Icons Minimal – Smaug",
-                "path": "./icons/minimal-valinor/smaug/theme.json"
+                "label": "Valinor Icons – Smaug",
+                "path": "./icons/themed/smaug/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-thranduil",
-                "label": "Valinor Icons Minimal – Thranduil",
-                "path": "./icons/minimal-valinor/thranduil/theme.json"
+                "label": "Valinor Icons – Thranduil",
+                "path": "./icons/themed/thranduil/theme.json"
             },
             {
                 "id": "valinor-icons-minimal-ungoliant",
-                "label": "Valinor Icons Minimal – Ungoliant",
-                "path": "./icons/minimal-valinor/ungoliant/theme.json"
+                "label": "Valinor Icons – Ungoliant",
+                "path": "./icons/themed/ungoliant/theme.json"
+            },
+            {
+                "id": "valinor-icons-minimal-yavanna",
+                "label": "Valinor Icons – Yavanna",
+                "path": "./icons/themed/yavanna/theme.json"
             }
         ],
         "productIconThemes": [
@@ -229,6 +251,11 @@
                 "label": "Valinor Azaghâl",
                 "uiTheme": "vs-dark",
                 "path": "./themes/azaghal.json"
+            },
+            {
+                "label": "Valinor Bilbo",
+                "uiTheme": "vs",
+                "path": "./themes/bilbo.json"
             },
             {
                 "label": "Valinor Bombur",
@@ -307,6 +334,11 @@
                 "path": "./themes/legolas.json"
             },
             {
+                "label": "Valinor Lothlórien",
+                "uiTheme": "vs",
+                "path": "./themes/lothlorien.json"
+            },
+            {
                 "label": "Valinor Lúthien",
                 "uiTheme": "vs-dark",
                 "path": "./themes/luthien.json"
@@ -315,6 +347,11 @@
                 "label": "Valinor Morgoth",
                 "uiTheme": "vs-dark",
                 "path": "./themes/morgoth.json"
+            },
+            {
+                "label": "Valinor Nienna",
+                "uiTheme": "vs",
+                "path": "./themes/nienna.json"
             },
             {
                 "label": "Valinor Shelob",
@@ -335,12 +372,18 @@
                 "label": "Valinor Ungoliant",
                 "uiTheme": "vs-dark",
                 "path": "./themes/ungoliant.json"
+            },
+            {
+                "label": "Valinor Yavanna",
+                "uiTheme": "vs",
+                "path": "./themes/yavanna.json"
             }
         ]
     },
     "devDependencies": {
         "@vscode/vsce": "^3.2.1",
         "fs-extra": "^11.4.1",
+        "lucide-static": "0.460.0",
         "nodemon": "^3.1.14",
         "yaml": "^2.9.1"
     }

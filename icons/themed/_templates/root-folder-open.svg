@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="{{ROOT_FOLDER_COLOR}}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M1.75 12.25v-8a1 1 0 0 1 1-1h3.1l1.5 1.5h4.9a1 1 0 0 1 1 1v1.25"/>
+  <path d="M1.75 12.75 3.7 7.75h10.55l-1.95 5z"/>
+  <path d="M8.60 8.35 L8.91 9.51 L9.94 8.91 L9.34 9.94 L10.50 10.25 L9.34 10.56 L9.94 11.59 L8.91 10.99 L8.60 12.15 L8.29 10.99 L7.26 11.59 L7.86 10.56 L6.70 10.25 L7.86 9.94 L7.26 8.91 L8.29 9.51z" fill="{{ROOT_FOLDER_COLOR}}" stroke="none"/>
+</svg>

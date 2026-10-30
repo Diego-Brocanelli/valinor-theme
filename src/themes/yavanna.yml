@@ -1,0 +1,38 @@
+# Valinor Yavanna — inspirado em Kanagawa Lotus (par claro de Valinor Arien)
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Yavanna
+type: light
+upstream: Kanagawa Lotus
+pair: arien
+author: Diego Brocanelli
+palette:
+  bg: "#f2ecbc"
+  bgAlt: "#e7dba0"
+  fg: "#3f3f4b"
+  fgMuted: "#716e61"
+  accent: "#cc6d00"
+  cursor: "#43436c"
+  red: "#c84053"
+  orange: "#cc6d00"
+  yellow: "#77713f"
+  green: "#6f894e"
+  cyan: "#4e8ca2"
+  blue: "#4d699b"
+  magenta: "#b35b79"
+  accentText: "#8f4c00"
+syntax:
+  comment: "#85847d"
+  keyword: "#c66c05"
+  storage: "#624c83"
+  variable: "#3f3f4b"
+  this: "#b57723"
+  string: "#6f894e"
+  number: "#b35b79"
+  constant: "#c66c05"
+  function: "#4d699b"
+  type: "#597b75"
+  tag: "#c66c05"
+  attribute: "#5e857a"
+  heading: "#4d699b"

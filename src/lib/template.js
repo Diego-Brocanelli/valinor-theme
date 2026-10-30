@@ -29,7 +29,12 @@ function resolvePalette(palette, type) {
   p.cursor = p.cursor || p.accent;
   p.border = p.border || mix(p.bgAlt, p.fg, dark ? 0.12 : 0.14);
   p.lineNumber = ensureContrast(p.lineNumber || mix(p.bg, p.fg, 0.4), p.bg, 3, p.fg);
-  p.accentText = ensureContrast(p.accentText || p.accent, p.bgAlt, 3, p.fg);
+  // Destaque usado como texto (títulos, links, matches): 4.5:1 sobre a sidebar
+  // e sobre o editor. Clareia em fundo escuro e escurece em fundo claro, o que
+  // preserva o matiz melhor do que aproximar da cor do texto.
+  const accentToward = dark ? "#ffffff" : "#000000";
+  p.accentText = ensureContrast(p.accentText || p.accent, p.bgAlt, 4.5, accentToward);
+  p.accentText = ensureContrast(p.accentText, p.bg, 4.5, accentToward);
 
   // Texto sobre o accent: prefere as cores do próprio tema, cai para preto/branco.
   if (!p.onAccent) {

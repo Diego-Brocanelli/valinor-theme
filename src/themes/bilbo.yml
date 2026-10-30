@@ -1,0 +1,37 @@
+# Valinor Bilbo — inspirado em Gruvbox Light (par claro de Valinor Bombur)
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+# Use "colors" apenas para sobrescrever uma chave específica.
+$schema: vscode://schemas/color-theme
+name: Valinor Bilbo
+type: light
+upstream: Gruvbox Light
+pair: bombur
+author: Diego Brocanelli
+palette:
+  bg: "#fbf1c7"
+  bgAlt: "#f2e5bc"
+  fg: "#3c3836"
+  fgMuted: "#7c6f64"
+  accent: "#b57614"
+  cursor: "#3c3836"
+  red: "#9d0006"
+  orange: "#af3a03"
+  yellow: "#b57614"
+  green: "#79740e"
+  cyan: "#427b58"
+  blue: "#076678"
+  magenta: "#8f3f71"
+  accentText: "#88590f"
+syntax:
+  comment: "#928374"
+  keyword: "#9d0006"
+  storage: "#8f3f71"
+  variable: "#3c3836"
+  this: "#af3a03"
+  string: "#79740e"
+  number: "#b57614"
+  function: "#b57614"
+  type: "#427b58"
+  tag: "#9d0006"
+  attribute: "#076678"
+  heading: "#b57614"
