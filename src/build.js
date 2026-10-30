@@ -21,13 +21,19 @@ const ROOT = path.join(__dirname, "..");
 const THEMES_OUT = path.join(ROOT, "themes");
 const THEMED_DIR = path.join(ROOT, "icons", "themed");
 const LUCIDE_DIR = path.join(ROOT, "icons", "lucide");
+const SYMBOLS_SRC = path.join(ROOT, "icons", "symbols");
+const SYMBOLS_DIST = path.join(ROOT, "icons", "symbols-dist");
+
+// Ícones do Symbols acima deste tamanho (SVGs com imagem embutida) usam o
+// ícone padrão do tema: dois deles tinham 1,5 MB cada no .vsix.
+const SYMBOLS_MAX_ICON_BYTES = 200 * 1024;
 const PACKAGE = path.join(ROOT, "package.json");
 
 // Temas de ícones mantidos à mão (sem geração).
 const STATIC_ICON_THEMES = [
   // O id "zed" é mantido para quem escolheu o tema quando ele usava os ícones do Zed.
   { id: "valinor-icons-zed", label: "Valinor Icons Lucide", path: "./icons/lucide/theme.json" },
-  { id: "valinor-icons-symbols", label: "Valinor Icons Symbols", path: "./icons/symbols/src/symbol-icon-theme.json" },
+  { id: "valinor-icons-symbols", label: "Valinor Icons Symbols", path: "./icons/symbols-dist/symbol-icon-theme.json" },
   { id: "valinor-icons-mocha", label: "Valinor Icons Mocha", path: "./icons/catppuccin/mocha/theme.json" },
   { id: "valinor-icons-latte", label: "Valinor Icons Latte", path: "./icons/catppuccin/latte/theme.json" },
   { id: "valinor-icons-frappe", label: "Valinor Icons Frappé", path: "./icons/catppuccin/frappe/theme.json" },
@@ -43,6 +49,9 @@ const LEGACY_THEME_IDS = { feanor: "Valinor Feanor" };
 const LUCIDE_TINT = { dark: "#c5c8ce", light: "#4f535b" };
 
 const shortName = (theme) => theme.name.replace(/^Valinor\s+/, "");
+
+/** SVG em uma linha só (mantém o comentário @license do Lucide). */
+const minifySvg = (svg) => svg.replace(/>\s+</g, "><").replace(/\s*\n\s*/g, " ").trim();
 
 function step(title, fn) {
   const result = fn();
@@ -97,9 +106,11 @@ function writeThemedIcons(themes) {
     const iconDefinitions = {};
     for (const [iconId, file] of Object.entries(map.icons)) {
       const name = `${iconId}.svg`;
-      const svg = fs
-        .readFileSync(path.join(LUCIDE_DIR, "src", `${file}.svg`), "utf8")
-        .replaceAll('"currentColor"', `"${roleColor(map.roles[iconId])}"`);
+      const svg = minifySvg(
+        fs
+          .readFileSync(path.join(LUCIDE_DIR, "src", `${file}.svg`), "utf8")
+          .replaceAll('"currentColor"', `"${roleColor(map.roles[iconId])}"`)
+      );
       fs.writeFileSync(path.join(images, name), svg);
       iconDefinitions[iconId] = { iconPath: `./images/${name}` };
     }
@@ -140,9 +151,11 @@ function writeLucideIcons() {
     fs.emptyDirSync(out);
 
     for (const [id, file] of Object.entries(map.icons)) {
-      const svg = fs
-        .readFileSync(path.join(LUCIDE_DIR, "src", `${file}.svg`), "utf8")
-        .replaceAll('"currentColor"', `"${LUCIDE_TINT[variant]}"`);
+      const svg = minifySvg(
+        fs
+          .readFileSync(path.join(LUCIDE_DIR, "src", `${file}.svg`), "utf8")
+          .replaceAll('"currentColor"', `"${LUCIDE_TINT[variant]}"`)
+      );
       fs.writeFileSync(path.join(out, `${file}.svg`), svg);
       iconDefinitions[variant === "dark" ? id : `${id}_light`] = { iconPath: `./${variant}/${file}.svg` };
     }
@@ -171,6 +184,37 @@ function writeLucideIcons() {
     },
     { spaces: 2 }
   );
+}
+
+/**
+ * Copia o tema Symbols (submódulo, sem alterá-lo) para icons/symbols-dist
+ * só com os arquivos que o tema referencia. Ícones grandes demais passam a
+ * usar o ícone padrão de arquivo ou pasta do próprio tema.
+ */
+function writeSymbolsIcons() {
+  const themeFile = path.join(SYMBOLS_SRC, "src", "symbol-icon-theme.json");
+  fs.removeSync(SYMBOLS_DIST);
+  if (!fs.existsSync(themeFile)) return []; // submódulo não inicializado: checkContributedPaths avisa
+
+  const theme = fs.readJsonSync(themeFile);
+  const defs = theme.iconDefinitions;
+  const sizeOf = (def) => fs.statSync(path.join(SYMBOLS_SRC, "src", def.iconPath)).size;
+  const fallback = (def) => defs[def.iconPath.includes("/folders/") ? theme.folder : theme.file];
+
+  const replaced = [];
+  for (const [id, def] of Object.entries(defs)) {
+    if (sizeOf(def) > SYMBOLS_MAX_ICON_BYTES) {
+      replaced.push(`${id} (${Math.round(sizeOf(def) / 1024)} KB)`);
+      defs[id] = fallback(def);
+    }
+  }
+
+  for (const iconPath of new Set(Object.values(defs).map((d) => d.iconPath))) {
+    fs.copySync(path.join(SYMBOLS_SRC, "src", iconPath), path.join(SYMBOLS_DIST, iconPath));
+  }
+  fs.writeJsonSync(path.join(SYMBOLS_DIST, "symbol-icon-theme.json"), theme);
+  fs.copySync(path.join(SYMBOLS_SRC, "LICENSE"), path.join(SYMBOLS_DIST, "LICENSE"));
+  return replaced;
 }
 
 function updatePackage(themes) {
@@ -226,5 +270,7 @@ step("validação", () => validateAll(themes));
 step(`${themes.length} temas gerados em themes/`, () => writeThemes(themes));
 step(`${themes.length} conjuntos de ícones por tema`, () => writeThemedIcons(themes));
 step("ícones Lucide (dark/light)", writeLucideIcons);
+const replacedSymbols = step("ícones Symbols otimizados", writeSymbolsIcons);
+if (replacedSymbols.length) console.log(`  ícones grandes trocados pelo padrão: ${replacedSymbols.join(", ")}`);
 const pkg = step("package.json atualizado", () => updatePackage(themes));
 checkContributedPaths(pkg);

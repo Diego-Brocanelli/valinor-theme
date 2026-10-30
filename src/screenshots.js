@@ -62,7 +62,11 @@ export class Silmaril extends Light {
     super(radiance.intensity);
   }
 
-  // Retorna true se a joia ainda brilha com a luz das Árvores.
+  /**
+   * Forja a joia com a luz das Árvores.
+   * @param power intensidade da luz, de 0 a MAX_POWER
+   * @returns true se a joia ainda brilha
+   */
   forge(power: number): boolean {
     if (power > Silmaril.MAX_POWER) {
       throw new Error(\`Poder excessivo: \${power}\`);

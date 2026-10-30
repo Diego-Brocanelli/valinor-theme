@@ -3,7 +3,8 @@
  *
  * Gera a galeria do GitHub Pages em site/: uma página estática (HTML, CSS e
  * JS inline, sem dependências) com os prints de todos os temas, filtros,
- * busca, pares claro/escuro, amostras de cor e snippets de settings.json.
+ * busca, pares claro/escuro, amostras de cor, seletor de itálico e snippets
+ * de settings.json.
  * Textos em português e inglês.
  *
  * As cores da própria página vêm dos temas Valinor Arien (modo escuro) e
@@ -14,7 +15,9 @@
 
 const fs = require("fs-extra");
 const path = require("path");
+const vm = require("vm");
 const { loadThemes } = require("./lib/themes");
+const { italicSettings } = require("./lib/italic");
 
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "site");
@@ -151,7 +154,7 @@ function css(arien, yavanna) {
   .pair img { width: 100%; display: block; aspect-ratio: 16 / 10; object-fit: cover; }
   .pair span { position: absolute; left: 8px; bottom: 8px; font-size: 12px; padding: 2px 8px; border-radius: 6px; background: #000a; color: #fff; }
 
-  pre.snippet { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font-size: 14px; }
+  pre.snippet { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow: auto; max-height: 420px; font-size: 14px; }
 
   footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
 
@@ -174,8 +177,9 @@ function css(arien, yavanna) {
   `;
 }
 
-function html(data, styles) {
+function html(data, styles, italic) {
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
+  const italicJson = JSON.stringify(italic).replace(/</g, "\\u003c");
   const total = data.length;
   const darkCount = data.filter((t) => t.type === "dark").length;
 
@@ -234,6 +238,20 @@ function html(data, styles) {
       <button class="btn ghost small" type="button" data-copy-from="autosnippet" data-i18n="copy">Copiar</button>
     </div>
   </section>
+
+  <section id="italic">
+    <div class="wrap">
+      <h2 data-i18n="italicTitle">Itálico</h2>
+      <p data-i18n="italicLead">Por padrão, comentários, doc blocks (com tags como @param) e this/self ficam em itálico. Escolha outra opção e cole o trecho no settings.json; ele vale para todos os temas Valinor e também entra no botão “Copiar settings.json” de cada tema.</p>
+      <div class="seg" role="group" data-i18n-aria="italicTitle" style="margin-bottom:14px">
+        <button class="pill" type="button" data-italic="default" aria-pressed="true" data-i18n="italicDefault">Padrão</button>
+        <button class="pill" type="button" data-italic="none" aria-pressed="false" data-i18n="italicNone">Sem itálico</button>
+        <button class="pill" type="button" data-italic="more" aria-pressed="false" data-i18n="italicMore">Mais itálico</button>
+      </div>
+      <pre class="snippet mono" id="italicsnippet"></pre>
+      <button class="btn ghost small" type="button" id="italiccopy" data-copy-from="italicsnippet" data-i18n="copy">Copiar</button>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -260,6 +278,7 @@ function html(data, styles) {
 
 <script>
 const THEMES = ${json};
+const ITALIC = ${italicJson};
 const I18N = {
   pt: {
     title: "Temas de cores inspirados em Tolkien",
@@ -274,6 +293,10 @@ const I18N = {
     footer: "Licença MIT · Ícones e regras de token de terceiros mantêm suas licenças:",
     close: "Fechar", prev: "Anterior", next: "Próximo", mode: "Alternar modo claro/escuro", filter: "Filtrar por tipo",
     zoom: (n) => "Ampliar print de " + n,
+    italicTitle: "Itálico",
+    italicLead: "Por padrão, comentários, doc blocks (com tags como @param) e this/self ficam em itálico. Escolha outra opção e cole o trecho no settings.json; ele vale para todos os temas Valinor e também entra no botão “Copiar settings.json” de cada tema.",
+    italicDefault: "Padrão", italicNone: "Sem itálico", italicMore: "Mais itálico",
+    italicNothing: "// Padrão: nada a configurar.",
   },
   en: {
     title: "Tolkien-inspired color themes",
@@ -288,6 +311,10 @@ const I18N = {
     footer: "MIT License · Third-party icons and token rules keep their own licenses:",
     close: "Close", prev: "Previous", next: "Next", mode: "Toggle light/dark mode", filter: "Filter by type",
     zoom: (n) => "Enlarge screenshot of " + n,
+    italicTitle: "Italics",
+    italicLead: "By default, comments, doc blocks (with tags such as @param) and this/self are italic. Pick another option and paste the snippet into settings.json; it applies to every Valinor theme and is also included in each theme's “Copy settings.json” button.",
+    italicDefault: "Default", italicNone: "No italics", italicMore: "More italics",
+    italicNothing: "// Default: nothing to configure.",
   },
 };
 
@@ -299,6 +326,7 @@ const $ = (s) => document.querySelector(s);
 const byId = Object.fromEntries(THEMES.map((t) => [t.id, t]));
 let lang = store.get("valinor-lang") || ((navigator.language || "pt").toLowerCase().startsWith("pt") ? "pt" : "en");
 let filter = "all";
+let italicMode = ["default", "none", "more"].includes(store.get("valinor-italic")) ? store.get("valinor-italic") : "default";
 let visible = [];
 let current = 0;
 const t = (k, ...a) => { const v = I18N[lang][k]; return typeof v === "function" ? v(...a) : v; };
@@ -307,6 +335,7 @@ function settingsFor(theme) {
   return JSON.stringify({
     "workbench.colorTheme": theme.label,
     "workbench.iconTheme": "valinor-icons-minimal-" + theme.id,
+    ...ITALIC[italicMode],
   }, null, 2);
 }
 
@@ -376,6 +405,14 @@ function render() {
     return el("div", { class: "pair" }, half(dark), half(light));
   }));
   $("#autosnippet").textContent = autoSnippet();
+  renderItalic();
+}
+
+function renderItalic() {
+  document.querySelectorAll("[data-italic]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.italic === italicMode)));
+  const empty = !Object.keys(ITALIC[italicMode]).length;
+  $("#italicsnippet").textContent = empty ? t("italicNothing") : JSON.stringify(ITALIC[italicMode], null, 2);
+  $("#italiccopy").hidden = empty;
 }
 
 function applyLang() {
@@ -432,6 +469,11 @@ document.querySelectorAll("[data-filter]").forEach((b) => b.addEventListener("cl
 }));
 document.querySelectorAll("[data-copy-from]").forEach((b) => b.addEventListener("click", () => copy($("#" + b.dataset.copyFrom).textContent)));
 $("#q").addEventListener("input", render);
+document.querySelectorAll("[data-italic]").forEach((b) => b.addEventListener("click", () => {
+  italicMode = b.dataset.italic;
+  store.set("valinor-italic", italicMode);
+  renderItalic();
+}));
 $("#lang").addEventListener("click", () => { lang = lang === "pt" ? "en" : "pt"; store.set("valinor-lang", lang); applyLang(); });
 $("#mode").addEventListener("click", () => {
   const root = document.documentElement;
@@ -472,7 +514,20 @@ function main() {
   fs.emptyDirSync(OUT);
   fs.copySync(PREVIEWS, path.join(OUT, "previews"), { filter: (src) => !src.endsWith("overview.png") });
   fs.copySync(path.join(ROOT, "assets", "icon.png"), path.join(OUT, "icon.png"));
-  fs.writeFileSync(path.join(OUT, "index.html"), html(themeData(themes), css(arien, yavanna)));
+  const italic = { default: {}, none: italicSettings("none", themes), more: italicSettings("more", themes) };
+  const page = html(themeData(themes), css(arien, yavanna), italic);
+
+  // O script da página é montado dentro de um template literal; um escape
+  // errado quebra a galeria inteira sem aviso. Checa a sintaxe antes de gravar.
+  const script = page.slice(page.lastIndexOf("<script>") + 8, page.lastIndexOf("</script>"));
+  try {
+    new vm.Script(script, { filename: "site/index.html" });
+  } catch (error) {
+    console.error(`site: erro de sintaxe no JavaScript gerado: ${error.message}`);
+    process.exit(1);
+  }
+
+  fs.writeFileSync(path.join(OUT, "index.html"), page);
   fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
 
   console.log(`site: galeria com ${themes.length} temas em site/index.html`);

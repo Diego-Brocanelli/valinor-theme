@@ -35,7 +35,13 @@ function compile({ id, file, source }) {
     type: source.type,
     semanticHighlighting: true,
     colors: { ...template.colors(palette), ...(source.colors || {}) },
-    tokenColors: [...(syntax ? template.tokens(syntax, palette) : []), ...(source.tokenColors || [])],
+    // A camada de estilo vem por último para valer também nos temas com
+    // tokens próprios (ex.: Night Owl sem itálico no Legolas).
+    tokenColors: [
+      ...(syntax ? template.tokens(syntax, palette) : []),
+      ...(source.tokenColors || []),
+      ...template.styleRules(),
+    ],
     semanticTokenColors: {
       ...(syntax ? template.semanticTokens(syntax) : {}),
       ...(source.semanticTokenColors || {}),

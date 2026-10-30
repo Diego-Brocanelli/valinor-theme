@@ -489,7 +489,7 @@ const rule = (name, scope, foreground, fontStyle) => {
  */
 function tokens(s, p) {
   const rules = [
-    rule("Comments", ["comment", "punctuation.definition.comment", "string.comment"], s.comment, "italic"),
+    rule("Comments", ["comment", "punctuation.definition.comment", "string.comment"], s.comment),
     rule("Keywords", ["keyword", "keyword.control", "keyword.other", "keyword.operator.new", "keyword.operator.expression", "keyword.operator.logical.python"], s.keyword, ""),
     rule("Operators", ["keyword.operator", "punctuation.separator.key-value", "storage.type.function.arrow"], s.operator),
     rule("Storage", ["storage", "storage.type", "storage.modifier"], s.storage, ""),
@@ -497,7 +497,7 @@ function tokens(s, p) {
     rule("Parameters", ["variable.parameter", "meta.function.parameters variable", "entity.name.variable.parameter"], s.parameter, ""),
     rule("Properties", ["variable.other.property", "variable.other.object.property", "support.variable.property", "meta.object-literal.key", "variable.other.member"], s.property),
     rule("Property names (JSON, CSS, YAML)", ["support.type.property-name", "entity.name.tag.yaml", "meta.mapping.key string"], s.propertyName),
-    rule("this / self", ["variable.language", "variable.language.this", "variable.language.self", "variable.language.super", "variable.language punctuation.definition.variable.php"], s.this, "italic"),
+    rule("this / self", ["variable.language", "variable.language.this", "variable.language.self", "variable.language.super", "variable.language punctuation.definition.variable.php"], s.this),
     rule("Strings", ["string", "string.quoted", "punctuation.definition.string", "string.template"], s.string),
     rule("Escapes", ["constant.character.escape", "constant.other.placeholder"], s.escape),
     rule("Regex", ["string.regexp"], s.regex),
@@ -532,6 +532,56 @@ function tokens(s, p) {
   return rules;
 }
 
+/**
+ * Escopos em itálico em todos os temas: comentários, doc blocks completos
+ * (inclusive tags como @param, tipos e nomes dentro deles) e this/self.
+ * É a fonte única usada pela camada de estilo, pelo validador e pelos
+ * snippets de "sem itálico" / "mais itálico" do README e da galeria.
+ */
+const ITALIC_SCOPES = [
+  "comment",
+  "punctuation.definition.comment",
+  "comment.block.documentation",
+  "comment.block.documentation storage",
+  "comment.block.documentation keyword",
+  "comment.block.documentation entity.name.type",
+  "comment.block.documentation variable",
+  "comment.block.documentation support",
+  "comment.block.documentation punctuation",
+  "storage.type.class.jsdoc",
+  "entity.name.type.instance.jsdoc",
+  "variable.other.jsdoc",
+  "keyword.other.phpdoc",
+  "keyword.other.documentation.javadoc",
+  "variable.language.this",
+  "variable.language.self",
+  "variable.language.super",
+];
+
+/** Escopos extras do snippet "mais itálico" (opcional, para o usuário). */
+const EXTRA_ITALIC_SCOPES = [
+  "keyword.control",
+  "storage.modifier",
+  "storage.type",
+  "variable.parameter",
+  "entity.other.attribute-name",
+  "entity.other.inherited-class",
+];
+
+/**
+ * Camada de estilo aplicada por último em todos os temas. As regras só têm
+ * fontStyle: o VS Code resolve cor e estilo separadamente, então cada tema
+ * mantém as suas cores.
+ */
+function styleRules() {
+  return [
+    { name: "Valinor: itálico em comentários, doc blocks e this/self", scope: ITALIC_SCOPES, settings: { fontStyle: "italic" } },
+    // Ênfase do Markdown tem significado próprio e fica fora dos snippets de itálico.
+    { name: "Valinor: Markdown itálico", scope: ["markup.italic", "emphasis"], settings: { fontStyle: "italic" } },
+    { name: "Valinor: Markdown negrito", scope: ["markup.bold", "strong"], settings: { fontStyle: "bold" } },
+  ];
+}
+
 function semanticTokens(s) {
   return {
     namespace: s.type,
@@ -562,4 +612,4 @@ function semanticTokens(s) {
   };
 }
 
-module.exports = { resolvePalette, resolveSyntax, colors, tokens, semanticTokens };
+module.exports = { resolvePalette, resolveSyntax, colors, tokens, semanticTokens, styleRules, ITALIC_SCOPES, EXTRA_ITALIC_SCOPES };

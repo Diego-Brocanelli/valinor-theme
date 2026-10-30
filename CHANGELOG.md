@@ -5,20 +5,33 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Unreleased]
 
+## [2.27.0] - 2026-10-29
+
 ### Adicionado
 
 - Quatro temas claros, formando pares com temas escuros existentes: **Yavanna** (Kanagawa Lotus, par do Arien), **Nienna** (Rosé Pine Dawn, par do Arwen), **Bilbo** (Gruvbox Light, par do Bombur) e **Lothlórien** (Everforest Light, par do Fangorn). Agora são 28 temas: 18 escuros e 10 claros.
+- Itálico em comentários, doc blocks completos (inclusive tags como `@param` e `@returns`, tipos e nomes do JSDoc, PHPDoc e Javadoc) e `this`/`self` nos 28 temas, por uma camada de estilo comum que não altera cores. Durin e Legolas, que não tinham itálico, passam a ter. O Markdown itálico e negrito vale para todos os temas.
+- Escolha do usuário entre itálico padrão, sem itálico ou mais itálico, por um trecho de `settings.json` que vale para todos os temas Valinor (`"[Valinor*]"`): no README, no seletor da galeria e em `npm run italic -- none | more`.
+- O validador exige itálico em comentários, doc blocks, tags de doc e `this`.
 - Galeria interativa no GitHub Pages (`npm run site` + workflow `pages.yml`): prints de todos os temas, filtros claro/escuro, busca, pares, amostras de cor com cópia do hex e cópia do `settings.json`, em português e inglês.
 - Seção "Pares claro/escuro" no README, com a configuração de troca automática conforme o modo do sistema.
 
 ### Alterado
 
+- Pacote `.vsix` de 5,05 MB para 2,8 MB: o tema Symbols passa a ser copiado pelo build só com os ícones referenciados, e os dois ícones do Cursor (1,5 MB cada, com imagem embutida) usam o ícone padrão do Symbols. Os SVGs do Lucide são gravados em uma linha.
+- Link da galeria atualizado para https://diegobrocanelli.com.br/valinor-theme/.
 - **Legolas** passa a ser Night Owl (tokens oficiais, versão sem itálico), formando par com o Glorfindel (Night Owl Light). Antes era quase idêntico ao Eärendil.
 - **Thranduil** passa a ser um Nord mais profundo (fundo `#242933`, destaque Frost `#81a1c1`), distinto do Durin.
 - **Valinor Icons Zed** passa a se chamar **Valinor Icons Lucide**: os ícones do Zed (GPL-3.0-or-later) foram substituídos por ícones do [Lucide](https://lucide.dev) (ISC), compatíveis com a licença MIT do projeto. O id `valinor-icons-zed` foi mantido, então quem já usa o tema não perde a configuração.
 - Os ícones Minimal foram substituídos por **Valinor Icons – \<tema\>**: os ícones Lucide coloridos com a paleta de cada tema (pastas no accent, linguagens e formatos nos tons do tema, arquivos genéricos em tom neutro). Os ids `valinor-icons-minimal-<tema>` foram mantidos, então quem usava os Minimal recebe os novos ícones sem reconfigurar.
 - Pastas raiz com arte própria (estrela de oito pontas).
 - Texto de destaque (títulos, links, matches de busca) com contraste mínimo de 4,5:1 em todos os temas, e texto principal dos temas claros com 7:1. O validador termina com 0 erros e 0 avisos.
+
+### Corrigido
+
+- CI: o workflow Validate falhava no checkout porque o submódulo removido `icons/zed-src` continuava registrado no repositório.
+- CI: actions atualizadas para versões que rodam em Node 24 (checkout v7, setup-node v7, upload-artifact v7, download-artifact v8, upload-pages-artifact v5, deploy-pages v5, action-gh-release v3), já que o Node 20 foi descontinuado no GitHub Actions.
+- Galeria: um erro de escape quebrava o JavaScript da página; o `npm run site` agora checa a sintaxe antes de gravar.
 
 ### Licenças
 

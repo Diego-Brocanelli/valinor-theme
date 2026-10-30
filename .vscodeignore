@@ -21,9 +21,9 @@
 !icons/catppuccin/*/theme.json
 !icons/catppuccin/*/icons/**
 !icons/catppuccin/LICENSE
-!icons/symbols/src/symbol-icon-theme.json
-!icons/symbols/src/icons/**
-!icons/symbols/LICENSE
+!icons/symbols-dist/symbol-icon-theme.json
+!icons/symbols-dist/icons/**
+!icons/symbols-dist/LICENSE
 
 # Ícones de produto
 !icons/fluent/theme/**

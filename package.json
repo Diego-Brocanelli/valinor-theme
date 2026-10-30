@@ -3,7 +3,7 @@
     "displayName": "Valinor Theme",
     "description": "28 Tolkien-inspired color themes (18 dark, 10 light, with light/dark pairs) based on Kanagawa, Rosé Pine, Nord, Gruvbox, Catppuccin, Tokyo Night, Solarized and more, plus matching file icon themes.",
     "publisher": "DiegoBrocanelli",
-    "version": "2.26.0",
+    "version": "2.27.0",
     "license": "MIT",
     "author": {
         "name": "Diego Brocanelli",
@@ -54,7 +54,8 @@
         "vsce-publish": "vsce publish",
         "screenshots": "node ./src/screenshots.js",
         "vendor:lucide": "node ./src/vendor-lucide.js",
-        "site": "node ./src/site.js"
+        "site": "node ./src/site.js",
+        "italic": "node ./src/lib/italic.js"
     },
     "contributes": {
         "iconThemes": [
@@ -66,7 +67,7 @@
             {
                 "id": "valinor-icons-symbols",
                 "label": "Valinor Icons Symbols",
-                "path": "./icons/symbols/src/symbol-icon-theme.json"
+                "path": "./icons/symbols-dist/symbol-icon-theme.json"
             },
             {
                 "id": "valinor-icons-mocha",

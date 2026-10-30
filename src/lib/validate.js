@@ -12,6 +12,16 @@
 
 const { isHex, isDark, contrast, over } = require("./color");
 const { keys } = require("./color-keys.json");
+const { resolveStyle } = require("./scopes");
+
+// Escopos que precisam ficar em itálico em todos os temas (ver ITALIC_SCOPES).
+const ITALIC_PROBES = {
+  "doc block": ["source.ts", "comment.block.documentation.ts"],
+  "tag @param": ["source.ts", "comment.block.documentation.ts", "storage.type.class.jsdoc"],
+  "tipo no JSDoc": ["source.ts", "comment.block.documentation.ts", "entity.name.type.instance.jsdoc"],
+  comentário: ["source.ts", "comment.line.double-slash.ts"],
+  this: ["source.ts", "variable.language.this.ts"],
+};
 
 const KNOWN_KEYS = new Set(keys);
 
@@ -95,6 +105,11 @@ function validate(compiled) {
     if (ratio < 3) errors.push(`comentários: ${comment} = ${ratio.toFixed(2)}:1 (mínimo 3:1)`);
   } else {
     warnings.push("nenhuma regra de token define a cor de comentários");
+  }
+
+  for (const [label, stack] of Object.entries(ITALIC_PROBES)) {
+    const { fontStyle = "" } = resolveStyle(theme.tokenColors, stack);
+    if (!fontStyle.includes("italic")) errors.push(`${label} sem itálico (fontStyle "${fontStyle}")`);
   }
 
   // Tokens gerados pela paleta precisam ser legíveis; em tokens herdados de
