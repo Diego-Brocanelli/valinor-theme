@@ -18,13 +18,22 @@
 !icons/lucide/light/*.svg
 !icons/themed/*/theme.json
 !icons/themed/*/images/*.svg
+!icons/logos/*/theme.json
+!icons/logos/*/icons/*.svg
 !icons/catppuccin/*/theme.json
 !icons/catppuccin/*/icons/**
 !icons/catppuccin/LICENSE
 !icons/symbols-dist/symbol-icon-theme.json
 !icons/symbols-dist/icons/**
 !icons/symbols-dist/LICENSE
+!icons/material-dist/theme.json
+!icons/material-dist/icons/*.svg
+!icons/material-dist/LICENSE
 
 # Ícones de produto
 !icons/fluent/theme/**
 !icons/fluent/LICENSE
+!icons/lucide/product/*
+!icons/carbon/*
+!icons/material-product/theme/*
+!icons/material-product/LICENSE.md

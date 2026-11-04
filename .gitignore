@@ -9,7 +9,10 @@ icons/themed/*
 icons/lucide/dark/
 icons/lucide/light/
 icons/lucide/theme.json
+icons/lucide/product/
+icons/logos/
 
 # Galeria do GitHub Pages (npm run site)
 site/
 icons/symbols-dist/
+icons/material-dist/

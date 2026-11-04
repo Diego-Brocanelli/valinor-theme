@@ -1,0 +1,38 @@
+# Valinor Laurelin — alto contraste claro (par claro de Valinor Telperion)
+# A Árvore de ouro de Valinor. Texto e tokens a 7:1 (WCAG AAA) e contornos
+# em foco, seleção e aba ativa, como nos temas High Contrast do VS Code.
+# Cores de interface geradas por src/lib/template.js a partir de "palette".
+$schema: vscode://schemas/color-theme
+name: Valinor Laurelin
+type: light
+highContrast: true
+upstream: VS Code High Contrast Light
+pair: telperion
+author: Diego Brocanelli
+palette:
+  bg: "#fffdf6"
+  bgAlt: "#f5efdd"
+  fg: "#14110a"
+  fgMuted: "#3d3626"
+  accent: "#6e4500"
+  cursor: "#000000"
+  red: "#9c0012"
+  orange: "#8a3b00"
+  yellow: "#665000"
+  green: "#0d5c1d"
+  cyan: "#00566a"
+  blue: "#003fa6"
+  magenta: "#7a1f8f"
+syntax:
+  comment: "#4d4636"
+  keyword: "#7a1f8f"
+  storage: "#003fa6"
+  variable: "#14110a"
+  this: "#8a3b00"
+  string: "#0d5c1d"
+  number: "#8a3b00"
+  function: "#665000"
+  type: "#00566a"
+  tag: "#003fa6"
+  attribute: "#665000"
+  heading: "#6e4500"

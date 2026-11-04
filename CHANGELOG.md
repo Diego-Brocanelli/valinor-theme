@@ -5,6 +5,29 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Unreleased]
 
+### Adicionado
+
+- Dois temas de **alto contraste**, as Duas Árvores de Valinor: **Telperion** (escuro, `hc-black`) e **Laurelin** (claro, `hc-light`), formando um par. Texto e tokens a pelo menos 7:1 (WCAG AAA), bordas fortes e contornos em foco, seleção, aba ativa, linha atual e buscas. Agora são 30 temas: 19 escuros e 11 claros.
+- `highContrast: true` no `.yml` ativa o modo de alto contraste: o template sobe os contrastes (texto 7:1, números de linha 4,5:1, diagnósticos 4,5:1), gera `contrastBorder`/`contrastActiveBorder` e contornos, o validador exige 7:1 e o build registra o tema como `hc-black`/`hc-light`.
+- Galeria: temas ainda sem print (`npm run screenshots`) aparecem com um esboço do código nas cores do tema que abre a prévia ao vivo, em vez de interromper a geração.
+- **Valinor Icons Logos – \<tema\>**: 28 novos conjuntos de ícones de arquivo, um por tema, com os 555 ícones do Catppuccin (logos de linguagens e ferramentas e 190 pastas) recoloridos com a paleta de cada tema (Mocha como base nos temas escuros, Latte nos claros), todas as cores com 3:1 sobre a sidebar.
+- **Valinor Icons Material**: Material Icon Theme (1.256 ícones), copiado do pacote npm pelo build.
+- Ícones de interface (Product Icon Theme): **Valinor Product Icons Lucide** (457 codicons mapeados para o Lucide, em `icons/lucide/product-map.json`), **Valinor Product Icons Carbon** e **Valinor Product Icons Material**, além do Fluent.
+- `npm run vendor:product-icons`: baixa do Open VSX os temas Carbon e Material Product Icons em versão fixa.
+- Galeria, **Monte seu VS Code**: prévia ao vivo de uma janela do VS Code desenhada em HTML com as cores, os tokens, os ícones de arquivo (6 conjuntos) e os ícones de interface (5 conjuntos) do tema escolhido, em TypeScript, Python, Rust, PHP e Go. Gera um `settings.json` único com tema, ícones e itálico, também usado pelo botão "Copiar settings.json" de cada card. Substitui a seção de itálico (o link `#italic` continua funcionando).
+- Galeria: comparação de dois temas lado a lado com divisão arrastável; filtro por família (Nord, Catppuccin, Omarchy…) e ordenação por nome, cor de destaque ou claridade; links diretos para cada tema (`#arien`) e busca/filtros na URL; botão "Ver ao vivo" em cada card.
+- Cores para os ícones de símbolo (`symbolIcon.*`, no Outline, autocomplete e breadcrumbs), a barra de depuração (`debugIcon.*`: iniciar em verde, parar em vermelho, passos em azul), o Copilot Chat e o chat inline (`chat.*`, `inlineChat.*`) e sombra no sticky scroll, todas na paleta de cada tema. Antes essas áreas usavam as cores padrão do VS Code.
+- Validador: avisa quando as marcas de adicionado e removido (gutter, régua e minimap) ficam parecidas demais para quem tem daltonismo vermelho-verde (simulação de deuteranopia e protanopia, ΔE mínimo 15), e passa a conferir também as chaves geradas pelo template, não só as escritas nos `.yml`.
+
+### Alterado
+
+- README: prévias de cada tema logo depois da tabela de temas (antes ficavam no fim da seção, depois do itálico).
+- Marca de linha removida (gutter, régua e minimap) mais clara ou mais escura, no mesmo tom, em 17 temas, para se distinguir da marca de adicionada também para daltônicos (ex.: Yavanna e Shelob estavam quase idênticas).
+- Galeria: áreas de toque de pelo menos 44px no celular; um único botão preenchido no topo ("Instalar"), com os botões de copiar em contorno; busca com rótulo para leitores de tela e ícone de lupa; resultado vazio com botão "Limpar busca e filtros"; botão de modo claro/escuro com ícone de sol/lua, dica e estado (`aria-pressed`); nomes das amostras de cor traduzidos ("Destaque", "Barra lateral"…) e em uma linha só; textos limitados a 68 caracteres por linha; lightbox e etiquetas dos pares nas cores da página em vez de preto e branco puros.
+- Galeria: prints dos cards em WebP de 800px (452 KB no total, contra 1,1 MB em PNG), gerados com ImageMagick quando disponível; o lightbox continua com o PNG em tamanho real.
+- Cor de destaque reservada para o que pede atenção: o hover do divisor de painéis, a barra de rolagem arrastada e a borda do peek view passam a usar tons neutros.
+- **Valinor Icons – \<tema\>** e **Valinor Icons Lucide**: 32 ícones novos, como `package.json`, `.env`, `Makefile`, `tsconfig.json`, `README`, `LICENSE`, `CHANGELOG`, testes (`*.test.*`, `*.spec.*`), JSON, arquivos compactados, certificados, binários, planilhas, diffs, Svelte, notebooks e C#, e ícones próprios para 70 pastas conhecidas (`src`, `test`, `docs`, `assets`, `components`, `config`, `.github`, `dist`, `node_modules`, `scripts`…).
+
 ## [2.27.0] - 2026-10-29
 
 ### Adicionado

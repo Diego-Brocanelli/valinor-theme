@@ -8,38 +8,57 @@
  *   hover  <  seleção inativa  <  seleção ativa  <  foco (contorno sólido)
  */
 
-const { mix, alpha, over, isDark, contrast, ensureContrast, bestOn } = require("./color");
+const { mix, alpha, over, isDark, contrast, ensureContrast, bestOn, ensureDistinct } = require("./color");
 
 const HUES = ["red", "orange", "yellow", "green", "cyan", "blue", "magenta"];
+
+// Diferença mínima (ΔE) entre as marcas de adicionado e removido para quem
+// tem daltonismo vermelho-verde (ver cvdDistance em color.js).
+const MIN_CVD_DISTANCE = 15;
+
+// Cor de cada tipo de símbolo (Outline, autocomplete, breadcrumbs): funções em
+// azul, tipos em ciano, variáveis em magenta, constantes em laranja, textos em
+// verde e módulos em amarelo.
+const SYMBOL_HUES = {
+  blue: ["function", "method", "constructor"],
+  cyan: ["class", "struct", "interface", "typeParameter"],
+  magenta: ["variable", "field", "property", "key", "reference"],
+  orange: ["constant", "enumerator", "enumeratorMember", "number", "boolean", "null", "unit", "color"],
+  green: ["string", "text", "snippet"],
+  yellow: ["module", "namespace", "package", "object", "array", "operator", "keyword", "event"],
+};
 
 /**
  * Completa a paleta com os valores derivados e corrige o que estiver abaixo
  * dos contrastes mínimos (linha, comentário, texto de destaque, diagnósticos).
  */
-function resolvePalette(palette, type) {
+function resolvePalette(palette, type, highContrast = false) {
   const p = { ...palette };
   const dark = type === "dark";
+  // Alto contraste: texto a 7:1 (WCAG AAA) e bordas fortes em toda a interface.
+  const textMin = highContrast ? 7 : 4.5;
 
   for (const key of ["bg", "bgAlt", "fg", "accent", ...HUES]) {
     if (!p[key]) throw new Error(`palette.${key} é obrigatório`);
   }
 
   p.dark = dark;
-  p.fgMuted = ensureContrast(p.fgMuted || mix(p.bg, p.fg, 0.7), p.bgAlt, 4.5, p.fg);
+  p.highContrast = highContrast;
+  p.fgMuted = ensureContrast(p.fgMuted || mix(p.bg, p.fg, 0.7), p.bgAlt, textMin, p.fg);
   p.cursor = p.cursor || p.accent;
-  p.border = p.border || mix(p.bgAlt, p.fg, dark ? 0.12 : 0.14);
-  p.lineNumber = ensureContrast(p.lineNumber || mix(p.bg, p.fg, 0.4), p.bg, 3, p.fg);
+  p.border = p.border || (highContrast ? mix(p.bgAlt, p.fg, 0.6) : mix(p.bgAlt, p.fg, dark ? 0.12 : 0.14));
+  p.lineNumber = ensureContrast(p.lineNumber || mix(p.bg, p.fg, 0.4), p.bg, highContrast ? 4.5 : 3, p.fg);
   // Destaque usado como texto (títulos, links, matches): 4.5:1 sobre a sidebar
   // e sobre o editor. Clareia em fundo escuro e escurece em fundo claro, o que
   // preserva o matiz melhor do que aproximar da cor do texto.
   const accentToward = dark ? "#ffffff" : "#000000";
-  p.accentText = ensureContrast(p.accentText || p.accent, p.bgAlt, 4.5, accentToward);
-  p.accentText = ensureContrast(p.accentText, p.bg, 4.5, accentToward);
+  p.accentText = ensureContrast(p.accentText || p.accent, p.bgAlt, textMin, accentToward);
+  p.accentText = ensureContrast(p.accentText, p.bg, textMin, accentToward);
 
   // Texto sobre o accent: prefere as cores do próprio tema, cai para preto/branco.
   if (!p.onAccent) {
     const own = bestOn(p.accent, [p.bg, p.fg]);
-    p.onAccent = contrast(own, p.accent) >= 4.5 ? own : bestOn(p.accent, ["#000000", "#ffffff"]);
+    p.onAccent = contrast(own, p.accent) >= textMin ? own : bestOn(p.accent, ["#000000", "#ffffff"]);
   }
 
   // Hover do botão: tom sólido do accent (nunca translúcido), afastando-se da
@@ -47,9 +66,11 @@ function resolvePalette(palette, type) {
   p.accentHover = p.accentHover || mix(p.accent, isDark(p.onAccent) ? "#ffffff" : "#000000", 0.12);
 
   // Opacidade da seleção: começa em 32% e reduz até o texto manter 5.5:1
-  // (accents claros, como cinza ou branco, deixariam o texto ilegível).
+  // (7:1 no alto contraste; accents claros, como cinza ou branco, deixariam o
+  // texto ilegível).
+  const selMin = highContrast ? 7 : 5.5;
   p.selAlpha = 0.32;
-  while (p.selAlpha > 0.12 && contrast(p.fg, over(alpha(p.accent, p.selAlpha), p.bgAlt)) < 5.5) {
+  while (p.selAlpha > (highContrast ? 0.04 : 0.12) && contrast(p.fg, over(alpha(p.accent, p.selAlpha), p.bgAlt)) < selMin) {
     p.selAlpha -= 0.02;
   }
 
@@ -64,7 +85,10 @@ function resolvePalette(palette, type) {
 
   // Versões das cores com contraste suficiente para ícones e textos de status.
   p.diag = {};
-  for (const hue of HUES) p.diag[hue] = ensureContrast(p[hue], p.bg, 3);
+  for (const hue of HUES) p.diag[hue] = ensureContrast(p[hue], p.bg, highContrast ? 4.5 : 3);
+  // Marca de removido (gutter, régua e minimap): o vermelho clareia ou
+  // escurece até se distinguir do verde de adicionado também para daltônicos.
+  p.diag.deleted = ensureDistinct(p.diag.red, p.diag.green, p.bg, MIN_CVD_DISTANCE, 3);
 
   return p;
 }
@@ -113,7 +137,7 @@ function colors(p) {
     "selection.background": selActive,
     "widget.border": border,
     "widget.shadow": shadow,
-    "sash.hoverBorder": accent,
+    "sash.hoverBorder": fgMuted,
     "progressBar.background": accent,
     "textLink.foreground": accentText,
     "textLink.activeForeground": accentText,
@@ -127,7 +151,7 @@ function colors(p) {
     "scrollbar.shadow": shadow,
     "scrollbarSlider.background": alpha(fg, 0.12),
     "scrollbarSlider.hoverBackground": alpha(fg, 0.2),
-    "scrollbarSlider.activeBackground": alpha(accent, 0.4),
+    "scrollbarSlider.activeBackground": alpha(fg, 0.3),
 
     // ACTIVITY BAR
     "activityBar.background": bgAlt,
@@ -324,7 +348,7 @@ function colors(p) {
     "notificationsErrorIcon.foreground": diag.red,
     "notificationsWarningIcon.foreground": diag.yellow,
     "notificationsInfoIcon.foreground": diag.blue,
-    "peekView.border": accent,
+    "peekView.border": fgMuted,
     "peekViewTitle.background": bgAlt,
     "peekViewTitleLabel.foreground": fg,
     "peekViewTitleDescription.foreground": fgMuted,
@@ -371,6 +395,7 @@ function colors(p) {
     "editorGhostText.foreground": fgMuted,
     "editorLightBulb.foreground": diag.yellow,
     "editorStickyScroll.background": bg,
+    "editorStickyScroll.shadow": shadow,
     "editorStickyScrollHover.background": bgAlt,
     "editorUnnecessaryCode.opacity": "#000000aa",
 
@@ -393,7 +418,7 @@ function colors(p) {
     "editorGutter.background": bg,
     "editorGutter.addedBackground": diag.green,
     "editorGutter.modifiedBackground": diag.blue,
-    "editorGutter.deletedBackground": diag.red,
+    "editorGutter.deletedBackground": diag.deleted,
     "editorGutter.foldingControlForeground": fgMuted,
     "editorOverviewRuler.border": border,
     "editorOverviewRuler.findMatchForeground": alpha(p.yellow, 0.6),
@@ -402,7 +427,7 @@ function colors(p) {
     "editorOverviewRuler.infoForeground": diag.blue,
     "editorOverviewRuler.addedForeground": diag.green,
     "editorOverviewRuler.modifiedForeground": diag.blue,
-    "editorOverviewRuler.deletedForeground": diag.red,
+    "editorOverviewRuler.deletedForeground": diag.deleted,
     "minimap.background": bg,
     "minimap.selectionHighlight": alpha(accent, 0.5),
     "minimap.findMatchHighlight": p.yellow,
@@ -411,7 +436,7 @@ function colors(p) {
     "minimapSlider.activeBackground": alpha(fg, 0.2),
     "minimapGutter.addedBackground": diag.green,
     "minimapGutter.modifiedBackground": diag.blue,
-    "minimapGutter.deletedBackground": diag.red,
+    "minimapGutter.deletedBackground": diag.deleted,
 
     // DIFF / MERGE
     "diffEditor.insertedTextBackground": alpha(p.green, 0.18),
@@ -443,6 +468,11 @@ function colors(p) {
     "settings.focusedRowBackground": hover,
     "welcomePage.tileBackground": bgAlt,
     "debugIcon.breakpointForeground": diag.red,
+    "debugIcon.breakpointDisabledForeground": fgMuted,
+    "debugIcon.breakpointUnverifiedForeground": fgMuted,
+    "debugIcon.breakpointStackframeForeground": diag.yellow,
+    "debugIcon.breakpointCurrentStackframeForeground": diag.yellow,
+    ...debugToolbar(p),
     "testing.iconPassed": diag.green,
     "testing.iconFailed": diag.red,
     "charts.foreground": fg,
@@ -452,7 +482,86 @@ function colors(p) {
     "charts.green": p.green,
     "charts.blue": p.blue,
     "charts.purple": p.magenta,
+
+    // CHAT
+    "chat.requestBackground": alpha(fg, 0.04),
+    "chat.requestBorder": border,
+    "chat.requestBubbleBackground": alpha(accent, 0.12),
+    "chat.requestBubbleHoverBackground": alpha(accent, 0.18),
+    "chat.slashCommandBackground": alpha(accent, 0.18),
+    "chat.slashCommandForeground": accentText,
+    "chat.avatarBackground": bgAlt,
+    "chat.avatarForeground": fg,
+    "chat.editedFileForeground": diag.yellow,
+    "chat.linesAddedForeground": diag.green,
+    "chat.linesRemovedForeground": diag.deleted,
+    "inlineChat.background": bgAlt,
+    "inlineChat.foreground": fg,
+    "inlineChat.border": border,
+    "inlineChat.shadow": shadow,
+    "inlineChatInput.background": bg,
+    "inlineChatInput.border": border,
+    "inlineChatInput.focusBorder": accent,
+    "inlineChatInput.placeholderForeground": fgMuted,
+
+    ...symbolIcons(p),
+    ...(p.highContrast ? highContrastColors(p) : {}),
   };
+}
+
+/**
+ * Alto contraste: contornos em vez de só fundos para foco, seleção, aba ativa,
+ * linha atual e buscas, como nos temas High Contrast do VS Code.
+ */
+function highContrastColors(p) {
+  const { accent, border, diag } = p;
+  return {
+    contrastBorder: border,
+    contrastActiveBorder: accent,
+    "list.focusOutline": accent,
+    "list.focusAndSelectionOutline": accent,
+    "list.inactiveFocusOutline": border,
+    "activityBar.activeFocusBorder": accent,
+    "tab.activeBorder": accent,
+    "editorGroupHeader.border": border,
+    "editor.lineHighlightBorder": border,
+    "editor.selectionHighlightBorder": accent,
+    "editor.findMatchHighlightBorder": diag.yellow,
+    "button.border": border,
+    "checkbox.border": border,
+    "dropdown.border": border,
+    "statusBarItem.focusBorder": accent,
+  };
+}
+
+/** Ícones da barra de depuração: iniciar em verde, parar em vermelho, passos em azul. */
+function debugToolbar(p) {
+  const icon = (hue) => ensureContrast(p[hue], p.bgAlt, 3, p.fg);
+  return {
+    "debugIcon.startForeground": icon("green"),
+    "debugIcon.continueForeground": icon("green"),
+    "debugIcon.restartForeground": icon("green"),
+    "debugIcon.pauseForeground": icon("yellow"),
+    "debugIcon.stopForeground": icon("red"),
+    "debugIcon.disconnectForeground": icon("red"),
+    "debugIcon.stepOverForeground": icon("blue"),
+    "debugIcon.stepIntoForeground": icon("blue"),
+    "debugIcon.stepOutForeground": icon("blue"),
+    "debugIcon.stepBackForeground": icon("blue"),
+  };
+}
+
+/** symbolIcon.* nos tons da paleta, com 3:1 sobre os widgets (bgAlt). */
+function symbolIcons(p) {
+  const t = {
+    "symbolIcon.fileForeground": p.fgMuted,
+    "symbolIcon.folderForeground": p.fgMuted,
+  };
+  for (const [hue, kinds] of Object.entries(SYMBOL_HUES)) {
+    const color = ensureContrast(p[hue], p.bgAlt, 3, p.fg);
+    for (const kind of kinds) t[`symbolIcon.${kind}Foreground`] = color;
+  }
+  return t;
 }
 
 /** Completa os slots de sintaxe que não foram definidos no .yml. */
@@ -473,6 +582,10 @@ function resolveSyntax(syntax, p) {
   s.regex = s.regex || s.string;
   s.heading = s.heading || s.function;
   s.link = s.link || p.accentText;
+  // Alto contraste: todo token com 7:1 sobre o editor.
+  if (p.highContrast) {
+    for (const key of Object.keys(s)) s[key] = ensureContrast(s[key], p.bg, 7);
+  }
   return s;
 }
 

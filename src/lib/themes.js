@@ -26,7 +26,7 @@ function loadSources() {
 }
 
 function compile({ id, file, source }) {
-  const palette = template.resolvePalette(source.palette || {}, source.type);
+  const palette = template.resolvePalette(source.palette || {}, source.type, Boolean(source.highContrast));
   const syntax = source.syntax ? template.resolveSyntax(source.syntax, palette) : null;
 
   const theme = {

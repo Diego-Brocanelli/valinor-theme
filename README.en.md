@@ -4,9 +4,9 @@
 
 > 🇧🇷 [Leia em português](https://github.com/Diego-Brocanelli/valinor-theme/blob/main/README.md)
 
-Valinor brings together **28 color themes** (18 dark, 10 light). Each one is based on a well-established theme and named after a character or place from Tolkien's world, and each comes with matching file icon themes.
+Valinor brings together **30 color themes** (19 dark, 11 light, 2 of them high contrast). Each one is based on a well-established theme and named after a character or place from Tolkien's world, and each comes with matching file icon themes.
 
-🖼️ **[Interactive gallery](https://diegobrocanelli.com.br/valinor-theme/)**: filters, search, light/dark pairs and settings snippets.
+🖼️ **[Interactive gallery](https://diegobrocanelli.com.br/valinor-theme/)**: live preview of any combination of theme, file icons, UI icons and italics (with a ready `settings.json`), side-by-side comparison, type and family filters, search and light/dark pairs.
 
 ![All Valinor themes](https://github.com/Diego-Brocanelli/valinor-theme/raw/HEAD/assets/previews/overview.png)
 
@@ -52,10 +52,14 @@ Then press `Ctrl+K Ctrl+T` (`Cmd+K Cmd+T`) to pick a color theme.
 | Lothlórien | light | Everforest Light |
 | Nienna | light | Rosé Pine Dawn |
 | Yavanna | light | Kanagawa Lotus |
+| Telperion | high contrast dark | VS Code High Contrast |
+| Laurelin | high contrast light | VS Code High Contrast Light |
 
-Light/dark pairs: Arien/Yavanna (Kanagawa), Arwen/Nienna (Rosé Pine), Bombur/Bilbo (Gruvbox), Celeborn/Elbereth (Catppuccin), Eärendil/Gandalf (Tokyo Night), Fangorn/Lothlórien (Everforest), Legolas/Glorfindel (Night Owl). Use them with `window.autoDetectColorScheme` + `workbench.preferredDarkColorTheme` / `workbench.preferredLightColorTheme` to follow the OS appearance.
+Telperion and Laurelin, the Two Trees of Valinor, are **high contrast** themes: text and tokens at 7:1 or more (WCAG AAA) and outlines on focus, selection and the active tab. VS Code treats them as High Contrast themes (`hc-black` / `hc-light`).
 
-Every theme is checked automatically for WCAG contrast. The minimums are: editor text 4.5:1, comments and line numbers 3:1, buttons, badges and status bar 4.5:1, selected list items 4.5:1.
+Light/dark pairs: Arien/Yavanna (Kanagawa), Arwen/Nienna (Rosé Pine), Bombur/Bilbo (Gruvbox), Celeborn/Elbereth (Catppuccin), Eärendil/Gandalf (Tokyo Night), Fangorn/Lothlórien (Everforest), Legolas/Glorfindel (Night Owl), Telperion/Laurelin (high contrast). Use them with `window.autoDetectColorScheme` + `workbench.preferredDarkColorTheme` / `workbench.preferredLightColorTheme` to follow the OS appearance.
+
+Every theme is checked automatically for WCAG contrast. The minimums are: editor text 4.5:1, comments and line numbers 3:1, buttons, badges and status bar 4.5:1, selected list items 4.5:1. High contrast themes require 7:1 for all text (comments and tokens included) and 4.5:1 for line numbers.
 
 ### Italics
 
@@ -268,8 +272,8 @@ To change it, paste one of the snippets below into your `settings.json`. They ap
 
 ## Icons
 
-- **File Icon Theme**: *Valinor Icons – \<theme\>* (Lucide icons colored with each theme's palette, one set per color theme), *Valinor Icons Lucide*, *Valinor Icons Symbols* and Catppuccin *Mocha / Latte / Frappé / Macchiato*.
-- **Product Icon Theme**: *Valinor Product Icons Fluent*.
+- **File Icon Theme**: *Valinor Icons – \<theme\>* (Lucide icons colored with each theme's palette, one set per color theme, with dedicated icons for common folders such as `src`, `test` and `.github` and files such as `package.json`, `.env` and `Makefile`), *Valinor Icons Logos – \<theme\>* (the 550+ Catppuccin icons, with language and tool logos, recolored with each theme's palette), *Valinor Icons Lucide*, *Valinor Icons Symbols*, *Valinor Icons Material* (Material Icon Theme) and Catppuccin *Mocha / Latte / Frappé / Macchiato*.
+- **Product Icon Theme** (VS Code's own UI icons): *Valinor Product Icons Lucide*, *Fluent*, *Carbon* and *Material*.
 
 ## Fonts
 
@@ -292,4 +296,4 @@ Each theme lives in `src/themes/<id>.yml` and is defined as a semantic palette (
 
 [MIT](https://github.com/Diego-Brocanelli/valinor-theme/blob/main/LICENSE). Author: Diego Brocanelli.
 
-Third-party icons and adapted token rules (Lucide, Catppuccin, Symbols, Fluent, Nord, Tokyo Night, Night Owl) keep their own licenses; see [THIRD_PARTY_NOTICES.md](https://github.com/Diego-Brocanelli/valinor-theme/blob/main/THIRD_PARTY_NOTICES.md).
+Third-party icons and adapted token rules (Lucide, Catppuccin, Symbols, Fluent, Material, Carbon, Nord, Tokyo Night, Night Owl) keep their own licenses; see [THIRD_PARTY_NOTICES.md](https://github.com/Diego-Brocanelli/valinor-theme/blob/main/THIRD_PARTY_NOTICES.md).

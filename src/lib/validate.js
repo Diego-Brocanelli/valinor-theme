@@ -7,10 +7,12 @@
  *   - toda cor é um hex válido (#rgb, #rgba, #rrggbb, #rrggbbaa)
  *   - toda chave de "colors" existe no VS Code (src/lib/color-keys.json)
  *   - "type" condiz com a luminância do fundo do editor
- *   - contrastes mínimos (WCAG) nos pontos em que o texto precisa ser lido
+ *   - contrastes mínimos (WCAG) nos pontos em que o texto precisa ser lido;
+ *     nos temas de alto contraste (highContrast: true), 7:1 em todo texto
+ *   - marcas de adicionado e removido distinguíveis para daltônicos
  */
 
-const { isHex, isDark, contrast, over } = require("./color");
+const { isHex, isDark, contrast, over, cvdDistance } = require("./color");
 const { keys } = require("./color-keys.json");
 const { resolveStyle } = require("./scopes");
 
@@ -24,6 +26,14 @@ const ITALIC_PROBES = {
 };
 
 const KNOWN_KEYS = new Set(keys);
+
+// ΔE mínimo entre adicionado e removido com deuteranopia/protanopia.
+const MIN_CVD_DISTANCE = 15;
+const CVD_PAIRS = [
+  ["gutter", "editorGutter.addedBackground", "editorGutter.deletedBackground"],
+  ["régua", "editorOverviewRuler.addedForeground", "editorOverviewRuler.deletedForeground"],
+  ["minimap", "minimapGutter.addedBackground", "minimapGutter.deletedBackground"],
+];
 
 // [descrição, texto, fundo, mínimo para erro, mínimo recomendado]
 function contrastChecks(c) {
@@ -82,8 +92,10 @@ function validate(compiled) {
   }
   if (errors.length) return { errors, warnings };
 
-  for (const key of Object.keys(source.colors || {})) {
-    if (!KNOWN_KEYS.has(key)) errors.push(`colors.${key}: chave desconhecida no VS Code`);
+  for (const key of Object.keys(c)) {
+    if (KNOWN_KEYS.has(key)) continue;
+    const origin = source.colors && key in source.colors ? "" : " (gerada pelo template)";
+    errors.push(`colors.${key}: chave desconhecida no VS Code${origin}`);
   }
 
   if (!["dark", "light"].includes(theme.type)) {
@@ -92,17 +104,30 @@ function validate(compiled) {
     errors.push(`type "${theme.type}" não condiz com editor.background ${c["editor.background"]}`);
   }
 
-  for (const [label, fg, bg, min, recommended] of contrastChecks(c)) {
+  const hc = Boolean(source.highContrast);
+  for (const [label, fg, bg, baseMin, baseRecommended] of contrastChecks(c)) {
+    const hcMin = label === "números de linha" ? 4.5 : 7;
+    const min = hc ? Math.max(baseMin, hcMin) : baseMin;
+    const recommended = hc ? Math.max(baseRecommended, hcMin) : baseRecommended;
     const ratio = contrast(fg, bg);
     const detail = `${label}: ${fg} sobre ${bg} = ${ratio.toFixed(2)}:1`;
     if (ratio < min) errors.push(`${detail} (mínimo ${min}:1)`);
     else if (ratio < recommended) warnings.push(`${detail} (recomendado ${recommended}:1)`);
   }
 
+  for (const [label, added, deleted] of CVD_PAIRS) {
+    const bg = c["editor.background"];
+    const distance = cvdDistance(over(c[added], bg), over(c[deleted], bg));
+    if (distance < MIN_CVD_DISTANCE) {
+      warnings.push(`${label}: adicionado × removido com ΔE ${distance.toFixed(1)} para daltônicos (recomendado ${MIN_CVD_DISTANCE})`);
+    }
+  }
+
   const comment = commentColor(theme);
   if (comment) {
     const ratio = contrast(comment, c["editor.background"]);
-    if (ratio < 3) errors.push(`comentários: ${comment} = ${ratio.toFixed(2)}:1 (mínimo 3:1)`);
+    const min = hc ? 7 : 3;
+    if (ratio < min) errors.push(`comentários: ${comment} = ${ratio.toFixed(2)}:1 (mínimo ${min}:1)`);
   } else {
     warnings.push("nenhuma regra de token define a cor de comentários");
   }
@@ -119,7 +144,8 @@ function validate(compiled) {
     const fg = rule.settings && rule.settings.foreground;
     if (!fg) return;
     const ratio = contrast(fg, c["editor.background"]);
-    if (ratio < 3) bucket.push(`token "${rule.name || [].concat(rule.scope)[0]}": ${fg} = ${ratio.toFixed(2)}:1 (mínimo 3:1)`);
+    const min = hc ? 7 : 3;
+    if (ratio < min) bucket.push(`token "${rule.name || [].concat(rule.scope)[0]}": ${fg} = ${ratio.toFixed(2)}:1 (mínimo ${min}:1)`);
   });
 
   return { errors, warnings };

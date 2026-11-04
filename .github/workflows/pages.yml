@@ -7,6 +7,7 @@ on:
       - 'src/**'
       - 'assets/previews/**'
       - 'assets/icon.png'
+      - 'icons/**'
       - 'package.json'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
@@ -24,7 +25,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Submódulos: ícones Symbols e Fluent usados na prévia ao vivo.
       - uses: actions/checkout@v7
+        with:
+          submodules: recursive
 
       - uses: actions/setup-node@v7
         with:
@@ -32,6 +36,13 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # Gera as versões WebP dos prints (sem ImageMagick a galeria usa só PNG).
+      - name: ImageMagick
+        run: command -v magick || command -v convert || (sudo apt-get update && sudo apt-get install -y --no-install-recommends imagemagick)
+
+      # Gera os ícones por tema e Logos usados na prévia ao vivo.
+      - run: npm run build
 
       - name: Gerar a galeria
         run: npm run site

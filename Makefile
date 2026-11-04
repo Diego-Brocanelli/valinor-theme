@@ -29,4 +29,5 @@ update-icons:
 	git submodule update --remote icons/symbols
 	git submodule update --remote icons/fluent
 	npm run vendor:lucide
+	npm run vendor:product-icons
 	@echo "Catppuccin: atualizar manualmente copiando os theme.json gerados pela extensão."
