@@ -5,6 +5,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Unreleased]
 
+## [2.28.0] - 2026-11-03
+
 ### Adicionado
 
 - Dois temas de **alto contraste**, as Duas Árvores de Valinor: **Telperion** (escuro, `hc-black`) e **Laurelin** (claro, `hc-light`), formando um par. Texto e tokens a pelo menos 7:1 (WCAG AAA), bordas fortes e contornos em foco, seleção, aba ativa, linha atual e buscas. Agora são 30 temas: 19 escuros e 11 claros.
