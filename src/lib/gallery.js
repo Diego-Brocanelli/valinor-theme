@@ -47,6 +47,25 @@ const TREE = [
   { name: "tsconfig.json", lang: "jsonc", depth: 1 },
 ];
 
+// Vitrine de ícones da galeria: pastas e arquivos comuns, um de cada formato.
+const SHOWCASE = [
+  { name: "src", kind: "folder" },
+  { name: "components", kind: "folder" },
+  { name: "docs", kind: "folder" },
+  { name: ".github", kind: "folder" },
+  { name: "node_modules", kind: "folder" },
+  ...[
+    ["index.ts", "typescript"], ["App.tsx", "typescriptreact"], ["main.js", "javascript"], ["index.html", "html"],
+    ["styles.css", "css"], ["theme.scss", "scss"], ["App.vue", "vue"], ["Button.svelte", "svelte"],
+    ["main.py", "python"], ["main.go", "go"], ["lib.rs", "rust"], ["index.php", "php"],
+    ["Main.java", "java"], ["Main.kt", "kotlin"], ["Program.cs", "csharp"], ["main.c", "c"],
+    ["main.cpp", "cpp"], ["app.rb", "ruby"], ["main.dart", "dart"], ["deploy.sh", "shellscript"],
+    ["query.sql", "sql"], ["package.json", "json"], ["config.yaml", "yaml"], ["Cargo.toml", "toml"],
+    ["README.md", "markdown"], ["Dockerfile", "dockerfile"], ["Makefile", "makefile"], [".gitignore", "ignore"],
+    [".env", "dotenv"], ["logo.svg", "xml"], ["photo.png", ""], ["LICENSE", "plaintext"],
+  ].map(([name, lang]) => ({ name, lang })),
+];
+
 // Conjuntos de ícones de arquivo: tema de ícones e id no settings.json por tema de cores.
 const ICON_SETS = [
   { key: "themed", file: (id) => `icons/themed/${id}/theme.json`, setting: (id) => `valinor-icons-minimal-${id}` },
@@ -247,17 +266,19 @@ function iconSets(themes, out) {
       }
       const iconTheme = fs.readJsonSync(file);
       const resolve = iconResolver(iconTheme, theme.type === "light");
-      const list = TREE.map((entry) => {
+      const iconOf = (entry) => {
         const def = iconTheme.iconDefinitions[resolve(entry)];
         if (!def || !def.iconPath) return null;
         const source = path.resolve(path.dirname(file), def.iconPath);
         const rel = path.relative(path.join(ROOT, "icons"), source).split(path.sep).join("/");
         fs.copySync(source, path.join(out, "icons", rel));
         return `icons/${rel}`.replaceAll(`/${id}/`, "/{id}/");
-      });
+      };
+      const list = TREE.map(iconOf);
+      const showcase = SHOWCASE.map(iconOf);
 
-      const key = JSON.stringify(list);
-      if (!groups.has(key)) groups.set(key, { themes: [], list, hidesArrows: Boolean(iconTheme.hidesExplorerArrows) });
+      const key = JSON.stringify([list, showcase]);
+      if (!groups.has(key)) groups.set(key, { themes: [], list, showcase, hidesArrows: Boolean(iconTheme.hidesExplorerArrows) });
       groups.get(key).themes.push(id);
       settings[id] = set.setting(id, theme.type);
     }
@@ -349,6 +370,7 @@ function hueOf(hex) {
 
 module.exports = {
   TREE,
+  SHOWCASE,
   SNIPPETS: Object.fromEntries(Object.entries(SNIPPETS).map(([file, src]) => [file, tokenize(src)])),
   MORE_ITALIC,
   iconSets,

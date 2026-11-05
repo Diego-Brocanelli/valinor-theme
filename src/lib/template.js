@@ -582,11 +582,39 @@ function resolveSyntax(syntax, p) {
   s.regex = s.regex || s.string;
   s.heading = s.heading || s.function;
   s.link = s.link || p.accentText;
-  // Alto contraste: todo token com 7:1 sobre o editor.
-  if (p.highContrast) {
-    for (const key of Object.keys(s)) s[key] = ensureContrast(s[key], p.bg, 7);
-  }
   return s;
+}
+
+/**
+ * Contraste mínimo de um token sobre o editor: 7:1 em alto contraste, 3:1 em
+ * comentários e citações (texto secundário, já em itálico) e 4.5:1 (WCAG AA)
+ * no resto. Fonte única para a compilação (legibleTokens) e o validador.
+ */
+const SECONDARY_SCOPE = /^(comment|punctuation\.definition\.comment|string\.comment|markup\.quote)\b/;
+
+function minTokenContrast(scopes, highContrast) {
+  if (highContrast) return 7;
+  const list = [].concat(scopes || []).flatMap((s) => s.split(",")).map((s) => s.trim()).filter(Boolean);
+  return list.length && list.every((s) => SECONDARY_SCOPE.test(s)) ? 3 : 4.5;
+}
+
+/**
+ * Ajusta a luminância (mantendo o matiz) de toda cor de token que não atinge
+ * minTokenContrast. Vale também para regras herdadas dos temas de origem.
+ */
+function legibleTokens(theme, highContrast) {
+  const bg = theme.colors["editor.background"];
+  const fix = (color, scopes) => ensureContrast(color, bg, minTokenContrast(scopes, highContrast));
+
+  for (const rule of theme.tokenColors) {
+    const fg = rule.settings && rule.settings.foreground;
+    if (fg) rule.settings = { ...rule.settings, foreground: fix(fg, rule.scope) };
+  }
+  for (const [key, value] of Object.entries(theme.semanticTokenColors)) {
+    if (typeof value === "string") theme.semanticTokenColors[key] = fix(value, key);
+    else if (value && value.foreground) theme.semanticTokenColors[key] = { ...value, foreground: fix(value.foreground, key) };
+  }
+  return theme;
 }
 
 const rule = (name, scope, foreground, fontStyle) => {
@@ -725,4 +753,7 @@ function semanticTokens(s) {
   };
 }
 
-module.exports = { resolvePalette, resolveSyntax, colors, tokens, semanticTokens, styleRules, ITALIC_SCOPES, EXTRA_ITALIC_SCOPES };
+module.exports = {
+  resolvePalette, resolveSyntax, colors, tokens, semanticTokens, styleRules, minTokenContrast, legibleTokens,
+  ITALIC_SCOPES, EXTRA_ITALIC_SCOPES,
+};

@@ -10,11 +10,22 @@
  *   - contrastes mínimos (WCAG) nos pontos em que o texto precisa ser lido;
  *     nos temas de alto contraste (highContrast: true), 7:1 em todo texto
  *   - marcas de adicionado e removido distinguíveis para daltônicos
+ *   - todo token com 4.5:1 (comentários 3:1, alto contraste 7:1) e papéis de
+ *     sintaxe distintos continuam com cores distintas
  */
 
 const { isHex, isDark, contrast, over, cvdDistance } = require("./color");
 const { keys } = require("./color-keys.json");
 const { resolveStyle } = require("./scopes");
+const { minTokenContrast } = require("./template");
+
+// Pares de regras (nome em template.tokens → slot de sintaxe) que precisam
+// continuar distintos depois do ajuste de contraste.
+const KEY_OF = { Keywords: "keyword", Strings: "string", Functions: "function", Variables: "variable", "Types & classes": "type", Numbers: "number" };
+const DISTINCT_SLOTS = [
+  ["Keywords", "Strings"], ["Keywords", "Functions"], ["Functions", "Variables"],
+  ["Strings", "Numbers"], ["Types & classes", "Functions"], ["Strings", "Functions"],
+];
 
 // Escopos que precisam ficar em itálico em todos os temas (ver ITALIC_SCOPES).
 const ITALIC_PROBES = {
@@ -137,16 +148,36 @@ function validate(compiled) {
     if (!fontStyle.includes("italic")) errors.push(`${label} sem itálico (fontStyle "${fontStyle}")`);
   }
 
-  // Tokens gerados pela paleta precisam ser legíveis; em tokens herdados de
-  // temas de origem apenas avisamos.
-  const bucket = compiled.syntax ? errors : warnings;
+  // Todo token (inclusive os herdados do tema de origem) passa por
+  // legibleTokens na compilação; aqui só confirmamos o resultado.
+  const editorBg = c["editor.background"];
+  const checkToken = (label, fg, scopes) => {
+    const min = minTokenContrast(scopes, hc);
+    const ratio = contrast(fg, editorBg);
+    if (ratio < min) errors.push(`token "${label}": ${fg} = ${ratio.toFixed(2)}:1 (mínimo ${min}:1)`);
+  };
   theme.tokenColors.forEach((rule) => {
     const fg = rule.settings && rule.settings.foreground;
-    if (!fg) return;
-    const ratio = contrast(fg, c["editor.background"]);
-    const min = hc ? 7 : 3;
-    if (ratio < min) bucket.push(`token "${rule.name || [].concat(rule.scope)[0]}": ${fg} = ${ratio.toFixed(2)}:1 (mínimo ${min}:1)`);
+    if (fg) checkToken(rule.name || [].concat(rule.scope)[0], fg, rule.scope);
   });
+  for (const [key, value] of Object.entries(theme.semanticTokenColors)) {
+    const fg = typeof value === "string" ? value : value && value.foreground;
+    if (fg) checkToken(`semântico ${key}`, fg, key);
+  }
+
+  // Ajustar o contraste não pode fundir papéis de sintaxe diferentes.
+  if (compiled.syntax) {
+    const s = compiled.syntax;
+    const color = (slot) => {
+      const rule = theme.tokenColors.find((r) => r.name === slot);
+      return rule && rule.settings.foreground && rule.settings.foreground.toLowerCase();
+    };
+    for (const [a, b] of DISTINCT_SLOTS) {
+      if (s[KEY_OF[a]] !== s[KEY_OF[b]] && color(a) && color(a) === color(b)) {
+        warnings.push(`sintaxe: "${a}" e "${b}" ficaram com a mesma cor (${color(a)}) após o ajuste de contraste`);
+      }
+    }
+  }
 
   return { errors, warnings };
 }

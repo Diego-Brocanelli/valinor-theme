@@ -5,7 +5,8 @@
  * JS inline, sem dependências) com os prints de todos os temas, filtros por
  * tipo e família, busca, ordenação, pares claro/escuro, comparação lado a
  * lado, amostras de cor e uma prévia ao vivo (src/lib/gallery.js) que monta o
- * settings.json com tema, ícones de arquivo, ícones de interface e itálico.
+ * settings.json com tema, ícones de arquivo, ícones de interface e itálico,
+ * além de uma vitrine com cada conjunto de ícones de arquivo.
  * Links como #arien abrem o tema; busca e filtros ficam na URL.
  * Textos em português e inglês.
  *
@@ -30,6 +31,7 @@ const pkg = fs.readJsonSync(path.join(ROOT, "package.json"));
 
 const MARKETPLACE = `https://marketplace.visualstudio.com/items?itemName=${pkg.publisher}.${pkg.name}`;
 const REPO = "https://github.com/Diego-Brocanelli/valinor-theme";
+const SITE = "https://diego-brocanelli.github.io/valinor-theme/";
 const HUES = ["red", "orange", "yellow", "green", "cyan", "blue", "magenta"];
 
 function themeData(themes) {
@@ -46,6 +48,7 @@ function themeData(themes) {
     hue: gallery.hueOf(palette.accent),
     lum: Math.round(gallery.luminance(palette.bg) * 1000),
     hc: Boolean(source.highContrast),
+    accentText: palette.accentText,
     // Temas novos podem ainda não ter print (npm run screenshots precisa do Hyprland).
     preview: fs.existsSync(path.join(PREVIEWS, `${id}.png`)),
     pair: source.pair || null,
@@ -141,6 +144,13 @@ function css(arien, yavanna) {
   }
   .btn.ghost { background: transparent; color: var(--fg); border-color: var(--border); }
   .btn.small { height: 30px; padding: 0 10px; font-size: 13px; font-weight: 500; border-radius: 8px; }
+
+  /* Espectro: uma faixa por tema (fundo + destaque), do mais escuro ao mais claro. */
+  .spectrum { display: flex; height: 72px; margin-top: 32px; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+  .spectrum a { flex: 1 1 0; display: flex; align-items: flex-end; transition: flex-grow .25s ease-out; }
+  .spectrum a:hover { flex-grow: 3; }
+  .spectrum i { display: block; width: 100%; height: 30%; }
+  @media (max-width: 640px) { .spectrum { height: 48px; margin-top: 24px; } }
 
   .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 8px 0 20px; }
   .seg { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); }
@@ -264,6 +274,16 @@ function css(arien, yavanna) {
   .cmp-range { margin-top: 12px; }
   .cmp-range input { width: 100%; accent-color: var(--accent-fill); min-height: 32px; }
 
+  .iconsets { display: grid; gap: 10px; border-radius: 12px; padding: 16px; border: 1px solid var(--border);
+    background: var(--c-sideBar-background); color: var(--c-sideBar-foreground); }
+  .iconset { display: grid; grid-template-columns: 190px 1fr; gap: 12px; align-items: center; }
+  .iconset h3 { margin: 0; font-size: 13px; font-weight: 600; }
+  .iconset ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .iconset li { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 6px; }
+  .iconset li:hover { background: var(--c-list-hoverBackground); }
+  .iconset img { width: 20px; height: 20px; }
+  @media (max-width: 640px) { .iconset { grid-template-columns: 1fr; gap: 6px; } }
+
   pre.snippet { scrollbar-width: thin; scrollbar-color: var(--border) transparent; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow: auto; max-height: 420px; font-size: 14px; }
 
   footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
@@ -271,10 +291,10 @@ function css(arien, yavanna) {
   dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: min(96vw, 1600px); width: 100%; }
   dialog.lightbox::backdrop { background: color-mix(in srgb, var(--bg) 92%, transparent); }
   .lb-inner { position: relative; }
-  .lb-inner img { width: 100%; display: block; border-radius: 10px; }
+  .lb-inner img { width: 100%; display: block; border-radius: 10px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; }
   .lb-cap { color: var(--fg); display: flex; justify-content: space-between; align-items: center; padding: 10px 2px; gap: 8px; flex-wrap: wrap; }
   .lb-nav { display: flex; gap: 8px; }
-  .lb-nav button { background: var(--surface); color: var(--fg); border: 1px solid var(--border); border-radius: 8px; height: 34px; padding: 0 12px; cursor: pointer; font: inherit; }
+  .lb-nav button { background: var(--surface); color: var(--fg); border: 1px solid var(--border); border-radius: 8px; min-height: 44px; min-width: 44px; padding: 0 12px; cursor: pointer; font: inherit; }
   .lb-nav button:hover { border-color: var(--accent); }
 
   .toast {
@@ -283,7 +303,10 @@ function css(arien, yavanna) {
     font-weight: 600; transition: .2s; pointer-events: none; z-index: 50;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+    .card:hover { transform: none; }
+  }
   .btn.ghost:hover, .btn.ghost:focus-visible { border-color: var(--accent); }
   @media (max-width: 640px) {
     .bar .hide-sm { display: none; } .hero { padding-top: 32px; }
@@ -297,7 +320,15 @@ function css(arien, yavanna) {
   `;
 }
 
-function html(data, styles, italic, hasWebp, live) {
+// Faixas do hero: decorativas (o mesmo link existe no título de cada card).
+function spectrum(data) {
+  return [...data]
+    .sort((a, b) => a.lum - b.lum)
+    .map((t) => `<a href="#${t.id}" tabindex="-1" title="${t.name}" style="background:${t.colors.bg}"><i style="background:${t.accentText}"></i></a>`)
+    .join("");
+}
+
+function html(data, styles, italic, hasWebp, live, [arienBg, yavannaBg]) {
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
   const liveJson = JSON.stringify(live).replace(/</g, "\\u003c");
   const fontFaces = Object.entries(live.product)
@@ -315,6 +346,17 @@ function html(data, styles, italic, hasWebp, live) {
 <title>Valinor Theme Gallery</title>
 <meta name="description" content="${total} temas de cores para VS Code inspirados em Tolkien — ${total} Tolkien-inspired VS Code color themes.">
 <link rel="icon" href="icon.png">
+<link rel="canonical" href="${SITE}">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="${arienBg}">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="${yavannaBg}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Valinor Theme">
+<meta property="og:description" content="${total} Tolkien-inspired VS Code color themes with validated contrast and matching icons.">
+<meta property="og:url" content="${SITE}">
+<meta property="og:image" content="${SITE}social.png">
+<meta property="og:image:width" content="1774">
+<meta property="og:image:height" content="887">
+<meta name="twitter:card" content="summary_large_image">
 <style>${styles}
 ${fontFaces}</style>
 </head>
@@ -342,6 +384,7 @@ ${fontFaces}</style>
         <button class="btn ghost small" type="button" data-copy-from="cmd" data-i18n="copy">Copiar</button></span>
       <a class="btn" href="${MARKETPLACE}" data-i18n="install">Instalar no VS Code</a>
     </div>
+    <div class="spectrum" aria-hidden="true">${spectrum(data)}</div>
   </div>
 
   <div class="wrap">
@@ -350,6 +393,7 @@ ${fontFaces}</style>
         <button class="pill" type="button" data-filter="all" aria-pressed="true" data-i18n="all">Todos</button>
         <button class="pill" type="button" data-filter="dark" aria-pressed="false" data-i18n="dark">Escuros</button>
         <button class="pill" type="button" data-filter="light" aria-pressed="false" data-i18n="light">Claros</button>
+        <button class="pill" type="button" data-filter="hc" aria-pressed="false" data-i18n="hcFilter">Alto contraste</button>
       </div>
       <div class="searchbox">
         <label class="sr-only" for="q" data-i18n="searchLabel">Buscar temas</label>
@@ -420,6 +464,16 @@ ${fontFaces}</style>
       <button class="btn ghost small" type="button" data-copy-from="setupsnippet" data-i18n="copy">Copiar</button>
     </div>
   </section>
+  <section id="icons">
+    <div class="wrap">
+      <h2 data-i18n="iconsTitle">Ícones de arquivo</h2>
+      <p data-i18n="iconsLead">Os mesmos arquivos em cada conjunto, sobre a barra lateral do tema escolhido. Lucide e Logos são recoloridos na paleta de cada tema, sempre com contraste mínimo de 3:1.</p>
+      <div class="setup-controls">
+        <label class="field"><span data-i18n="fieldTheme">Tema</span><select id="i-theme"></select></label>
+      </div>
+      <div class="iconsets" id="iconsets"></div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -480,6 +534,9 @@ const I18N = {
     productSets: { default: "Padrão do VS Code", lucide: "Lucide", fluent: "Fluent", carbon: "Carbon", material: "Material" },
     compareTitle: "Comparar temas", compareLead: "Arraste sobre a imagem para comparar dois temas no mesmo código.",
     compareA: "Tema da esquerda", compareB: "Tema da direita", comparePos: "Divisão",
+    hcFilter: "Alto contraste",
+    iconsTitle: "Ícones de arquivo",
+    iconsLead: "Os mesmos arquivos em cada conjunto, sobre a barra lateral do tema escolhido. Lucide e Logos são recoloridos na paleta de cada tema, sempre com contraste mínimo de 3:1.",
   },
   en: {
     title: "Tolkien-inspired color themes",
@@ -511,6 +568,9 @@ const I18N = {
     productSets: { default: "VS Code default", lucide: "Lucide", fluent: "Fluent", carbon: "Carbon", material: "Material" },
     compareTitle: "Compare themes", compareLead: "Drag over the image to compare two themes on the same code.",
     compareA: "Left theme", compareB: "Right theme", comparePos: "Split",
+    hcFilter: "High contrast",
+    iconsTitle: "File icons",
+    iconsLead: "The same files in every set, on the sidebar of the chosen theme. Lucide and Logos are recolored to each theme's palette, always with at least 3:1 contrast.",
   },
 };
 
@@ -571,7 +631,7 @@ function el(tag, attrs = {}, ...children) {
 
 // Print do tema: WebP de 800px quando o build gerou (cards e pares), PNG como fallback.
 function preview(theme) {
-  const img = el("img", { src: "previews/" + theme.id + ".png", alt: theme.label, loading: "lazy", width: "1600", height: "1000" });
+  const img = el("img", { src: "previews/" + theme.id + ".png", alt: theme.label, loading: "lazy", decoding: "async", width: "1600", height: "1000" });
   if (!HAS_WEBP) return img;
   return el("picture", {}, el("source", { type: "image/webp", srcset: "previews/" + theme.id + ".webp" }), img);
 }
@@ -633,7 +693,7 @@ function card(theme) {
 function render() {
   const q = $("#q").value.trim().toLowerCase();
   visible = THEMES.filter((th) =>
-    (filter === "all" || th.type === filter) &&
+    (filter === "all" || (filter === "hc" ? th.hc : th.type === filter)) &&
     (!family || th.family === family) &&
     (!q || (th.name + " " + th.upstream + " " + th.id).toLowerCase().includes(q)));
   const sorters = {
@@ -674,7 +734,7 @@ function syncUrl() {
 function readUrl() {
   const params = new URLSearchParams(location.search);
   $("#q").value = params.get("q") || "";
-  if (["dark", "light"].includes(params.get("type"))) filter = params.get("type");
+  if (["dark", "light", "hc"].includes(params.get("type"))) filter = params.get("type");
   if (THEMES.some((th) => th.family === params.get("family"))) family = params.get("family");
   if (["hue", "light"].includes(params.get("sort"))) sortBy = params.get("sort");
   document.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === filter)));
@@ -693,6 +753,7 @@ function fillSelects() {
     select.value = value;
   };
   themeOptions($("#s-theme"), setup.theme);
+  themeOptions($("#i-theme"), setup.theme);
   themeOptions($("#c-a"), compare.a, true);
   themeOptions($("#c-b"), compare.b, true);
   $("#s-icons").replaceChildren(...Object.keys(LIVE.icons).map((k) => el("option", { value: k }, t("iconSets")[k])));
@@ -765,6 +826,21 @@ function renderSetup() {
   $("#setupsnippet").textContent = settingsFor(theme);
 }
 
+// Vitrine: cada conjunto em uma linha, com as cores da sidebar do tema.
+function renderIcons() {
+  const theme = byId[$("#i-theme").value] || byId[setup.theme];
+  const box = $("#iconsets");
+  for (const [key, value] of Object.entries(theme.ui)) box.style.setProperty("--c-" + key.split(".").join("-"), value || "transparent");
+  box.replaceChildren(...Object.entries(LIVE.icons).map(([key, set]) => {
+    const group = set.groups.find((g) => g.themes.includes(theme.id));
+    const items = LIVE.showcase.map((entry, i) => {
+      const src = group.showcase[i] && group.showcase[i].split("{id}").join(theme.id);
+      return src ? el("li", { title: entry.name }, el("img", { src, alt: entry.name, loading: "lazy", width: "20", height: "20" })) : null;
+    }).filter(Boolean);
+    return el("div", { class: "iconset" }, el("h3", {}, t("iconSets")[key]), el("ul", {}, ...items));
+  }));
+}
+
 function showLive(id) {
   setup.theme = id;
   store.set("valinor-setup-theme", id);
@@ -795,6 +871,7 @@ function applyLang() {
   render();
   renderSetup();
   renderCompare();
+  renderIcons();
 }
 
 function focusTheme(id) {
@@ -851,6 +928,7 @@ document.querySelectorAll("[data-italic]").forEach((b) => b.addEventListener("cl
 $("#s-theme").addEventListener("change", (e) => { setup.theme = e.target.value; store.set("valinor-setup-theme", setup.theme); renderSetup(); });
 $("#s-icons").addEventListener("change", (e) => { setup.icons = e.target.value; store.set("valinor-icons", setup.icons); renderSetup(); });
 $("#s-product").addEventListener("change", (e) => { setup.product = e.target.value; store.set("valinor-product", setup.product); renderSetup(); });
+$("#i-theme").addEventListener("change", renderIcons);
 $("#c-a").addEventListener("change", (e) => { compare.a = e.target.value; renderCompare(); });
 $("#c-b").addEventListener("change", (e) => { compare.b = e.target.value; renderCompare(); });
 $("#c-pos").addEventListener("input", (e) => { compare.pos = Number(e.target.value); renderCompare(); });
@@ -885,6 +963,15 @@ $("#lb-prev").addEventListener("click", () => step(-1));
 $("#lb-next").addEventListener("click", () => step(1));
 $("#lb-close").addEventListener("click", () => $("#lb").close());
 $("#lb").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+// Arrastar o print para o lado troca de tema (celular).
+let swipeX = null;
+$("#lb-img").addEventListener("pointerdown", (e) => { swipeX = e.clientX; });
+$("#lb-img").addEventListener("pointerup", (e) => {
+  if (swipeX === null) return;
+  const dx = e.clientX - swipeX;
+  swipeX = null;
+  if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+});
 document.addEventListener("keydown", (e) => {
   if (!$("#lb").open) return;
   if (e.key === "ArrowLeft") step(-1);
@@ -938,6 +1025,8 @@ function main() {
   fs.emptyDirSync(OUT);
   fs.copySync(PREVIEWS, path.join(OUT, "previews"), { filter: (src) => !src.endsWith("overview.png") });
   fs.copySync(path.join(ROOT, "assets", "icon.png"), path.join(OUT, "icon.png"));
+  // Imagem de compartilhamento (og:image).
+  fs.copySync(path.join(ROOT, "assets", "valinor-banner.png"), path.join(OUT, "social.png"));
   const hasWebp = writeWebp(withPreview);
   const italic = { default: {}, none: italicSettings("none", themes), more: italicSettings("more", themes) };
   const icons = gallery.iconSets(themes, OUT);
@@ -955,8 +1044,9 @@ function main() {
     tree: gallery.TREE,
     snippets: gallery.SNIPPETS,
     moreItalic: gallery.MORE_ITALIC,
+    showcase: gallery.SHOWCASE,
   };
-  const page = html(themeData(themes), css(arien, yavanna), italic, hasWebp, live);
+  const page = html(themeData(themes), css(arien, yavanna), italic, hasWebp, live, [arien.bg, yavanna.bg]);
 
   // O script da página é montado dentro de um template literal; um escape
   // errado quebra a galeria inteira sem aviso. Checa a sintaxe antes de gravar.

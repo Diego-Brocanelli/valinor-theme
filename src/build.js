@@ -17,7 +17,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const { loadThemes } = require("./lib/themes");
 const { validate } = require("./lib/validate");
-const { ensureContrast } = require("./lib/color");
+const { ensureContrast, contrast } = require("./lib/color");
 
 const ROOT = path.join(__dirname, "..");
 const THEMES_OUT = path.join(ROOT, "themes");
@@ -227,6 +227,32 @@ function writeLogoIcons(themes) {
   }
 }
 
+/**
+ * Ícones recoloridos (themed e logos) precisam de 3:1 sobre a sidebar
+ * (WCAG 1.4.11). Confere as cores realmente gravadas nos SVGs, inclusive as
+ * que o recolor deixou como no original.
+ */
+function checkIconContrast(themes) {
+  const failures = [];
+  for (const { id, theme } of themes) {
+    const bg = theme.colors["sideBar.background"];
+    for (const dir of [path.join(THEMED_DIR, id, "images"), path.join(LOGOS_DIR, id, "icons")]) {
+      for (const file of fs.readdirSync(dir)) {
+        const svg = fs.readFileSync(path.join(dir, file), "utf8");
+        for (const hex of new Set(svg.match(/#[0-9a-f]{6}\b/gi) || [])) {
+          const ratio = contrast(hex, bg);
+          if (ratio < 3) failures.push(`${path.relative(ROOT, path.join(dir, file))}: ${hex} = ${ratio.toFixed(2)}:1 sobre ${bg}`);
+        }
+      }
+    }
+  }
+  if (failures.length) {
+    console.error(`\n✗ ícones com contraste abaixo de 3:1:\n  ${failures.slice(0, 20).join("\n  ")}`);
+    if (failures.length > 20) console.error(`  … e mais ${failures.length - 20}`);
+    process.exit(1);
+  }
+}
+
 function writeLucideIcons() {
   const map = fs.readJsonSync(path.join(LUCIDE_DIR, "map.json"));
   const iconDefinitions = {};
@@ -413,6 +439,7 @@ step("validação", () => validateAll(themes));
 step(`${themes.length} temas gerados em themes/`, () => writeThemes(themes));
 step(`${themes.length} conjuntos de ícones por tema`, () => writeThemedIcons(themes));
 step(`${themes.length} conjuntos de ícones Logos`, () => writeLogoIcons(themes));
+step("contraste dos ícones (3:1 sobre a sidebar)", () => checkIconContrast(themes));
 step("ícones Lucide (dark/light)", writeLucideIcons);
 const productIcons = step("ícones de produto Lucide", writeLucideProductIcons);
 console.log(`  ${productIcons} codicons substituídos`);

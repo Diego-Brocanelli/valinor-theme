@@ -4,6 +4,7 @@
  * Carrega os temas de src/themes/*.yml e monta o JSON final do VS Code:
  * cores de interface geradas pela paleta + overrides de "colors", e tokens
  * gerados pelo bloco "syntax" (quando existe) + regras extras de "tokenColors".
+ * Toda cor de token passa por template.legibleTokens (contraste mínimo).
  */
 
 const fs = require("fs-extra");
@@ -48,6 +49,7 @@ function compile({ id, file, source }) {
     },
   };
 
+  template.legibleTokens(theme, Boolean(source.highContrast));
   return { id, file, source, palette, syntax, theme };
 }
 

@@ -59,7 +59,7 @@ Telperion and Laurelin, the Two Trees of Valinor, are **high contrast** themes: 
 
 Light/dark pairs: Arien/Yavanna (Kanagawa), Arwen/Nienna (Rosé Pine), Bombur/Bilbo (Gruvbox), Celeborn/Elbereth (Catppuccin), Eärendil/Gandalf (Tokyo Night), Fangorn/Lothlórien (Everforest), Legolas/Glorfindel (Night Owl), Telperion/Laurelin (high contrast). Use them with `window.autoDetectColorScheme` + `workbench.preferredDarkColorTheme` / `workbench.preferredLightColorTheme` to follow the OS appearance.
 
-Every theme is checked automatically for WCAG contrast. The minimums are: editor text 4.5:1, comments and line numbers 3:1, buttons, badges and status bar 4.5:1, selected list items 4.5:1. High contrast themes require 7:1 for all text (comments and tokens included) and 4.5:1 for line numbers.
+Every theme is checked automatically for WCAG contrast. The minimums are: editor text and code tokens 4.5:1, comments and line numbers 3:1, recolored file icons 3:1 on the sidebar, buttons, badges and status bar 4.5:1, selected list items 4.5:1. High contrast themes require 7:1 for all text (comments and tokens included) and 4.5:1 for line numbers.
 
 ### Italics
 
@@ -287,7 +287,7 @@ cd valinor-theme
 npm ci
 npm run build      # validate + generate themes/ and icons
 npm run validate   # contrast / key / color report
-npm run screenshots # real VS Code screenshots in assets/previews (Hyprland + grim + ImageMagick)
+npm run screenshots # real VS Code screenshots in assets/previews (Xvfb + xdotool + ImageMagick, any distro or desktop)
 ```
 
 Each theme lives in `src/themes/<id>.yml` and is defined as a semantic palette (`bg`, `bgAlt`, `fg`, `accent`, 7 hues and syntax roles). `src/lib/template.js` turns that palette into 300+ workbench colors, token rules and semantic token colors.

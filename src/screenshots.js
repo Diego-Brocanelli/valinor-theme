@@ -4,45 +4,52 @@
  * Captura prints reais do VS Code com cada tema (assets/previews/<id>.png)
  * e monta a imagem comparativa (assets/previews/overview.png).
  *
- * Funciona no Hyprland sem ocupar a tela: cria um monitor virtual (headless),
- * abre o VS Code nele com um perfil isolado (o seu perfil não é tocado),
- * troca o tema pelo settings.json, captura com grim e remove o monitor.
+ * Funciona em qualquer distro e ambiente (GNOME, KDE, Hyprland, sem sessão
+ * gráfica) sem ocupar a tela: sobe um servidor X invisível (Xvfb) de
+ * 1600x1000, abre nele o VS Code com um perfil isolado (o seu perfil não é
+ * tocado), troca o tema pelo settings.json e captura a tela com o ImageMagick.
  *
- * Requer: Hyprland (hyprctl), grim, ImageMagick (magick) e o comando `code`.
+ * Requer: Xvfb, xdotool, ImageMagick (magick) e o VS Code (comando `code`).
+ *   Fedora: sudo dnf install xorg-x11-server-Xvfb xdotool ImageMagick
+ *   Arch:   sudo pacman -S xorg-server-xvfb xdotool imagemagick
+ *
  * Uso: npm run screenshots
  *      npm run screenshots -- durin galadriel   (só alguns temas)
  *      ICON_THEME=valinor-icons-zed npm run screenshots -- arien
+ *      CODE_BIN=/caminho/do/code npm run screenshots   (binário do Electron)
  */
 
 const fs = require("fs-extra");
 const os = require("os");
 const path = require("path");
-const { execFileSync, spawnSync } = require("child_process");
+const { execFileSync, spawn, spawnSync } = require("child_process");
 const { loadThemes } = require("./lib/themes");
 
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "assets", "previews");
 const VSIX = path.join(ROOT, "bin", "valinor-theme.vsix");
-const MONITOR = "VALINORSHOT";
-const MODE = "1600x1000@60"; // resolução do monitor virtual (= tamanho dos prints)
-// Binário do Electron. O comando `code` é um script que inicia o VS Code como
-// outro processo e sai; o Hyprland só aplica as regras de exec ao próprio
-// processo, então chamamos o binário diretamente.
-const CODE_BIN = process.env.CODE_BIN || "/usr/share/code/code";
+const WIDTH = 1600; // tamanho da tela virtual (= tamanho dos prints)
+const HEIGHT = 1000;
+// Binário do Electron (o comando `code` é um script que só repassa a chamada).
+// RPM/.deb/AUR (code) instalam em /usr/share/code; visual-studio-code-bin em /opt.
+const CODE_BIN =
+  process.env.CODE_BIN || ["/usr/share/code/code", "/opt/visual-studio-code/code"].find((bin) => fs.existsSync(bin));
+
+const INSTALL_HINT =
+  "  Fedora: sudo dnf install xorg-x11-server-Xvfb xdotool ImageMagick\n" +
+  "  Arch:   sudo pacman -S xorg-server-xvfb xdotool imagemagick";
 
 const sleep = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 const run = (cmd, args, opts = {}) => execFileSync(cmd, args, { encoding: "utf8", ...opts });
-const hypr = (...args) => run("hyprctl", args).trim();
-const hyprJson = (what) => JSON.parse(run("hyprctl", [what, "-j"]));
 
 function requireTools() {
-  if (!fs.existsSync(CODE_BIN)) {
-    console.error(`screenshots: binário do VS Code não encontrado em ${CODE_BIN} (defina CODE_BIN).`);
+  if (!CODE_BIN) {
+    console.error("screenshots: binário do VS Code não encontrado (defina CODE_BIN).");
     process.exit(1);
   }
-  for (const tool of ["hyprctl", "grim", "magick", "code"]) {
+  for (const tool of ["Xvfb", "xdotool", "magick", "code"]) {
     if (spawnSync("which", [tool]).status !== 0) {
-      console.error(`screenshots: "${tool}" não encontrado (requer Hyprland, grim, ImageMagick e VS Code).`);
+      console.error(`screenshots: "${tool}" não encontrado. Instale as dependências:\n${INSTALL_HINT}`);
       process.exit(1);
     }
   }
@@ -136,31 +143,36 @@ function settings(compiled, label) {
   };
 }
 
-// ── Monitor virtual e janela ─────────────────────────────────────────────────
+// ── Tela virtual e janela ────────────────────────────────────────────────────
 
-function ensureMonitor() {
-  let monitor = hyprJson("monitors").find((m) => m.name === MONITOR);
-  const created = !monitor;
-  if (created) hypr("output", "create", "headless", MONITOR);
-  hypr("eval", `hl.monitor({ output = "${MONITOR}", mode = "${MODE}", position = "auto", scale = 1 })`);
-  sleep(1000);
-  monitor = hyprJson("monitors").find((m) => m.name === MONITOR);
-  if (!monitor) throw new Error("não foi possível criar o monitor virtual");
-  return { monitor, created };
+/** Sobe um Xvfb em um display livre (:99 em diante) e espera o socket. */
+function startXvfb() {
+  let n = 99;
+  while (fs.existsSync(`/tmp/.X11-unix/X${n}`) || fs.existsSync(`/tmp/.X${n}-lock`)) n++;
+  const display = `:${n}`;
+  const proc = spawn("Xvfb", [display, "-screen", "0", `${WIDTH}x${HEIGHT}x24`, "-nolisten", "tcp"], { stdio: "ignore" });
+  for (let i = 0; i < 50 && !fs.existsSync(`/tmp/.X11-unix/X${n}`); i++) sleep(100);
+  if (!fs.existsSync(`/tmp/.X11-unix/X${n}`)) {
+    proc.kill();
+    throw new Error(`o Xvfb não iniciou em ${display}`);
+  }
+  return { display, proc };
 }
 
-/** Janelas do VS Code de captura (identificadas pelos pids do perfil isolado). */
-function ownWindows(userDataDir) {
-  const pids = codePids(userDataDir);
-  return hyprJson("clients").filter((c) => pids.has(c.pid));
-}
-
-/** A maior janela de captura; aborta se alguma abrir fora do monitor virtual. */
-function findWindow(workspaceId, userDataDir) {
-  const windows = ownWindows(userDataDir);
-  const stray = windows.find((c) => c.workspace.id !== workspaceId);
-  if (stray) throw new Error(`uma janela de captura abriu fora do monitor virtual ("${stray.title}")`);
-  return windows.sort((a, b) => b.size[0] * b.size[1] - a.size[0] * a.size[1])[0];
+/** Espera a janela do VS Code e a ajusta à tela inteira (não há gerenciador de janelas). */
+function fitWindow(display) {
+  const env = { ...process.env, DISPLAY: display };
+  for (let i = 0; i < 60; i++) {
+    const found = spawnSync("xdotool", ["search", "--onlyvisible", "--class", "code"], { encoding: "utf8", env });
+    const ids = (found.stdout || "").split("\n").filter(Boolean);
+    if (ids.length) {
+      const id = ids[ids.length - 1];
+      run("xdotool", ["windowmove", id, "0", "0", "windowsize", id, String(WIDTH), String(HEIGHT)], { env });
+      return id;
+    }
+    sleep(500);
+  }
+  throw new Error("a janela do VS Code não apareceu na tela virtual");
 }
 
 function codePids(userDataDir) {
@@ -198,32 +210,23 @@ function main() {
   console.log("→ instalando a extensão em um perfil isolado");
   run("code", ["--user-data-dir", userDataDir, "--extensions-dir", extensionsDir, "--install-extension", VSIX, "--force"], { stdio: "ignore" });
 
-  const { monitor, created } = ensureMonitor();
-  const workspaceId = monitor.activeWorkspace.id;
-  let window;
+  const xvfb = startXvfb();
 
   try {
-    console.log(`→ abrindo o VS Code no monitor virtual ${MONITOR}`);
-    const args = [
-      "--ozone-platform=wayland", "--password-store=basic",
+    console.log(`→ abrindo o VS Code na tela virtual ${xvfb.display}`);
+    const env = { ...process.env, DISPLAY: xvfb.display, FONTCONFIG_FILE: fontConfig };
+    delete env.WAYLAND_DISPLAY;
+    spawn(CODE_BIN, [
+      "--ozone-platform=x11", "--disable-gpu", "--password-store=basic",
       "--user-data-dir", userDataDir, "--extensions-dir", extensionsDir,
       "--new-window", "--disable-workspace-trust", "--skip-welcome", "--skip-release-notes", "--disable-telemetry",
       // O primeiro arquivo da lista fica como aba ativa.
       workspace, path.join(workspace, "src/trees/silmaril.ts"), path.join(workspace, "src/trees/light.ts"),
-    ].map((a) => `'${a}'`).join(" ");
-    // Regras só desta janela: workspace do monitor virtual, tela cheia nele e
-    // opacidade total (o Omarchy aplica transparência a todas as janelas).
-    const rules = `{ workspace = "${workspaceId} silent", fullscreen = true, tag = "-default-opacity", opacity = "1.0 override 1.0 override" }`;
-    hypr("eval", `hl.exec_cmd([[env FONTCONFIG_FILE='${fontConfig}' '${CODE_BIN}' ${args}]], ${rules})`);
+    ], { env, stdio: "ignore", detached: false });
 
-    for (let i = 0; i < 60 && !window; i++) {
-      sleep(500);
-      window = findWindow(workspaceId, userDataDir);
-    }
-    if (!window) throw new Error("a janela do VS Code não apareceu no monitor virtual");
-
+    fitWindow(xvfb.display);
     sleep(35000); // tempo para ativar as extensões e o TypeScript terminar de inicializar
-    window = findWindow(workspaceId, userDataDir);
+    fitWindow(xvfb.display); // o VS Code pode restaurar o tamanho ao terminar de abrir
 
     fs.ensureDirSync(OUT);
     const pngs = [];
@@ -232,9 +235,8 @@ function main() {
       fs.outputJsonSync(settingsFile, settings(compiled, labels[`./themes/${compiled.id}.json`]), { spaces: 2 });
       sleep(3000);
 
-      const geo = `${window.at[0]},${window.at[1]} ${window.size[0]}x${window.size[1]}`;
       const png = path.join(OUT, `${compiled.id}.png`);
-      run("grim", ["-g", geo, png]);
+      run("magick", ["import", "-display", xvfb.display, "-window", "root", png]);
       run("magick", [png, "-strip", "-define", "png:compression-level=9", png]);
       pngs.push(png);
       console.log(`  ✓ ${compiled.theme.name}`);
@@ -249,14 +251,14 @@ function main() {
       console.log("  ✓ overview.png");
     }
   } finally {
-    // Encerra o VS Code de captura (SIGTERM e, se ainda estiver aberto, SIGKILL).
+    // Encerra o VS Code de captura (SIGTERM e, se ainda estiver aberto, SIGKILL) e o Xvfb.
     for (const signal of ["SIGTERM", "SIGKILL"]) {
       for (const pid of codePids(userDataDir)) {
         try { process.kill(pid, signal); } catch { /* já encerrado */ }
       }
       sleep(3000);
     }
-    if (created) spawnSync("hyprctl", ["output", "remove", MONITOR]);
+    xvfb.proc.kill();
     fs.removeSync(tmp);
   }
 

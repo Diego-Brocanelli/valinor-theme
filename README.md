@@ -121,7 +121,7 @@ Oito temas escuros têm um par claro da mesma família. Com a configuração aba
 | Legolas | Glorfindel | Night Owl |
 | Telperion | Laurelin | Alto contraste |
 
-Todos os temas passam por uma validação automática de contraste (WCAG): texto do editor ≥ 4,5:1, comentários e números de linha ≥ 3:1, botões, badges e status bar ≥ 4,5:1, item selecionado ≥ 4,5:1. Nos temas de alto contraste, todo texto (inclusive comentários e tokens) ≥ 7:1 e números de linha ≥ 4,5:1.
+Todos os temas passam por uma validação automática de contraste (WCAG): texto do editor e tokens de código ≥ 4,5:1, comentários e números de linha ≥ 3:1, ícones de arquivo recoloridos ≥ 3:1 sobre a sidebar, botões, badges e status bar ≥ 4,5:1, item selecionado ≥ 4,5:1. Nos temas de alto contraste, todo texto (inclusive comentários e tokens) ≥ 7:1 e números de linha ≥ 4,5:1.
 
 ### Itálico
 
@@ -376,7 +376,7 @@ As fontes **Zed Plex Mono** (recomendada para o editor) e **Zed Plex Sans** est�
 
 - Node.js 22 (veja `.nvmrc`) **ou** Docker + Make
 - Git com suporte a submodules
-- Opcional, para atualizar os prints: Hyprland, `grim`, ImageMagick e VS Code
+- Opcional, para atualizar os prints: Xvfb, `xdotool`, ImageMagick e VS Code, em qualquer distro ou ambiente (Fedora: `sudo dnf install xorg-x11-server-Xvfb xdotool ImageMagick`; Arch: `sudo pacman -S xorg-server-xvfb xdotool imagemagick`)
 
 ### Primeiros passos
 
@@ -424,7 +424,7 @@ O `src/lib/template.js` deriva as mais de 300 cores da interface a partir da pal
 | `npm run validate` | Mostra erros e avisos de contraste, cores inválidas e chaves desconhecidas |
 | `npm run watch` | Refaz o build a cada alteração em `src/` |
 | `npm run site` | Gera a galeria em `site/` (publicada no GitHub Pages pelo workflow `pages.yml`) |
-| `npm run screenshots` | Captura prints reais do VS Code de cada tema em `assets/previews/` (Hyprland) |
+| `npm run screenshots` | Captura prints reais do VS Code de cada tema em `assets/previews/` (Xvfb, sem ocupar a tela) |
 | `npm run package` | Gera `bin/valinor-theme.vsix` |
 
 ### Atualizar ícones

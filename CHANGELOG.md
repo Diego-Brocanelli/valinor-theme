@@ -5,6 +5,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Unreleased]
 
+### Alterado
+
+- Tokens de código com pelo menos **4,5:1 (WCAG AA)** sobre o editor em todos os temas; comentários e citações continuam com 3:1 no mínimo e os temas de alto contraste com 7:1. A cor de cada token mantém o matiz do tema de origem, e só a luminância é ajustada. Os temas claros (Galadriel, Lothlórien, Yavanna, Elbereth, Nienna, Goldberry, Fëanor, Bilbo, Glorfindel) tinham palavras-chave, strings e operadores entre 3,1 e 3,5:1. O ajuste vale também para as regras herdadas dos temas de origem e para os tokens semânticos.
+- Validador: token abaixo do mínimo passa a ser erro em todos os temas (antes era só aviso nos temas com regras herdadas), com os tokens semânticos incluídos. Também avisa quando o ajuste de contraste deixa dois papéis de sintaxe com a mesma cor (ex.: keyword e string).
+- Build: confere se toda cor gravada nos ícones Lucide e Logos de cada tema tem 3:1 sobre a sidebar (WCAG 1.4.11) e interrompe o build se alguma não tiver.
+- `npm run screenshots` funciona em qualquer distro e ambiente (GNOME, KDE, Hyprland ou sem sessão gráfica): o VS Code abre em um servidor X invisível (Xvfb) de 1600×1000 e a captura é feita com o ImageMagick. Antes exigia Hyprland e `grim`. Requer Xvfb e `xdotool`. O binário do VS Code também é encontrado em `/opt/visual-studio-code` (Arch).
+- Galeria: espectro com as cores de fundo e de destaque dos 30 temas no topo; filtro **Alto contraste**; nova seção **Ícones de arquivo** com os mesmos 37 arquivos em cada conjunto, sobre a sidebar do tema escolhido; deslizar o print no lightbox troca de tema; botões do lightbox com 44px; meta tags Open Graph/Twitter (imagem de compartilhamento), `theme-color` e `canonical`; o hover dos cards respeita `prefers-reduced-motion`.
+
 ## [2.28.0] - 2026-11-03
 
 ### Adicionado
