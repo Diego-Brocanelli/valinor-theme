@@ -5,6 +5,8 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Unreleased]
 
+## [2.29.0] - 2026-11-04
+
 ### Alterado
 
 - Tokens de código com pelo menos **4,5:1 (WCAG AA)** sobre o editor em todos os temas; comentários e citações continuam com 3:1 no mínimo e os temas de alto contraste com 7:1. A cor de cada token mantém o matiz do tema de origem, e só a luminância é ajustada. Os temas claros (Galadriel, Lothlórien, Yavanna, Elbereth, Nienna, Goldberry, Fëanor, Bilbo, Glorfindel) tinham palavras-chave, strings e operadores entre 3,1 e 3,5:1. O ajuste vale também para as regras herdadas dos temas de origem e para os tokens semânticos.
